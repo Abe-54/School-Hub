@@ -72,7 +72,8 @@ The app also provides a guide to nearby resources and amenities that are made av
 
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+<img src="School Hub App Wireframe.jpg" width=600>
+<img src="Student Sign Up Process Wireframe.jpg" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
 
