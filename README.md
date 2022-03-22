@@ -79,10 +79,46 @@ The app also provides a guide to nearby resources and amenities that are made av
 ### [BONUS] Interactive Prototype
 
 ## Schema 
-[This section will be completed in Unit 9]
-### Models
-[Add table of models]
+#### Post
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the user post (default field) |
+   | clubAdmin        | Pointer to User| post author |
+   | clubMember        | Pointer to User| post author |
+   | image         | File     | image that user posts |
+   | caption       | String   | image caption by author |
+   | commentsCount | Number   | number of comments that has been posted to an image |
+   | upvoteCount    | Number   | number of upvotes for the post |
+   | downvoteCount    | Number   | number of downvotes for the post |
+
+#### Events
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the user post (default field) |
+   | clubAdmin        | Pointer to User| post author |
+   | image         | File     | image that user posts |
+   | eventDecription       | String   | image caption by author |
+   | eventLocation       | String   | event location |
+   | eventDate       | Datetime   | event date |
+   | commentsCount | Number   | number of comments that has been posted to an image |
+   | upvoteCount    | Number   | number of upvotes for the post |
+   | downvoteCount    | Number   | number of downvotes for the post |
+ 
 ### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+- Home Feed Screen
+  - Query all posts from different clubs
+  - (Create/POST) Create a new like on a post
+  - (Delete) Delete existing like
+  - (Create/POST) Create a new comment on a post
+  - (Delete) Delete existing comment
+
+- Create Post Screen (Only Admins)
+  - (Create/POST) Create a new post object
+
+- Student Profile Screen
+  - (Read/GET) Query logged in user object
+- User Management Screen
+   - (Read/GET) Query members list object
+   - (Delete) Delete existing member
