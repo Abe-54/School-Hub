@@ -10,31 +10,27 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bcappdevelopers.schoolhub.admin.AdminHomeActivity;
+import com.bcappdevelopers.schoolhub.student.StudentHomeActivity;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 
-import java.text.ParseException;
-
-public class Login extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     public static final String TAG = "Login";
     private EditText etUsername;
     private EditText etPassword;
     private Button btnLogin;
-    private boolean isStudent;
-    private boolean isAdmin;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login);
+        setContentView(R.layout.activity_login);
 
         if(ParseUser.getCurrentUser() != null){
             goToHome();
         }
-
 
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
@@ -58,20 +54,26 @@ public class Login extends AppCompatActivity {
             public void done(ParseUser user, ParseException e) {
                 if (e != null) {
                     Log.e(TAG, "Issue With Login", e);
-                    Toast.makeText(Login.this, "Issue With Login ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Issue With Login ", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 goToHome();
-                Toast.makeText(Login.this, "Success!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Success!", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     private void goToHome() {
-        Intent i = new Intent(this,MainActivity.class);
+        Intent i;
+
+        if(ParseUser.getCurrentUser().getBoolean("isAdmin")) {
+            i = new Intent(this, AdminHomeActivity.class);
+        } else {
+            i = new Intent(this, StudentHomeActivity.class);
+        }
         startActivity(i);
         finish();
 
-    }
+        }
     }
 

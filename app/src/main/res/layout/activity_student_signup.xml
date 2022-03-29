@@ -83,7 +83,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="10dp"
-        android:text="I agree to terms & conditiions." />
+        android:text="I agree to terms &amp; conditiions." />
 
     <Button
         android:id="@+id/signupButton"

@@ -3,13 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/bcAppDevelopers-SchoolHub/School-Hub/app/src/main/res/layout/Home.xml" value="0.36666666666666664" />
-        <entry key="..\:/bcAppDevelopers-SchoolHub/School-Hub/app/src/main/res/layout/activity_admin_page.xml" value="0.36666666666666664" />
-        <entry key="..\:/bcAppDevelopers-SchoolHub/School-Hub/app/src/main/res/layout/activity_announcement_page.xml" value="0.36666666666666664" />
-        <entry key="..\:/bcAppDevelopers-SchoolHub/School-Hub/app/src/main/res/layout/activity_announcement_post.xml" value="0.36666666666666664" />
-        <entry key="..\:/bcAppDevelopers-SchoolHub/School-Hub/app/src/main/res/layout/activity_club_page.xml" value="0.36666666666666664" />
-        <entry key="..\:/bcAppDevelopers-SchoolHub/School-Hub/app/src/main/res/layout/activity_student_profile.xml" value="0.36666666666666664" />
-        <entry key="..\:/bcAppDevelopers-SchoolHub/School-Hub/app/src/main/res/layout/login.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/Home.xml" value="0.24427083333333333" />
+        <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/activity_admin_home.xml" value="0.4244791666666667" />
+        <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/activity_announcement_page.xml" value="0.4244791666666667" />
+        <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/activity_club_page.xml" value="0.240625" />
+        <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/activity_login.xml" value="0.24427083333333333" />
+        <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/activity_student_home.xml" value="0.4244791666666667" />
+        <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/activity_student_profile.xml" value="0.24427083333333333" />
+        <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/login.xml" value="0.240625" />
+        <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/student_signup.xml" value="0.4244791666666667" />
+        <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/user_login.xml" value="0.4244791666666667" />
+        <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/xml/fileprovider.xml" value="0.24427083333333333" />
       </map>
     </option>
   </component>

@@ -1,8 +1,10 @@
-package com.bcappdevelopers.schoolhub;
+package com.bcappdevelopers.schoolhub.admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.bcappdevelopers.schoolhub.R;
 
 public class AnnouncementPost extends AppCompatActivity {
 

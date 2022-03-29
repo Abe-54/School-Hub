@@ -16,16 +16,6 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:minHeight="48dp" />
-
-    <EditText
         android:id="@+id/etUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,6 +23,16 @@
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName"
+        android:minHeight="48dp" />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
         android:minHeight="48dp" />
 
     <Button
