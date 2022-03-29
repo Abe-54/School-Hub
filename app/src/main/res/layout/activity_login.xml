@@ -7,7 +7,7 @@
     android:layout_centerInParent="false"
     android:layout_margin="16dp"
     android:orientation="vertical"
-    tools:context=".Login">
+    tools:context=".LoginActivity">
 
     <ImageView
         android:id="@+id/iv_logo"
@@ -41,15 +41,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:layout_marginRight="200dp"
-        android:background="@android:color/holo_green_light"
+        android:hapticFeedbackEnabled="false"
         android:hint="LOGIN"
-        android:shadowColor="#4CAF50"
         android:textAlignment="center"
         android:textColor="#DCE1DA"
-        android:textColorHighlight="#4CAF50"
-        android:textColorLink="#4CAF50"
         android:textStyle="bold"
-        app:strokeColor="#4CAF50"
         tools:text="LOGIN" />
 
     <Button
