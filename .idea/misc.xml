@@ -7,19 +7,15 @@
         <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/activity_admin_home.xml" value="0.4244791666666667" />
         <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/activity_announcement_page.xml" value="0.4244791666666667" />
         <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/activity_club_page.xml" value="0.240625" />
-        <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/activity_login.xml" value="0.8800000000000001" />
+        <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/activity_forgot_password.xml" value="0.4244791666666667" />
+        <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/activity_login.xml" value="0.4" />
         <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/activity_student_home.xml" value="0.4244791666666667" />
         <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/activity_student_profile.xml" value="0.24427083333333333" />
-        <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/activity_student_signup.xml" value="0.4244791666666667" />
+        <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/activity_student_signup.xml" value="0.264" />
         <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/login.xml" value="0.240625" />
         <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/student_signup.xml" value="0.4244791666666667" />
         <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/user_login.xml" value="0.4244791666666667" />
         <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/xml/fileprovider.xml" value="0.24427083333333333" />
-        <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_student_home.xml" value="0.16894630192502533" />
-        <entry key="app/src/main/res/layout/activity_student_profile.xml" value="0.16894630192502533" />
-        <entry key="app/src/main/res/layout/activity_student_signup.xml" value="0.25" />
       </map>
     </option>
   </component>
