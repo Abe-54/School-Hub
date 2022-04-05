@@ -25,6 +25,7 @@
         <entry key="app/src/main/res/layout/activity_student_home.xml" value="0.16894630192502533" />
         <entry key="app/src/main/res/layout/activity_student_profile.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_student_signup.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_admin_profile.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_student_profile.xml" value="0.25" />
       </map>
     </option>
