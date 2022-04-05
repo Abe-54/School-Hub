@@ -1,5 +1,7 @@
 package com.bcappdevelopers.schoolhub;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,7 +13,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.bcappdevelopers.schoolhub.student.StudentHomeActivity;
+import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseUser;
+import com.parse.SignUpCallback;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -43,15 +52,17 @@ public class SignUpActivity extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i(TAG,"onClickLoginButton");
+                Log.i(TAG,"onClickSignupButton");
 
                 String username = etUsername.getText().toString();
                 String email = etEmail.getText().toString();
                 String password = etPassword.getText().toString();
-                Boolean acceptedConditions = cbConfirmation.isActivated();
+                String confirmPassword = etConfirmPassword.getText().toString();
+                Boolean acceptedConditions = cbConfirmation.isChecked();
 
-
-                signupStudent(username, email, password, acceptedConditions);
+                if(canSignup(username, email, password, confirmPassword, acceptedConditions)) {
+                    signupStudent(username, email, password, acceptedConditions);
+                }
             }
         });
 
@@ -63,11 +74,62 @@ public class SignUpActivity extends AppCompatActivity {
         });
     }
 
-    private void signupStudent(String username, String email, String password, Boolean confirmation){
-        //TODO: finish method
-        //TODO: post to back4app and login student
+    private void signupStudent(String username, String email, String password, Boolean acceptedConditions){
 
-        Toast.makeText(this, "SIGNED UP", Toast.LENGTH_SHORT).show();
+        ParseUser user = new ParseUser();
+
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setEmail(email);
+        user.put("readTerms", acceptedConditions);
+        user.put("isStudent", true);
+
+        Log.i(TAG,"Attempting to signup user " + username);
+
+        user.signUpInBackground(new SignUpCallback() {
+                public void done(ParseException e) {
+                if (e == null) {
+                    Log.i(TAG, "signed up");
+                    goHome();
+                } else {
+                    Log.e(TAG, "Issue With Login", e);
+                    Toast.makeText(SignUpActivity.this, "Issue With Login ", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+            }
+        });
+    }
+
+    private boolean canSignup(String username, String email, String password, String confirmPassword, Boolean confirmation) {
+        //TODO replace toast with red error text
+
+        if(username.isEmpty()) {
+            Toast.makeText(SignUpActivity.this, "username cannot be empty", Toast.LENGTH_LONG).show();
+            return false;
+        } else if(email.isEmpty()) {
+            Toast.makeText(SignUpActivity.this, "email cannot be empty", Toast.LENGTH_LONG).show();
+            return false;
+        }else if(password.isEmpty()) {
+            Toast.makeText(SignUpActivity.this, "password cannot be empty", Toast.LENGTH_LONG).show();
+            return false;
+        }else if(confirmPassword.isEmpty() ) {
+            Toast.makeText(SignUpActivity.this, "Confirmation Password cannot be empty", Toast.LENGTH_LONG).show();
+            return false;
+        }else if(!confirmPassword.equals(password)) {
+            Toast.makeText(SignUpActivity.this, "Passwords must match!", Toast.LENGTH_LONG).show();
+            return false;
+        }else if(!confirmation) {
+            Toast.makeText(SignUpActivity.this, "Please accept terms & conditions", Toast.LENGTH_LONG).show();
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private void goHome() {
+        Intent i = new Intent(this, StudentHomeActivity.class);
+        startActivity(i);
+        finish();
     }
 
     private void gotToLogin() {

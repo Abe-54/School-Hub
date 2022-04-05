@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragment_student_profile">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ImageView
+        android:id="@+id/iv_admin_profile"
+        android:layout_width="198dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <EditText
+        android:id="@+id/tv_admin_name"
+        android:layout_width="177dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:hint="Club Name"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/rv_admin_profile_page"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toEndOf="@+id/iv_admin_profile"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_admin_profile_page"
+        android:layout_width="414dp"
+        android:layout_height="500dp"
+        android:layout_marginTop="450dp"
+        android:layout_marginBottom="150dp"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_admin_profile"
+        app:layout_constraintVertical_bias="0.905" />
+
+    <TextView
+        android:id="@+id/club_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:text="Club Description"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/rv_admin_profile_page" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="122dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="8dp"
+        android:text="Member"
+        app:layout_constraintBottom_toTopOf="@+id/rv_admin_profile_page"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toEndOf="@+id/iv_admin_profile"
+        app:layout_constraintTop_toBottomOf="@+id/tv_admin_name" />
+
+    <Button
+        android:id="@+id/btn_current_event"
+        android:layout_width="100dp"
+        android:layout_height="48dp"
+        android:text="Current Event"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_event_archive"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rv_admin_profile_page" />
+
+    <Button
+        android:id="@+id/btn_event_archive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Event Archive"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Switch
+        android:id="@+id/btn_subscribe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:text="Subscribe"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_admin_profile_page"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/rv_admin_profile_page"
+        app:layout_constraintVertical_bias="0.928" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

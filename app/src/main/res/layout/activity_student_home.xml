@@ -5,23 +5,55 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="1dp"></LinearLayout>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/appBar"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/fragmentContainerView"
+        android:layout_marginBottom="20dp"
+        android:text="Welcome StudentName"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/mainContainer"
         app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/menu_bottom_navigation">
+        tools:layout_editor_absoluteX="41dp"
+        tools:textStyle="bold" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/mainContainer"
+        android:layout_width="409dp"
+        android:layout_height="275dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/appBar"
+        tools:layout_editor_absoluteX="1dp" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="409dp"
+        android:layout_height="60dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="671dp" >
+
+        <Button
+            android:id="@+id/homeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:text="Home"
+            tools:layout_marginLeft="20dp" />
+
+        <Button
+            android:id="@+id/profileButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="280dp"
+            android:layout_marginRight="20dp"
+            android:text="Profile" />
     </com.google.android.material.bottomnavigation.BottomNavigationView>
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView"
-        android:name="com.bcappdevelopers.schoolhub.fragment_student_home"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_marginBottom="20dp" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
