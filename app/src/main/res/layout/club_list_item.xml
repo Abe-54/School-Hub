@@ -6,10 +6,10 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="5dp"
     android:layout_marginTop="0dp"
-    tools:context=".fragment_club_list_item">
+    >
 
     <ImageView
-        android:id="@+id/ivClubImage"
+        android:id="@+id/ivProfileImage"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_alignParentLeft="true"
@@ -17,22 +17,22 @@
         tools:src="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/tvClubName"
+        android:id="@+id/tvProfileName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_toEndOf="@+id/ivClubImage"
+        android:layout_toEndOf="@+id/ivProfileImage"
         android:hint="CLUB NAME" />
 
     <TextView
-        android:id="@+id/tvClubDescription"
+        android:id="@+id/tvAnnouncementDescription"
         android:layout_width="293dp"
         android:layout_height="76dp"
-        android:layout_below="@+id/tvClubName"
+        android:layout_below="@+id/tvProfileName"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="4dp"
         android:layout_marginTop="2dp"
         android:layout_marginEnd="2dp"
-        android:layout_toEndOf="@+id/ivClubImage"
+        android:layout_toEndOf="@+id/ivProfileImage"
         android:hint="The Club Description will go here!" />
 </RelativeLayout>
