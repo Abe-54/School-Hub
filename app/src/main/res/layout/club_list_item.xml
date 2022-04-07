@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="5dp"
     android:layout_marginTop="0dp"
-    tools:context=".fragment_club_list_item">
+    >
 
     <ImageView
         android:id="@+id/ivClubImage"
