@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.bcappdevelopers.schoolhub.R;
@@ -12,10 +13,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class StudentHomeActivity extends AppCompatActivity {
 
+    private static final String TAG = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_home);
+       //TODO: Check Flixter for fetch Data
+        // Log.i(TAG,"Announcement: " + announcement.getEventName() + "Description: " + announcement.getEventDescription());
 
 /*       bottomNavigationView = findViewById(R.id.bottomNavigation);
 
