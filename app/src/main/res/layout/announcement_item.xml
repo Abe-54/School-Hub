@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="5dp"
+    android:layout_marginTop="0dp">
+
+    <ImageView
+        android:id="@+id/ivProfileImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvProfileName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_toEndOf="@+id/ivProfileImage"
+        android:hint="PROFILE NAME" />
+
+    <TextView
+        android:id="@+id/tvAnnouncementDescription"
+        android:layout_width="295dp"
+        android:layout_height="79dp"
+        android:layout_below="@+id/tvProfileName"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="7dp"
+        android:layout_toEndOf="@+id/ivProfileImage"
+        android:hint="The Announcement Description will go here!" />
+
+    <ToggleButton
+        android:id="@+id/btn_up_vote"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvAnnouncementDescription"
+        android:layout_alignStart="@+id/tvAnnouncementDescription"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="13dp"
+        android:button="@android:drawable/ic_menu_upload"
+        android:textSize="8sp"
+        tools:text="UP" />
+
+    <TextView
+        android:id="@+id/tv_number_up"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/tvAnnouncementDescription"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="26dp"
+        android:layout_toEndOf="@+id/btn_up_vote"
+        tools:text="9" />
+
+    <ToggleButton
+        android:id="@+id/btn_down_vote"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_below="@+id/tvAnnouncementDescription"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="14dp"
+        android:layout_toEndOf="@+id/tv_number_up"
+        android:button="@android:drawable/stat_sys_download"
+        android:text="ToggleButton" />
+
+    <TextView
+        android:id="@+id/tv_number_down"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/tvAnnouncementDescription"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="27dp"
+        android:layout_toEndOf="@+id/btn_down_vote"
+        android:text="TextView"
+        tools:text="3" />
+
+    <ToggleButton
+        android:id="@+id/btn_comment"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_below="@+id/tvAnnouncementDescription"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="18dp"
+        android:layout_toEndOf="@+id/tv_number_down"
+        android:button="@android:drawable/stat_notify_chat"
+        android:text="ToggleButton" />
+
+    <ToggleButton
+        android:id="@+id/btn_share"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_below="@+id/tvAnnouncementDescription"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:layout_toEndOf="@+id/btn_comment"
+        android:button="@android:drawable/ic_menu_share"
+        android:text="ToggleButton" />
+
+</RelativeLayout>
