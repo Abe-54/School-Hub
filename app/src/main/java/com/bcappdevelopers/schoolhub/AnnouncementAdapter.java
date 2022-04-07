@@ -1,28 +1,32 @@
-package com.bcappdevelopers.schoolhub.admin;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
+package com.bcappdevelopers.schoolhub;
 
 import android.content.Context;
-import android.view.LayoutInflater;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bcappdevelopers.schoolhub.R;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.bcappdevelopers.schoolhub.admin.Post;
+import com.bcappdevelopers.schoolhub.models.Announcement;
 import com.parse.ParseFile;
 
 import java.util.List;
 
-public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
+public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapter.ViewHolder> {
 
+    private static final String TAG = "AnnouncementAdapter" ;
+    private final List<Announcement> announcements;
     private Context context;
-    private List<Post> posts;
+    private Object Announcement;
 
-    public PostAdapter(Context context, List<Post> posts) {
+
+    public AnnouncementAdapter(Context context, List<Announcement> announcements) {
         this.context = context;
-        this.posts = posts;
+        this.announcements = announcements;
     }
 
     @NonNull
@@ -36,13 +40,14 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Post post = posts.get(position);
-        holder.bind(post);
+        Announcement announcement = announcements.get(position);
+
+        holder.bind(announcement);
     }
 
     @Override
     public int getItemCount() {
-        return posts.size();
+        return announcements.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
@@ -58,15 +63,15 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
           //  tvDescription = itemView.findViewById(R.id.tvDescription);
         }
 
-        public void bind(Post post) {
-            tvDescription.setText(post.getDescription());
-            tvUsername.setText(post.getUser().getUsername());
-            ParseFile image = post.getImage();
-            if (image != null) {
+        public void bind(com.bcappdevelopers.schoolhub.models.Announcement announcement) {
+           // tvDescription.setText(announcement.getEventDescription());
+            //tvUsername.setText(announcement.getUser().getUsername());
+
+           // ParseFile image = announcement.getImage();
+          //  if (image != null) {
                 //Glide.with(context).load(image.getUrl()).into(ivImage);
             }
 
         }
     }
 
-}
