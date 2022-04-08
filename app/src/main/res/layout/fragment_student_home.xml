@@ -3,29 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment_student_home" >
+    tools:context="student.fragments.StudentHomeFragment" >
 
-    <com.google.android.material.tabs.TabLayout
-        android:layout_width="match_parent"
+    <FrameLayout android:id="@+id/newsPlaceholder" android:layout_width="match_parent"
+        android:layout_height="match_parent" android:layout_below="@+id/newsTabBar" android:layout_marginTop="0dp">
+
+    </FrameLayout>
+    <com.google.android.material.tabs.TabLayout android:id="@+id/newsTabBar" android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tiCampusAnView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Campus News" />
+        <com.google.android.material.tabs.TabItem android:id="@+id/tiCampusAnView" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:text="Campus News" />
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tiClubsAnView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Clubs News" />
+        <com.google.android.material.tabs.TabItem android:id="@+id/tiClubsAnView" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:text="Clubs News" />
 
     </com.google.android.material.tabs.TabLayout>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </FrameLayout>
 </RelativeLayout>

@@ -2,6 +2,7 @@ package com.bcappdevelopers.schoolhub;
 
 import android.content.Context;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -32,10 +33,9 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-      //  View view = LayoutInflater.from(context).inflate(R.layout.item_post,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.announcement_item,parent,false);
 
-      //  return new ViewHolder(view);
-        return null;
+       return new ViewHolder(view);
     }
 
     @Override

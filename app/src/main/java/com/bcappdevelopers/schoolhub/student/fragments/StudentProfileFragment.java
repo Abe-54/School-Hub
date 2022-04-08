@@ -10,9 +10,9 @@ import android.view.ViewGroup;
 import com.bcappdevelopers.schoolhub.R;
 
 
-public class AmenetiesFragment extends Fragment {
+public class StudentProfileFragment extends Fragment {
 
-    public AmenetiesFragment() {
+    public StudentProfileFragment() {
         // Required empty public constructor
     }
 
@@ -20,6 +20,6 @@ public class AmenetiesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragement_ameneties_map, container, false);
+        return inflater.inflate(R.layout.fragment_student_profile, container, false);
     }
 }
