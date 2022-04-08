@@ -2,15 +2,7 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/profilebutton"
-        android:icon="@drawable/profileicon"
-        android:title="profilebutton"
-        app:showAsAction="always" />
-    <item
-        android:id="@+id/homeButton"
-        android:icon="@drawable/homeicon"
-        android:title="homeButton"
+    <item android:id="@+id/homeButton" android:icon="@drawable/homeicon" android:title="homeButton"
         app:showAsAction="always" />
     <item
         android:id="@+id/clubsList"
@@ -21,5 +13,7 @@
         android:id="@+id/amenetiesMap"
         android:icon="@android:drawable/ic_dialog_map"
         android:title="amenetiesMap"
+        app:showAsAction="always" />
+    <item android:id="@+id/profilebutton" android:icon="@drawable/profileicon" android:title="profilebutton"
         app:showAsAction="always" />
 </menu>

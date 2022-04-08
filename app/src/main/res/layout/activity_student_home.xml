@@ -6,12 +6,16 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:layout_width="409dp"
+        android:id="@+id/studentBottomNav"
+        android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:background="#656565"
+        app:menu="@menu/menu_bottom_navigation"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <FrameLayout
+        android:id="@+id/placeholder"
         android:layout_width="409dp"
         android:layout_height="669dp"
         app:layout_constraintStart_toStartOf="parent"

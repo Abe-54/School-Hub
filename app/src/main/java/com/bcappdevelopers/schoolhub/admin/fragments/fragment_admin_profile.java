@@ -1,4 +1,4 @@
-package com.bcappdevelopers.schoolhub;
+package com.bcappdevelopers.schoolhub.admin.fragments;
 
 import android.os.Bundle;
 
@@ -7,13 +7,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.bcappdevelopers.schoolhub.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link fragment_student_home#newInstance} factory method to
+ * Use the {@link fragment_admin_profile#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class fragment_student_home extends Fragment {
+public class fragment_admin_profile extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +25,7 @@ public class fragment_student_home extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public fragment_student_home() {
+    public fragment_admin_profile() {
         // Required empty public constructor
     }
 
@@ -34,11 +35,11 @@ public class fragment_student_home extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment fragment_student_home.
+     * @return A new instance of fragment fragment_admin_profile.
      */
     // TODO: Rename and change types and number of parameters
-    public static fragment_student_home newInstance(String param1, String param2) {
-        fragment_student_home fragment = new fragment_student_home();
+    public static fragment_admin_profile newInstance(String param1, String param2) {
+        fragment_admin_profile fragment = new fragment_admin_profile();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,6 +60,6 @@ public class fragment_student_home extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_student_home, container, false);
+        return inflater.inflate(R.layout.fragment_admin_profile, container, false);
     }
 }
