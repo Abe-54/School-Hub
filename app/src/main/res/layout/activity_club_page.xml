@@ -6,9 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".fragment_student_profile">
-
-    <!-- TODO: Update blank fragment layout -->
+    tools:context=".ClubProfileActivity">
 
     <ImageView
         android:id="@+id/iv_club_profile"

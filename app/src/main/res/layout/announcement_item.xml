@@ -14,25 +14,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView android:id="@+id/ivUserImage" android:layout_width="wrap_content"
+        <ImageView android:id="@+id/ivAnnouncement" android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true" tools:src="@tools:sample/avatars" />
 
         <TextView android:id="@+id/tvProfileName" android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_marginStart="4dp"
-            android:layout_toEndOf="@+id/ivUserImage" android:hint="PROFILE NAME" />
+            android:layout_toEndOf="@+id/ivAnnouncement" android:hint="PROFILE NAME" />
 
-        <TextView
-            android:id="@+id/tvAnnouncementDescription"
-            android:layout_width="295dp"
-            android:layout_height="79dp"
-            android:layout_below="@+id/tvProfileName"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="7dp"
-            android:layout_toEndOf="@+id/ivUserImage"
-            android:hint="The Announcement Description will go here!" />
+        <TextView android:id="@+id/tvAnnouncementDescription" android:layout_width="295dp" android:layout_height="79dp"
+            android:layout_below="@+id/tvProfileName" android:layout_alignParentEnd="true"
+            android:layout_marginStart="4dp" android:layout_marginTop="2dp" android:layout_marginEnd="7dp"
+            android:layout_toEndOf="@+id/ivAnnouncement" android:hint="The Announcement Description will go here!" />
 
         <ToggleButton android:id="@+id/btnUpVote" android:layout_width="48dp" android:layout_height="wrap_content"
             android:layout_below="@+id/tvAnnouncementDescription"

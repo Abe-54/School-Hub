@@ -17,17 +17,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_club_list"
-        android:layout_width="204dp"
-        android:layout_height="45dp"
-        android:text="Club List"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/rvClubList"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <TextView android:id="@+id/tv_club_list" android:layout_width="204dp" android:layout_height="45dp"
+        android:text="Club List" android:textAlignment="center" android:textSize="24sp" android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/rvClubList" app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

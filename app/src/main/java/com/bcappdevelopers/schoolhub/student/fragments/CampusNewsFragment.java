@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bcappdevelopers.schoolhub.R;
 import com.bcappdevelopers.schoolhub.models.Announcement;
-import com.bcappdevelopers.schoolhub.student.adapters.CampusAnnouncementAdapter;
+import com.bcappdevelopers.schoolhub.student.adapters.AnnouncementAdapter;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -26,7 +26,7 @@ public class CampusNewsFragment extends Fragment {
     private static final String TAG = "CAMPUS NEWS FRAGMENT";
 
     private RecyclerView rvCampusAnnoucements;
-    private CampusAnnouncementAdapter adapter;
+    private AnnouncementAdapter adapter;
     private List<Announcement> allAnnouncements;
 
     public CampusNewsFragment() {
@@ -46,7 +46,7 @@ public class CampusNewsFragment extends Fragment {
 
         rvCampusAnnoucements = view.findViewById(R.id.rvCampusAnnouncements);
         allAnnouncements = new ArrayList<>();
-        adapter = new CampusAnnouncementAdapter(getContext(), allAnnouncements);
+        adapter = new AnnouncementAdapter(getContext(), allAnnouncements);
 
         Log.i(TAG, "INSIDE OF CAMPUS FRAG");
 

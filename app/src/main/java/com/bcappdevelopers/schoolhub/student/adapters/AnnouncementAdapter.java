@@ -16,13 +16,13 @@ import com.bcappdevelopers.schoolhub.models.Announcement;
 
 import java.util.List;
 
-public class CampusAnnouncementAdapter extends RecyclerView.Adapter<CampusAnnouncementAdapter.ViewHolder> {
+public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapter.ViewHolder> {
 
     private static final String TAG = "CampusAnnouncementAdapter" ;
     private final List<Announcement> announcements;
     private Context context;
 
-    public CampusAnnouncementAdapter(Context context, List<Announcement> announcements) {
+    public AnnouncementAdapter(Context context, List<Announcement> announcements) {
         this.context = context;
         this.announcements = announcements;
     }
@@ -62,7 +62,7 @@ public class CampusAnnouncementAdapter extends RecyclerView.Adapter<CampusAnnoun
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            ivUserImage = itemView.findViewById(R.id.ivUserImage);
+            ivUserImage = itemView.findViewById(R.id.ivClubImage);
             tvProfileName = itemView.findViewById(R.id.tvProfileName);
             tvAnnouncementDescription = itemView.findViewById(R.id.tvAnnouncementDescription);
             tvUpVoteCount = itemView.findViewById(R.id.tvUpVoteCount);
