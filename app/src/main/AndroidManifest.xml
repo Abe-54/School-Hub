@@ -14,20 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SchoolHub">
         <activity
-            android:name=".admin.Post"
-            android:exported="false" />
-        <activity
-            android:name=".admin.PostAdapter"
-            android:exported="false" />
-        <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".SignUpActivity" />
         <activity android:name=".admin.AdminHomeActivity" />
         <activity android:name=".student.StudentHomeActivity" />
