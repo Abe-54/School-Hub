@@ -8,14 +8,17 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bcappdevelopers.schoolhub.R;
 import com.bcappdevelopers.schoolhub.models.Announcement;
+import com.bcappdevelopers.schoolhub.student.adapters.CampusAnnouncementAdapter;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CampusNewsFragment extends Fragment {
@@ -23,6 +26,8 @@ public class CampusNewsFragment extends Fragment {
     private static final String TAG = "CAMPUS NEWS FRAGMENT";
 
     private RecyclerView rvCampusAnnoucements;
+    private CampusAnnouncementAdapter adapter;
+    private List<Announcement> allAnnouncements;
 
     public CampusNewsFragment() {
         // Required empty public constructor
@@ -40,6 +45,8 @@ public class CampusNewsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         rvCampusAnnoucements = view.findViewById(R.id.rvCampusAnnouncements);
+        allAnnouncements = new ArrayList<>();
+        adapter = new CampusAnnouncementAdapter(getContext(), allAnnouncements);
 
         Log.i(TAG, "INSIDE OF CAMPUS FRAG");
 
@@ -48,7 +55,9 @@ public class CampusNewsFragment extends Fragment {
         //1. create the adapter
         //2. create the data source
         //3. set the adapter on rv
+        rvCampusAnnoucements.setAdapter(adapter);
         //4. set the layout manager on rv
+        rvCampusAnnoucements.setLayoutManager(new LinearLayoutManager(getContext()));
         queryAnnoucnements();
     }
 
@@ -63,10 +72,12 @@ public class CampusNewsFragment extends Fragment {
                     return;
                 }
                 for (Announcement announcement : announcements) {
-                        if(announcement.getEventUser() != null && announcement.getEventUser().getUsername().compareTo("admin") == 0) {
-                            Log.i(TAG, "announcements: " + announcement.getEventDescription() + ", created by: " + announcement.getEventUser().getUsername());
-                        }
+                    if(announcement.getEventUser() != null && announcement.getEventUser().getUsername().compareTo("admin") == 0) {
+                        Log.i(TAG, "announcements: " + announcement.getEventDescription() + ", created by: " + announcement.getEventUser().getUsername());
+                        allAnnouncements.add(announcement);
+                    }
                 }
+                adapter.notifyDataSetChanged();
             }
         });
     }

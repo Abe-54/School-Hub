@@ -2,8 +2,6 @@ package com.bcappdevelopers.schoolhub.student.fragments;
 
 import android.os.Bundle;
 
-import android.util.Log;
-import android.view.ViewParent;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -11,18 +9,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import com.bcappdevelopers.schoolhub.R;
-import com.bcappdevelopers.schoolhub.models.Announcement;
-import com.google.android.material.tabs.TabItem;
+import com.bcappdevelopers.schoolhub.student.adapters.NewsPageAdapter;
 import com.google.android.material.tabs.TabLayout;
-import com.parse.FindCallback;
-import com.parse.ParseException;
-import com.parse.ParseQuery;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.List;
 
 public class StudentHomeFragment extends Fragment {
 

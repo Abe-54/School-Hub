@@ -1,4 +1,4 @@
-package com.bcappdevelopers.schoolhub.student.fragments;
+package com.bcappdevelopers.schoolhub.student.adapters;
 
 import android.content.Context;
 import androidx.fragment.app.Fragment;
@@ -42,16 +42,4 @@ public class NewsPageAdapter extends FragmentStatePagerAdapter {
         mFragmentList.add(fragment);
         mFragmentTitleList.add(title);
     }
-
-//    @Override
-//    public Fragment getItem(int position) {
-//        switch (position) {
-//            case 0:
-//                return new CampusNewsFragment();
-//            case 1:
-//                return new ClubNewsFragment();
-//            default:
-//                return null;
-//        }
-//    }
 }
