@@ -24,7 +24,7 @@ public class ClubListFragment extends Fragment {
 
     private static final String TAG = "CLUB LIST FRAGMENT";
 
-    private RecyclerView rvClubAnnoucements;
+    private RecyclerView rvClubList;
 
     public ClubListFragment() {
         // Required empty public constructor
