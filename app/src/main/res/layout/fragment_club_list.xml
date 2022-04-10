@@ -9,17 +9,13 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvClubList"
-        android:layout_width="match_parent"
-        android:layout_height="652dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView android:id="@+id/tv_club_list" android:layout_width="204dp" android:layout_height="45dp"
-        android:text="Club List" android:textAlignment="center" android:textSize="24sp" android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/rvClubList" app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@+id/rvClubList" android:layout_width="match_parent"
+        android:layout_height="652dp" android:layout_marginTop="5dp" app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0" app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_club_list" />
+    <TextView android:id="@+id/tv_club_list" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_marginTop="28dp" android:text="Club List" android:textAlignment="center" android:textSize="24sp"
+        android:textStyle="bold" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

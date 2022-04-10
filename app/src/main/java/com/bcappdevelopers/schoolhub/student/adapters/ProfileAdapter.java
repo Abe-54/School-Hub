@@ -1,7 +1,6 @@
 package com.bcappdevelopers.schoolhub.student.adapters;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,36 +11,34 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bcappdevelopers.schoolhub.R;
 import com.bcappdevelopers.schoolhub.models.Club;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.MultiTransformation;
-import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.parse.ParseFile;
-import jp.wasabeef.glide.transformations.BlurTransformation;
+import com.parse.ParseObject;
 import jp.wasabeef.glide.transformations.CropCircleWithBorderTransformation;
-import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class ClubListAdapter extends RecyclerView.Adapter<ClubListAdapter.ViewHolder> {
+public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHolder>{
 
-    private static final String TAG = "ClubListAdapter";
-    private final List<Club> clubs;
+    private static final String TAG = "Profile Adapter";
+    private final List<ParseObject> clubs;
     private Context context;
 
-    public ClubListAdapter(Context context, List<Club> clubs) {
-        this.context = context;
+    public ProfileAdapter(Context context, List<ParseObject> clubs) {
         this.clubs = clubs;
+        this.context = context;
     }
 
     @NonNull
     @Override
-    public ClubListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.club_list_item,parent,false);
-        return new ClubListAdapter.ViewHolder(view);
+        return new ProfileAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ClubListAdapter.ViewHolder holder, int position) {
-        Club club = clubs.get(position);
+    public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
+        ParseObject club = clubs.get(position);
         holder.bind(club);
     }
 
@@ -64,14 +61,14 @@ public class ClubListAdapter extends RecyclerView.Adapter<ClubListAdapter.ViewHo
             tvClubDescription = itemView.findViewById(R.id.tvClubDescription);
         }
 
-        public void bind(com.bcappdevelopers.schoolhub.models.Club club) {
-            tvClubName.setText(club.getClubName());
-            tvClubDescription.setText(club.getClubDescription());
+        public void bind(ParseObject club) {
+            tvClubName.setText(club.getString("clubName"));
+            tvClubDescription.setText(club.getString("clubDescription"));
 
             int radius = 30;
             int margin = 10;
 
-            ParseFile image = club.getClubImage();
+            ParseFile image = club.getParseFile("clubImage");
             if(image != null) {
                 Glide.with(context)
                         .load(image.getUrl())

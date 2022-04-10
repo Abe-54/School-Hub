@@ -6,8 +6,7 @@
     tools:context="student.fragments.StudentHomeFragment" >
 
     <androidx.viewpager.widget.ViewPager android:id="@+id/vpNewsPlaceholder" android:layout_width="match_parent"
-        android:layout_height="match_parent" android:layout_below="@+id/newsTabBar" android:background="@color/black"
-        tools:ignore="SpeakableTextPresentCheck" />
+        android:layout_height="match_parent" android:layout_below="@+id/newsTabBar" tools:ignore="SpeakableTextPresentCheck" />
 
     <com.google.android.material.tabs.TabLayout android:id="@+id/newsTabBar" android:layout_width="match_parent"
         android:layout_height="wrap_content">

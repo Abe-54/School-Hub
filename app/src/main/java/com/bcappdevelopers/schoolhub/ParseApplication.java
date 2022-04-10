@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.bcappdevelopers.schoolhub.models.Announcement;
 import com.bcappdevelopers.schoolhub.models.Club;
+import com.bcappdevelopers.schoolhub.models.Profile;
 import com.parse.Parse;
 import com.parse.ParseObject;
 
