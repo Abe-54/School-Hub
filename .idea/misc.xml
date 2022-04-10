@@ -7,6 +7,7 @@
         <entry key="..\:/Users/Ameen/Documents/Personal/Education/MOBILE APPLICATIONS (CMP-211-1)/School-Hub/app/src/main/res/layout/activity_student_home.xml" value="0.23802083333333332" />
         <entry key="..\:/Users/Ameen/Documents/Personal/Education/MOBILE APPLICATIONS (CMP-211-1)/School-Hub/app/src/main/res/layout/activity_student_signup.xml" value="0.23802083333333332" />
         <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/drawable/no_profile_image_background.xml" value="0.403125" />
+        <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/drawable/outline_home_24.xml" value="0.2359375" />
         <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/Home.xml" value="0.24427083333333333" />
         <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/activity_admin_home.xml" value="0.4244791666666667" />
         <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/activity_announcement_page.xml" value="0.4244791666666667" />
@@ -40,7 +41,7 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_16_PREVIEW" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

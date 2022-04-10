@@ -10,9 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="#656565"
-        app:menu="@menu/menu_bottom_navigation"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu_bottom_navigation" />
 
     <FrameLayout
         android:id="@+id/placeholder"
