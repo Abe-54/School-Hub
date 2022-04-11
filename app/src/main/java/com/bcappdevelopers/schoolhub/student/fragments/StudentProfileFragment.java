@@ -1,9 +1,11 @@
 package com.bcappdevelopers.schoolhub.student.fragments;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.util.Log;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,6 +16,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.bcappdevelopers.schoolhub.ClubProfileActivity;
+import com.bcappdevelopers.schoolhub.LoginActivity;
 import com.bcappdevelopers.schoolhub.R;
 import com.bcappdevelopers.schoolhub.models.Announcement;
 import com.bcappdevelopers.schoolhub.models.Club;
@@ -36,6 +40,7 @@ public class StudentProfileFragment extends Fragment {
     private TextView tvName;
     private ProfileAdapter adapter;
     private List<ParseObject> allClubs;
+    private Button signOutButton;
 
     public StudentProfileFragment() {
         // Required empty public constructor
@@ -55,6 +60,7 @@ public class StudentProfileFragment extends Fragment {
 
         rvClubList = view.findViewById(R.id.rvClubListProfileScreen);
         tvName = view.findViewById(R.id.tvStudentName);
+        signOutButton = view.findViewById(R.id.btnSignOut);
         allClubs = new ArrayList<>();
         adapter = new ProfileAdapter(getContext(), allClubs);
 
@@ -71,6 +77,17 @@ public class StudentProfileFragment extends Fragment {
         //4. set the layout manager on rv
         rvClubList.setLayoutManager(new LinearLayoutManager(getContext()));
         queryData();
+
+        signOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ParseUser.logOut();
+                Intent i = new Intent(getContext(), LoginActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                getContext().startActivity(i);
+                Log.i(TAG, "LOGGING OUT");
+            }
+        });
     }
 
     private void queryData() {

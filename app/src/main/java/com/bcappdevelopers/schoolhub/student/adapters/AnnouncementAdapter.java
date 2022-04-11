@@ -1,6 +1,7 @@
 package com.bcappdevelopers.schoolhub.student.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,20 +10,24 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bcappdevelopers.schoolhub.ClubProfileActivity;
 import com.bcappdevelopers.schoolhub.R;
 import com.bcappdevelopers.schoolhub.models.Announcement;
+import com.parse.ParseObject;
+import org.parceler.Parcels;
 
 import java.util.List;
 
 public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapter.ViewHolder> {
 
     private static final String TAG = "CampusAnnouncementAdapter" ;
-    private final List<Announcement> announcements;
+    private final List<ParseObject> announcements;
     private Context context;
 
-    public AnnouncementAdapter(Context context, List<Announcement> announcements) {
+    public AnnouncementAdapter(Context context, List<ParseObject> announcements) {
         this.context = context;
         this.announcements = announcements;
     }
@@ -37,7 +42,7 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Announcement announcement = announcements.get(position);
+        ParseObject announcement = announcements.get(position);
 
         holder.bind(announcement);
     }
@@ -49,6 +54,7 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
+        private CardView cvAnnouncementContainer;
         private ImageView ivUserImage;
         private TextView tvProfileName;
         private TextView tvAnnouncementDescription;
@@ -62,6 +68,7 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            cvAnnouncementContainer = itemView.findViewById(R.id.cvAnnouncementContainer);
             ivUserImage = itemView.findViewById(R.id.ivClubImage);
             tvProfileName = itemView.findViewById(R.id.tvProfileName);
             tvAnnouncementDescription = itemView.findViewById(R.id.tvAnnouncementDescription);
@@ -73,11 +80,21 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
             btnShare = itemView.findViewById(R.id.btnShare);
         }
 
-        public void bind(com.bcappdevelopers.schoolhub.models.Announcement announcement) {
-            tvProfileName.setText(announcement.getEventUser().getUsername());
-            tvAnnouncementDescription.setText(announcement.getEventDescription());
+        public void bind(ParseObject announcement) {
+
+            tvProfileName.setText(announcement.getParseObject("madeBy").getString("clubName"));
+            tvAnnouncementDescription.setText(announcement.getString("eventDescription"));
             tvUpVoteCount.setText("0");
             tvDownVoteCount.setText("0");
+
+            cvAnnouncementContainer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(context, ClubProfileActivity.class);
+                    i.putExtra("Announcement", Parcels.wrap(announcement));
+                    context.startActivity(i);
+                }
+            });
         }
     }
 }

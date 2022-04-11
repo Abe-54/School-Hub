@@ -62,10 +62,10 @@ public class ClubListFragment extends Fragment {
         rvClubList.setAdapter(adapter);
         //4. set the layout manager on rv
         rvClubList.setLayoutManager(new LinearLayoutManager(getContext()));
-        queryAnnoucnements();
+        queryClubs();
     }
 
-    private void queryAnnoucnements() {
+    private void queryClubs() {
         ParseQuery<Club> query = ParseQuery.getQuery(Club.class);
         query.findInBackground(new FindCallback<Club>() {
             @Override

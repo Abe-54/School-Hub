@@ -28,7 +28,7 @@ public class Announcement extends ParseObject {
         put(KEY_LOCATION, locationAtSchool);
     }
 
-    public void setEventUser(ParseUser user){
+    public void setEventClub(ParseUser user){
         put(KEY_EVENT_MADE_BY, user);
     }
 
@@ -48,7 +48,7 @@ public class Announcement extends ParseObject {
         return getString(KEY_EVENT);
     }
 
-    public ParseUser getEventUser() {
-        return getParseUser(KEY_EVENT_MADE_BY);
+    public ParseObject getEventClub() {
+        return getParseObject(KEY_EVENT_MADE_BY);
     }
 }

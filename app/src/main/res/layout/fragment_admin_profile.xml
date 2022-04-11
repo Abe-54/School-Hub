@@ -11,7 +11,7 @@
     <!-- TODO: Update blank fragment layout -->
 
     <ImageView
-        android:id="@+id/iv_club_profile"
+        android:id="@+id/ivClubProfile"
         android:layout_width="198dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,15 +25,15 @@
         android:ems="10"
         android:hint="Club Name"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/rv_club_profile_page"
+        app:layout_constraintBottom_toTopOf="@+id/rvClubScreenAnnouncements"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.555"
-        app:layout_constraintStart_toEndOf="@+id/iv_club_profile"
+        app:layout_constraintStart_toEndOf="@+id/ivClubProfile"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.25" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_club_profile_page"
+        android:id="@+id/rvClubScreenAnnouncements"
         android:layout_width="414dp"
         android:layout_height="500dp"
         android:layout_marginTop="450dp"
@@ -43,18 +43,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_club_profile"
+        app:layout_constraintTop_toBottomOf="@+id/ivClubProfile"
         app:layout_constraintVertical_bias="0.905" />
 
     <TextView
-        android:id="@+id/club_description"
+        android:id="@+id/tvClubScreenDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
         android:text="Club Description"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/rv_club_profile_page" />
+        app:layout_constraintTop_toTopOf="@+id/rvClubScreenAnnouncements" />
 
     <Button
         android:id="@+id/btn_current_event"
@@ -62,13 +62,13 @@
         android:layout_height="48dp"
         android:text="Current Event"
         android:textSize="10sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_event_archive"
+        app:layout_constraintBottom_toTopOf="@+id/btnEventArchive"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rv_club_profile_page" />
+        app:layout_constraintTop_toBottomOf="@+id/rvClubScreenAnnouncements" />
 
     <Button
-        android:id="@+id/btn_event_archive"
+        android:id="@+id/btnEventArchive"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Event Archive"
@@ -82,11 +82,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Edit Post"
-        app:layout_constraintBottom_toBottomOf="@+id/rv_club_profile_page"
-        app:layout_constraintEnd_toEndOf="@+id/rv_club_profile_page"
+        app:layout_constraintBottom_toBottomOf="@+id/rvClubScreenAnnouncements"
+        app:layout_constraintEnd_toEndOf="@+id/rvClubScreenAnnouncements"
         app:layout_constraintHorizontal_bias="0.125"
-        app:layout_constraintStart_toStartOf="@+id/rv_club_profile_page"
-        app:layout_constraintTop_toTopOf="@+id/rv_club_profile_page"
+        app:layout_constraintStart_toStartOf="@+id/rvClubScreenAnnouncements"
+        app:layout_constraintTop_toTopOf="@+id/rvClubScreenAnnouncements"
         app:layout_constraintVertical_bias="0.926" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

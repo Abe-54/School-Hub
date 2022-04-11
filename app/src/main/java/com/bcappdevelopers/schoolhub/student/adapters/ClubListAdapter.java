@@ -1,14 +1,17 @@
 package com.bcappdevelopers.schoolhub.student.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import com.bcappdevelopers.schoolhub.ClubProfileActivity;
 import com.bcappdevelopers.schoolhub.R;
 import com.bcappdevelopers.schoolhub.models.Club;
 import com.bumptech.glide.Glide;
@@ -18,6 +21,7 @@ import com.parse.ParseFile;
 import jp.wasabeef.glide.transformations.BlurTransformation;
 import jp.wasabeef.glide.transformations.CropCircleWithBorderTransformation;
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -55,6 +59,7 @@ public class ClubListAdapter extends RecyclerView.Adapter<ClubListAdapter.ViewHo
         private ImageView ivClubImage;
         private TextView tvClubName;
         private TextView tvClubDescription;
+        private RelativeLayout rlClubItemContainer;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -62,6 +67,7 @@ public class ClubListAdapter extends RecyclerView.Adapter<ClubListAdapter.ViewHo
             ivClubImage = itemView.findViewById(R.id.ivClubImage);
             tvClubName = itemView.findViewById(R.id.tvClubName);
             tvClubDescription = itemView.findViewById(R.id.tvClubDescription);
+            rlClubItemContainer = itemView.findViewById(R.id.rlClubItemContainer);
         }
 
         public void bind(com.bcappdevelopers.schoolhub.models.Club club) {
@@ -79,6 +85,15 @@ public class ClubListAdapter extends RecyclerView.Adapter<ClubListAdapter.ViewHo
                         .transform(new CropCircleWithBorderTransformation())
                         .into(ivClubImage);
             }
+
+            rlClubItemContainer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(context, ClubProfileActivity.class);
+                    i.putExtra("Club", Parcels.wrap(club));
+                    context.startActivity(i);
+                }
+            });
         }
     }
 }

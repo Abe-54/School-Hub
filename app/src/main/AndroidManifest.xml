@@ -25,6 +25,7 @@
         <activity android:name=".SignUpActivity" />
         <activity android:name=".admin.AdminHomeActivity" />
         <activity android:name=".student.StudentHomeActivity" />
+        <activity android:name=".ClubProfileActivity"/>
 
         <meta-data
             android:name="com.parse.SERVER_URL"

@@ -15,6 +15,7 @@ import com.bcappdevelopers.schoolhub.models.Announcement;
 import com.bcappdevelopers.schoolhub.student.adapters.AnnouncementAdapter;
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import org.jetbrains.annotations.NotNull;
 
@@ -27,7 +28,7 @@ public class ClubNewsFragment extends Fragment {
 
     private RecyclerView rvClubAnnoucements;
     private AnnouncementAdapter adapter;
-    private List<Announcement> allAnnouncements;
+    private List<ParseObject> allAnnouncements;
 
     public ClubNewsFragment() {
         // Required empty public constructor
@@ -72,8 +73,8 @@ public class ClubNewsFragment extends Fragment {
                     return;
                 }
                 for (Announcement announcement : announcements) {
-                    if(announcement.getEventUser() != null && announcement.getEventUser().getUsername().compareTo("admin") != 0) {
-                        Log.i(TAG, "announcements: " + announcement.getEventDescription() + ", created by: " + announcement.getEventUser().getUsername());
+                    if(announcement.getEventClub() != null && announcement.getEventClub().getString("clubName").compareTo("Bloomfield College") != 0) {
+                        Log.i(TAG, "announcements: " + announcement.getEventDescription() + ", created by: " + announcement.getEventClub().getString("clubName"));
                         allAnnouncements.add(announcement);
                     }
                 }

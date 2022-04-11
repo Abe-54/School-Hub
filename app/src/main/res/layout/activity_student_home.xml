@@ -14,12 +14,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_bottom_navigation" />
 
-    <FrameLayout
-        android:id="@+id/placeholder"
-        android:layout_width="409dp"
-        android:layout_height="669dp"
-        app:layout_constraintStart_toStartOf="parent"
+    <FrameLayout android:id="@+id/placeholder" android:layout_width="match_parent" android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/studentBottomNav" app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
     </FrameLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
