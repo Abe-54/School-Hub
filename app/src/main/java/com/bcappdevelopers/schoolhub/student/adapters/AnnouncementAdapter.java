@@ -23,7 +23,7 @@ import java.util.List;
 
 public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapter.ViewHolder> {
 
-    private static final String TAG = "CampusAnnouncementAdapter" ;
+    private static final String TAG = "AnnouncementAdapter";
     private final List<ParseObject> announcements;
     private Context context;
 

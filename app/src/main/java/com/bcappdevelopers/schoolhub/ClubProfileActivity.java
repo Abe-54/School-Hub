@@ -51,7 +51,7 @@ public class ClubProfileActivity extends AppCompatActivity {
         if(announcement != null) {
             clubName = announcement.getEventClub().getString("clubName");
         } else {
-            clubName = club.getClubName();
+           clubName = club.getClubName();
         }
 
         rvClubScreenAnnouncement = findViewById(R.id.rvClubScreenAnnouncements);
@@ -71,54 +71,23 @@ public class ClubProfileActivity extends AppCompatActivity {
     }
 
     private void queryData() {
-        if(announcement != null) {
-            ParseQuery<Announcement> query = ParseQuery.getQuery(Announcement.class);
-            query.include("madeBy");
-            query.findInBackground(new FindCallback<Announcement>() {
-                @Override
-                public void done(List<Announcement> announcements, ParseException e) {
-                    if (e != null) {
-                        Log.e(TAG, "Issues getting club announcements", e);
-                        return;
-                    }
-                    for (Announcement singleAnnouncement : announcements) {
-                        if (singleAnnouncement.getEventClub() != null && singleAnnouncement.getEventClub().getString("clubName").compareTo(clubName) == 0) {
-                            Log.i(TAG, "announcements: " + singleAnnouncement.getEventDescription() + ", created by: " + singleAnnouncement.getEventClub().getString("clubName"));
-                            allAnnouncements.add(singleAnnouncement);
-                        }
-                    }
-                    adapter.notifyDataSetChanged();
+        ParseQuery<ParseObject> clubQuery = ParseQuery.getQuery("announcements");
+        clubQuery.include("madeBy");
+        clubQuery.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> announcements, ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Issues getting club", e);
+                    return;
                 }
-            });
-        } else if(club != null) {
-            ParseQuery<Club> clubQuery = ParseQuery.getQuery(Club.class);
-            clubQuery.findInBackground(new FindCallback<Club>() {
-                @Override
-                public void done(List<Club> clubs, ParseException e) {
-                    if (e != null) {
-                        Log.e(TAG, "Issues getting club", e);
-                        return;
-                    }
-                    for (Club singleClub : clubs) {
-                        ParseQuery<ParseObject> announcmentQuery = singleClub.getRelation("clubAnnouncements").getQuery();
-
-                        announcmentQuery.findInBackground(new FindCallback<ParseObject>() {
-                            @Override
-                            public void done(List<ParseObject> objects, ParseException e) {
-                                if (e != null) {
-                                    Log.e(TAG, "Issues getting profile data", e);
-                                    return;
-                                }
-                                for (ParseObject singleAnnnouncement : objects) {
-                                    Log.i(TAG, "Found Announcement " + singleAnnnouncement.getString("eventDescription") + " from " + singleAnnnouncement.getParseObject("madeBy"));
-                                    allAnnouncements.add(singleAnnnouncement);
-                                }
-                                adapter.notifyDataSetChanged();
-                            }
-                        });
+                for (ParseObject singleAnnouncement : announcements) {
+                    if(singleAnnouncement.getParseObject("madeBy").getString("clubName").compareTo(clubName) == 0) {
+                        Log.i(TAG, "announcements: " + singleAnnouncement.getString("eventName"));
+                        allAnnouncements.add(singleAnnouncement);
                     }
                 }
-            });
-        }
+                adapter.notifyDataSetChanged();
+            }
+        });
     }
 }
