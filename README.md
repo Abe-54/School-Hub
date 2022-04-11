@@ -71,7 +71,7 @@ The app also provides a guide to nearby resources and amenities that are made av
 * User Profile -> Club Profile
 
 ## Wireframes
-<img src="School Hub App Wireframe.jpg" width=600>
+<img src="School Hub (Student) Porfile App Wireframe.png" width=600>
 <img src="Student Sign Up Process Wireframe.jpg" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
