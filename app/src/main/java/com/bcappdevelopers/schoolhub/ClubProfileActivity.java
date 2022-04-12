@@ -1,27 +1,34 @@
 package com.bcappdevelopers.schoolhub;
 
 import android.annotation.SuppressLint;
-import android.graphics.Color;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.bcappdevelopers.schoolhub.models.Announcement;
 import com.bcappdevelopers.schoolhub.models.Club;
 import com.bcappdevelopers.schoolhub.student.adapters.AnnouncementAdapter;
 import com.bumptech.glide.Glide;
-import com.parse.*;
-import jp.wasabeef.glide.transformations.CropCircleWithBorderTransformation;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseFile;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import jp.wasabeef.glide.transformations.CropCircleWithBorderTransformation;
 
 public class ClubProfileActivity extends AppCompatActivity {
 
@@ -42,6 +49,7 @@ public class ClubProfileActivity extends AppCompatActivity {
     ParseObject profile;
 
     String subscribeBtnText = "";
+    Boolean alreadySubscribed = false;
 
     private List<ParseObject> allAnnouncements;
 
@@ -53,6 +61,7 @@ public class ClubProfileActivity extends AppCompatActivity {
         announcement = Parcels.unwrap(getIntent().getParcelableExtra("Announcement"));
         club = Parcels.unwrap(getIntent().getParcelableExtra("Club"));
         profile = Parcels.unwrap(getIntent().getParcelableExtra("ClubObject"));
+       // member = Parcels.unwrap(getIntent().getParcelableExtra());
 
         String clubDescription = "";
         ParseFile clubImage = null;
@@ -98,9 +107,20 @@ public class ClubProfileActivity extends AppCompatActivity {
         queryData();
         queryUsers();
 
+        if(btnSubScribe.getText().toString().compareTo( "Unsubscribe") == 0){
+            alreadySubscribed = !alreadySubscribed;
+        }
+
         btnSubScribe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+            if(alreadySubscribed){
+                btnSubScribe.setText("Subscribe");
+            } else {
+                btnSubScribe.setText("Unsubscribe");
+            }
+
 
             }
         });
@@ -134,8 +154,6 @@ public class ClubProfileActivity extends AppCompatActivity {
                                         Log.i(TAG, "Found Club " + clubs.getString("clubName") + " for user: " + user.getString("username"));
                                         btnSubScribe.setText("Unsubscribe");
                                         Log.i(TAG, "set is subscribed to true");
-                                    } else {
-                                        btnSubScribe.setText("Subscribe");
                                     }
                                 }
                             }
