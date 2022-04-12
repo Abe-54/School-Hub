@@ -1,13 +1,16 @@
 package com.bcappdevelopers.schoolhub.student.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import com.bcappdevelopers.schoolhub.ClubProfileActivity;
 import com.bcappdevelopers.schoolhub.R;
 import com.bcappdevelopers.schoolhub.models.Club;
 import com.bumptech.glide.Glide;
@@ -15,6 +18,7 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import jp.wasabeef.glide.transformations.CropCircleWithBorderTransformation;
 import org.jetbrains.annotations.NotNull;
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -52,6 +56,7 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
         private ImageView ivClubImage;
         private TextView tvClubName;
         private TextView tvClubDescription;
+        private RelativeLayout rlClubItemContainer;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -59,16 +64,17 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
             ivClubImage = itemView.findViewById(R.id.ivClubImage);
             tvClubName = itemView.findViewById(R.id.tvClubName);
             tvClubDescription = itemView.findViewById(R.id.tvClubDescription);
+            rlClubItemContainer = itemView.findViewById(R.id.rlClubItemContainer);
         }
 
-        public void bind(ParseObject club) {
-            tvClubName.setText(club.getString("clubName"));
-            tvClubDescription.setText(club.getString("clubDescription"));
+        public void bind(ParseObject clubObject) {
+            tvClubName.setText(clubObject.getString("clubName"));
+            tvClubDescription.setText(clubObject.getString("clubDescription"));
 
             int radius = 30;
             int margin = 10;
 
-            ParseFile image = club.getParseFile("clubImage");
+            ParseFile image = clubObject.getParseFile("clubImage");
             if(image != null) {
                 Glide.with(context)
                         .load(image.getUrl())
@@ -76,6 +82,15 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
                         .transform(new CropCircleWithBorderTransformation())
                         .into(ivClubImage);
             }
+
+            rlClubItemContainer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(context, ClubProfileActivity.class);
+                    i.putExtra("ClubObject", Parcels.wrap(clubObject));
+                    context.startActivity(i);
+                }
+            });
         }
     }
 }

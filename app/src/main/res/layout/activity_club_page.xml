@@ -2,21 +2,21 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical"
-    android:padding="5dp" tools:context=".ClubProfileActivity">
+    android:padding="10dp" tools:context=".ClubProfileActivity">
 
-    <ImageView android:id="@+id/ivClubProfile" android:layout_width="198dp" android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
-
+    <ImageView android:id="@+id/ivClubProfile" android:layout_width="142dp" android:layout_height="112dp"
+        android:layout_marginStart="4dp" android:layout_marginTop="28dp" app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" app:srcCompat="@drawable/outline_account_circle_black_48" tools:src="@drawable/outline_account_circle_black_48" />
     <androidx.recyclerview.widget.RecyclerView android:id="@+id/rvClubScreenAnnouncements"
-        android:layout_width="match_parent" android:layout_height="391dp" android:layout_marginTop="96dp"
-        android:textAlignment="center" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivClubProfile" />
+        android:layout_width="match_parent" android:layout_height="391dp" android:layout_marginBottom="100dp"
+        android:textAlignment="center" app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent" />
     <TextView android:id="@+id/tvClubScreenDescription" android:layout_width="wrap_content"
         android:layout_height="wrap_content" android:layout_marginStart="116dp" android:layout_marginBottom="7dp"
-        android:text="Club Description" android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnSubscribe" app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivClubProfile" app:layout_constraintVertical_bias="0.076" />
+        android:text="Club Description" android:textSize="24sp" app:layout_constraintBottom_toTopOf="@+id/btnSubscribe"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/ivClubProfile"
+        app:layout_constraintVertical_bias="0.076" />
     <TextView android:id="@+id/tvIsMember" android:layout_width="122dp" android:layout_height="24dp"
         android:layout_marginBottom="20dp" android:text="Member"
         app:layout_constraintBottom_toTopOf="@+id/tvClubScreenDescription" app:layout_constraintEnd_toEndOf="parent"
@@ -30,12 +30,12 @@
         android:textSize="10sp" app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rvClubScreenAnnouncements" />
     <Button android:id="@+id/btnSubscribe" android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:layout_marginStart="144dp" android:text="Subscribe"
-        app:layout_constraintBottom_toTopOf="@+id/rvClubScreenAnnouncements"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginStart="144dp" android:layout_marginBottom="4dp" android:text="Subscribe"
+        app:layout_constraintBottom_toTopOf="@+id/rvClubScreenAnnouncements" app:layout_constraintStart_toStartOf="parent" />
     <TextView android:id="@+id/tvClubScreenName" android:layout_width="wrap_content" android:layout_height="wrap_content"
         android:layout_marginStart="20dp" android:layout_marginBottom="20dp" android:fontFamily="sans-serif-medium"
         android:text="CLUB NAME" android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/tvIsMember" app:layout_constraintStart_toEndOf="@+id/ivClubProfile" />
+        app:layout_constraintBottom_toTopOf="@+id/tvIsMember" app:layout_constraintStart_toEndOf="@+id/ivClubProfile"
+        app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

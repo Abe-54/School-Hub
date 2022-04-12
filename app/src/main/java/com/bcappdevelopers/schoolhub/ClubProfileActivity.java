@@ -12,10 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bcappdevelopers.schoolhub.models.Announcement;
 import com.bcappdevelopers.schoolhub.models.Club;
 import com.bcappdevelopers.schoolhub.student.adapters.AnnouncementAdapter;
-import com.parse.FindCallback;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
+import com.bumptech.glide.Glide;
+import com.parse.*;
+import jp.wasabeef.glide.transformations.CropCircleWithBorderTransformation;
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
@@ -37,6 +36,7 @@ public class ClubProfileActivity extends AppCompatActivity {
     AnnouncementAdapter adapter;
     Announcement announcement;
     Club club;
+    ParseObject profile;
 
     private List<ParseObject> allAnnouncements;
 
@@ -47,11 +47,23 @@ public class ClubProfileActivity extends AppCompatActivity {
 
         announcement = Parcels.unwrap(getIntent().getParcelableExtra("Announcement"));
         club = Parcels.unwrap(getIntent().getParcelableExtra("Club"));
+        profile = Parcels.unwrap(getIntent().getParcelableExtra("ClubObject"));
+
+        String clubDescription = "";
+        ParseFile clubImage = null;
 
         if(announcement != null) {
             clubName = announcement.getEventClub().getString("clubName");
-        } else {
+            clubDescription = announcement.getEventClub().getString("clubDescription");
+            clubImage = announcement.getEventClub().getParseFile("clubImage");
+        } else if(club != null) {
            clubName = club.getClubName();
+            clubDescription = club.getClubDescription();
+            clubImage = club.getClubImage();
+        } else if(profile != null) {
+            clubName = profile.getString("clubName");
+            clubDescription = profile.getString("clubDescription");
+            clubImage = profile.getParseFile("clubImage");
         }
 
         rvClubScreenAnnouncement = findViewById(R.id.rvClubScreenAnnouncements);
@@ -66,6 +78,17 @@ public class ClubProfileActivity extends AppCompatActivity {
         adapter = new AnnouncementAdapter(this, allAnnouncements);
         rvClubScreenAnnouncement.setAdapter(adapter);
         rvClubScreenAnnouncement.setLayoutManager(new LinearLayoutManager(this));
+
+        tvClubName.setText(clubName);
+        tvClubScreenDescription.setText(clubDescription);
+
+        if(clubImage != null) {
+            Glide.with(this)
+                    .load(clubImage.getUrl())
+                    .centerCrop()
+                    .transform(new CropCircleWithBorderTransformation())
+                    .into(ivClubProfile);
+        }
 
         queryData();
     }

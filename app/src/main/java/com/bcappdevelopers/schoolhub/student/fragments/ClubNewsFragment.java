@@ -13,10 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bcappdevelopers.schoolhub.R;
 import com.bcappdevelopers.schoolhub.models.Announcement;
 import com.bcappdevelopers.schoolhub.student.adapters.AnnouncementAdapter;
-import com.parse.FindCallback;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
+import com.parse.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -69,16 +66,38 @@ public class ClubNewsFragment extends Fragment {
             @Override
             public void done(List<Announcement> announcements, ParseException e) {
                 if (e != null) {
-                    Log.e(TAG, "Issues getting club announcements", e);
+                    Log.e(TAG, "Issues getting campus announcements", e);
                     return;
                 }
                 for (Announcement announcement : announcements) {
-                    if(announcement.getEventClub() != null && announcement.getEventClub().getString("clubName").compareTo("Bloomfield College") != 0) {
-                        Log.i(TAG, "announcements: " + announcement.getEventDescription() + ", created by: " + announcement.getEventClub().getString("clubName"));
-                        allAnnouncements.add(announcement);
+
+                    if(announcement.getParseObject("madeBy") == null){
+                        Log.i(TAG, "No Announcement Object");
+                        return;
                     }
+
+                    ParseQuery<ParseObject> usersInClub = announcement.getEventClub().getRelation("usersInClub").getQuery();
+                    usersInClub.include("inClub");
+
+                    usersInClub.findInBackground(new FindCallback<ParseObject>() {
+                        @Override
+                        public void done(List<ParseObject> users, ParseException e) {
+                            if (e != null) {
+                                Log.e(TAG, "Issues getting club users", e);
+                                return;
+                            }
+
+                            for(ParseObject user : users) {
+                                if(user.getObjectId().compareTo(ParseUser.getCurrentUser().getObjectId()) == 0 &&
+                                        announcement.getEventClub().getString("clubName").compareTo("Bloomfield College") != 0) {
+                                    Log.i(TAG, "User: " + user.getString("username") + " is in Club " + announcement.getEventClub().getString("clubName"));
+                                    allAnnouncements.add(announcement);
+                                }
+                            }
+                            adapter.notifyDataSetChanged();
+                        }
+                    });
                 }
-                adapter.notifyDataSetChanged();
             }
         });
     }
