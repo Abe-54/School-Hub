@@ -1,6 +1,9 @@
 package com.bcappdevelopers.schoolhub;
 
+import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -37,6 +40,8 @@ public class ClubProfileActivity extends AppCompatActivity {
     Announcement announcement;
     Club club;
     ParseObject profile;
+
+    String subscribeBtnText = "";
 
     private List<ParseObject> allAnnouncements;
 
@@ -91,6 +96,54 @@ public class ClubProfileActivity extends AppCompatActivity {
         }
 
         queryData();
+        queryUsers();
+
+        btnSubScribe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+    }
+
+    private void queryUsers() {
+
+        ParseQuery<ParseUser> userQuery = ParseQuery.getQuery("_User");
+
+        userQuery.findInBackground(new FindCallback<ParseUser>() {
+            @SuppressLint("LongLogTag")
+            @Override
+            public void done(List<ParseUser> outerQueryResults, ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Issues getting profile data", e);
+                    return;
+                }
+                for (ParseObject user : outerQueryResults) {
+                    if(user.hasSameId(ParseUser.getCurrentUser())) {
+                        ParseQuery<ParseObject> clubList = user.getRelation("inClub").getQuery();
+
+                        clubList.findInBackground(new FindCallback<ParseObject>() {
+                            @Override
+                            public void done(List<ParseObject> objects, ParseException e) {
+                                if (e != null) {
+                                    Log.e(TAG, "Issues getting profile data", e);
+                                    return;
+                                }
+                                for (ParseObject clubs : objects) {
+                                    if(clubs.getString("clubName").compareTo(clubName) == 0) {
+                                        Log.i(TAG, "Found Club " + clubs.getString("clubName") + " for user: " + user.getString("username"));
+                                        btnSubScribe.setText("Unsubscribe");
+                                        Log.i(TAG, "set is subscribed to true");
+                                    } else {
+                                        btnSubScribe.setText("Subscribe");
+                                    }
+                                }
+                            }
+                        });
+                    }
+                }
+            }
+        });
     }
 
     private void queryData() {
