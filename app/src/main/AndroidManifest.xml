@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SchoolHub">
         <activity
+            android:name=".activity_event_archive"
+            android:exported="false" />
+        <activity
             android:name=".subscriber_profile_activity"
             android:exported="false" />
         <activity

@@ -10,6 +10,7 @@
         <entry key="app/src/main/res/layout/activity_admin_home.xml" value="0.13385416666666666" />
         <entry key="app/src/main/res/layout/activity_admin_page.xml" value="0.10028216609130623" />
         <entry key="app/src/main/res/layout/activity_club_page.xml" value="0.25435897435897437" />
+        <entry key="app/src/main/res/layout/activity_event_archive.xml" value="0.24427083333333333" />
         <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.13385416666666666" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.13385416666666666" />
         <entry key="app/src/main/res/layout/activity_student_home.xml" value="0.25" />
@@ -20,6 +21,7 @@
         <entry key="app/src/main/res/layout/fragment_club_list.xml" value="0.259375" />
         <entry key="app/src/main/res/layout/fragment_club_list_item.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_club_profile.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_club_settings.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_student_home.xml" value="0.2553846153846154" />
         <entry key="app/src/main/res/layout/fragment_student_profile.xml" value="0.25" />
         <entry key="app/src/main/res/layout/login.xml" value="0.2553846153846154" />
