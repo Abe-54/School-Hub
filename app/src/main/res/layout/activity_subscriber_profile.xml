@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".subscriber_profile_activity">
+
+
+    <TextView
+        android:id="@+id/tv_subscriber_name"
+        android:layout_width="371dp"
+        android:layout_height="106dp"
+        android:layout_marginBottom="10dp"
+        android:hint="User Name"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_subscriber_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.546" />
+
+    <TextView
+        android:id="@+id/tv_subscriber_email"
+        android:layout_width="134dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="108dp"
+        android:text="User Email:"
+        android:textAlignment="textStart"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_subscriber_info"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/tv_email_here"
+        android:layout_width="239dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="108dp"
+        android:hint="Email will go here"
+        app:layout_constraintBottom_toTopOf="@+id/tv_join_info_here"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_subscriber_info"
+        android:layout_width="157dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="104dp"
+        android:text="Date Joined Club:"
+        android:textAlignment="viewStart"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_chng_psswrd"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_chng_psswrd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="40dp"
+        android:text="Reset Password"
+        android:textColor="#100101"
+        app:layout_constraintBottom_toTopOf="@+id/btn_remove_mmber" />
+
+    <Button
+        android:id="@+id/btn_remove_mmber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="40dp"
+        android:text="Remove Member"
+        android:textColor="#0B0000"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <EditText
+        android:id="@+id/tv_join_info_here"
+        android:layout_width="213dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="104dp"
+        android:hint="Subscriber info goes here"
+        app:layout_constraintBottom_toTopOf="@+id/btn_chng_psswrd"
+        app:layout_constraintStart_toEndOf="@+id/tv_subscriber_info" />
+</androidx.constraintlayout.widget.ConstraintLayout>
