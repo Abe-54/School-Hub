@@ -4,10 +4,10 @@
 
     <item android:id="@+id/homeButton" android:icon="@drawable/outline_home_black_36" android:title="Home"
         app:showAsAction="always" />
-    <item android:id="@+id/clubsList" android:icon="@drawable/outline_view_list_black_36" android:title="Club List"
+    <item android:id="@+id/subscribersList" android:icon="@drawable/outline_view_list_black_36" android:title="Club List"
         app:showAsAction="always" />
-    <item android:id="@+id/amenetiesMap" android:icon="@drawable/outline_map_black_36" android:title="Amenities"
+    <item android:id="@+id/createPostEvent" android:icon="@drawable/outline_map_black_36" android:title="Amenities"
         app:showAsAction="always" />
-    <item android:id="@+id/profilebutton" android:icon="@drawable/outline_account_circle_black_36" android:title="Profile"
+    <item android:id="@+id/clubMailBox" android:icon="@drawable/outline_account_circle_black_36" android:title="Profile"
         app:showAsAction="always" />
 </menu>

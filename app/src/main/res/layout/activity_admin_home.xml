@@ -5,13 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/sampleTV_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="164dp"
-        android:layout_marginTop="260dp"
-        android:text="Hello Admin"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/AdminBottomNavigsationView"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#656565"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:menu="@menu/admin_menu_bottom_navigation" />
+
+    <FrameLayout android:id="@+id/placeholder" android:layout_width="match_parent" android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/studentBottomNav" app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </FrameLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
