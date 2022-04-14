@@ -8,14 +8,22 @@
     <androidx.viewpager.widget.ViewPager android:id="@+id/vpNewsPlaceholder" android:layout_width="match_parent"
         android:layout_height="match_parent" android:layout_below="@+id/newsTabBar" tools:ignore="SpeakableTextPresentCheck" />
 
-    <com.google.android.material.tabs.TabLayout android:id="@+id/newsTabBar" android:layout_width="match_parent"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/newsTabBar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.google.android.material.tabs.TabItem android:id="@+id/tiCampusNews" android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:text="Campus News" />
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tiCampusNews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Campus News" />
 
-        <com.google.android.material.tabs.TabItem android:id="@+id/tiClubsNews" android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:text="Clubs News" />
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tiClubsNews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clubs News" />
 
     </com.google.android.material.tabs.TabLayout>
 
