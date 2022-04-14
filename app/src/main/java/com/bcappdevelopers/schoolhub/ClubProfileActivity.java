@@ -119,6 +119,8 @@ public class ClubProfileActivity extends AppCompatActivity {
             if(alreadySubscribed){
                 btnSubScribe.setText("Unsubscribe");
                 Log.i(TAG, "Button text should say unsubscribe " + alreadySubscribed);
+                //      remove a user from relation?          user.remove("inClub").whatQuery(); parseRelation.java for research
+                //      need to use pointers in Back4App, literally pointer instead of relations
                 alreadySubscribed = false;
             } else {
                 btnSubScribe.setText("Subscribe");
@@ -146,6 +148,7 @@ public class ClubProfileActivity extends AppCompatActivity {
                 for (ParseObject user : outerQueryResults) {
                     if(user.hasSameId(ParseUser.getCurrentUser())) {
                         ParseQuery<ParseObject> clubList = user.getRelation("inClub").getQuery();
+
 
                         clubList.findInBackground(new FindCallback<ParseObject>() {
                             @Override
