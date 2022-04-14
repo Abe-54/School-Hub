@@ -111,14 +111,19 @@ public class ClubProfileActivity extends AppCompatActivity {
             alreadySubscribed = !alreadySubscribed;
         }
 
+
         btnSubScribe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
             if(alreadySubscribed){
-                btnSubScribe.setText("Subscribe");
-            } else {
                 btnSubScribe.setText("Unsubscribe");
+                Log.i(TAG, "Button text should say unsubscribe " + alreadySubscribed);
+                alreadySubscribed = false;
+            } else {
+                btnSubScribe.setText("Subscribe");
+                Log.i(TAG, "Button text should say subscribe " + alreadySubscribed);
+                alreadySubscribed = true;
             }
 
 
