@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment_post_pop_up">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#CF9797"
+        app:cardCornerRadius="45dp">
+
+        <Button
+            android:id="@+id/btnCreatePost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="150dp"
+            android:text="Create Post"
+            android:textColor="#1B0202" />
+
+        <Button
+            android:id="@+id/btnCreateEvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginRight="150dp"
+            android:layout_marginBottom="30dp"
+            android:text="Create Event"
+            android:textColor="#170303" />
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>

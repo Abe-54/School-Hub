@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CF9797"
+    tools:context=".activity_create_post">
+
+    <EditText
+        android:id="@+id/etEventDescription"
+        android:layout_width="274dp"
+        android:layout_height="227dp"
+        android:layout_marginTop="84dp"
+        android:background="#CF9797"
+        android:backgroundTint="#E4DEDE"
+        android:hint="Add Event Description Here!"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etEventDate"
+        android:layout_width="276dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="340dp"
+        android:background="#CF9797"
+        android:backgroundTint="#E4DEDE"
+        android:hint="Add Event Date & Time Here!"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etEventLocation"
+        android:layout_width="276dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="428dp"
+        android:background="#CF9797"
+        android:backgroundTint="#E4DEDE"
+        android:hint="Add Event Location Here!"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnUploadMedia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="112dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.811"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etEventDate"
+        app:srcCompat="@android:drawable/ic_menu_upload"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/btnPost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="#9E9292"
+        android:text="Post"
+        android:textColor="#040000"
+        app:cornerRadius="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.216"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnUploadMedia" />
+</androidx.constraintlayout.widget.ConstraintLayout>

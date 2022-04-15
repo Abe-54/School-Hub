@@ -14,6 +14,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SchoolHub">
         <activity
+            android:name=".activity_create_event"
+            android:exported="false" />
+        <activity
+            android:name=".activity_create_post"
+            android:exported="false" />
+        <activity
+            android:name=".activity_club_settings"
+            android:exported="false" />
+        <activity
             android:name=".activity_event_archive"
             android:exported="false" />
         <activity
