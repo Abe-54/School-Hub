@@ -7,28 +7,18 @@
         android:title="Home"
         app:showAsAction="always" />
 
-    <item
-        android:id="@+id/clubProfile"
-        android:icon="@drawable/outline_account_circle_black_36"
-        android:title="Club Profile"
+    <item android:id="@+id/subscribersList" android:enabled="true" android:icon="@drawable/outline_view_list_black_36"
+        android:title="Subscribers List" android:titleCondensed="Sub List" android:visible="true"
+        app:showAsAction="always" />
+    <item android:id="@+id/createPostEvent" android:icon="@android:drawable/ic_input_add" android:title="Create"
         app:showAsAction="always" />
 
-
-    <item
-        android:id="@+id/createPostEvent"
-        android:icon="@android:drawable/ic_input_add"
-        android:title="Create"
-        app:showAsAction="always" />
-
-    <item
-        android:id="@+id/subscribersList"
-        android:icon="@drawable/outline_view_list_black_36"
-        android:title="Subscribers List"
-        app:showAsAction="always" />
 
     <item
         android:id="@+id/clubMailBox"
         android:icon="@android:drawable/sym_action_email"
         android:title="Club Mail Box"
         app:showAsAction="always" />
+    <item android:id="@+id/clubProfile" android:icon="@drawable/outline_account_circle_black_36"
+        android:title="Club Profile" app:showAsAction="always" />
 </menu>

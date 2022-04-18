@@ -5,88 +5,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".fragment_student_profile">
-
-    <!-- TODO: Update blank fragment layout -->
-
-    <ImageView
-        android:id="@+id/ivClubProfile"
-        android:layout_width="198dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
-
-    <EditText
-        android:id="@+id/tv_club_name"
-        android:layout_width="177dp"
-        android:layout_height="48dp"
-        android:ems="10"
-        android:hint="Club Name"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/rvClubScreenAnnouncements"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
-        app:layout_constraintStart_toEndOf="@+id/ivClubProfile"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvClubScreenAnnouncements"
-        android:layout_width="414dp"
-        android:layout_height="500dp"
-        android:layout_marginTop="450dp"
-        android:layout_marginBottom="150dp"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivClubProfile"
-        app:layout_constraintVertical_bias="0.905" />
+    tools:context=".admin.fragments.AdminProfileFragment">
 
     <TextView
-        android:id="@+id/tvClubScreenDescription"
+        android:id="@+id/tvAdminClubName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:text="Club Description"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="CLUB NAME"
         android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/rvClubScreenAnnouncements" />
+        app:layout_constraintStart_toEndOf="@+id/ivAdminClubProfile"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
-    <Button
-        android:id="@+id/btn_current_event"
-        android:layout_width="100dp"
-        android:layout_height="48dp"
-        android:text="Current Event"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnEventArchive"
+    <ImageView
+        android:id="@+id/ivAdminClubProfile"
+        android:layout_width="142dp"
+        android:layout_height="112dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.059"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rvClubScreenAnnouncements" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/no_profile_image"
+        tools:src="@mipmap/no_profile_image" />
 
-    <Button
-        android:id="@+id/btnEventArchive"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Event Archive"
-        android:textSize="10sp"
+    <ImageButton android:id="@+id/btnSettings" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_marginTop="20dp" android:src="@android:drawable/ic_menu_manage"
+        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.142"
+        app:layout_constraintStart_toEndOf="@+id/ivAdminClubProfile"
+        app:layout_constraintTop_toBottomOf="@+id/tvAdminClubName" tools:ignore="SpeakableTextPresentCheck" />
+    <androidx.cardview.widget.CardView
+        android:layout_width="383dp"
+        android:layout_height="459dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginRight="20dp"
+        app:cardBackgroundColor="#CF9797"
+        app:cardCornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSettings"
+        app:layout_constraintVertical_bias="0.058">
 
-    <Button
-        android:id="@+id/btn_edit_post"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Edit Post"
-        app:layout_constraintBottom_toBottomOf="@+id/rvClubScreenAnnouncements"
-        app:layout_constraintEnd_toEndOf="@+id/rvClubScreenAnnouncements"
-        app:layout_constraintHorizontal_bias="0.125"
-        app:layout_constraintStart_toStartOf="@+id/rvClubScreenAnnouncements"
-        app:layout_constraintTop_toTopOf="@+id/rvClubScreenAnnouncements"
-        app:layout_constraintVertical_bias="0.926" />
+        <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView android:id="@+id/tvAdminClubDescriptionTitle" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:layout_marginStart="16dp" android:layout_marginTop="48dp"
+                android:background="#E1D8D8" android:text="Club Description:" android:textSize="25sp"
+                android:visibility="gone" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView android:id="@+id/tvAdminClubDescription" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:layout_marginStart="24dp" android:layout_marginTop="16dp"
+                android:background="#E1D8D8" android:hint="CLUB DESCRIPTION GOES HERE" android:textSize="18dp"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+            <Button android:id="@+id/btnAdminEventsArchive" android:layout_width="146dp" android:layout_height="48dp"
+                android:layout_marginStart="116dp" android:layout_marginBottom="40dp" android:text="All Events"
+                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

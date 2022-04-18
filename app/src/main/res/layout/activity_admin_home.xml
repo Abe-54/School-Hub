@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/AdminBottomNavigsationView"
+        android:id="@+id/adminBottomNavView"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="#656565"
@@ -14,9 +14,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/admin_menu_bottom_navigation" />
 
-    <FrameLayout android:id="@+id/placeholder" android:layout_width="match_parent" android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/studentBottomNav" app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <FrameLayout android:id="@+id/adminPlaceholder" android:layout_width="match_parent" android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/adminBottomNavView" app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
 
     </FrameLayout>
 

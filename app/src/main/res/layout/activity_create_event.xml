@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#CF9797"
-    tools:context=".activity_create_post">
+    tools:context=".admin.CreatePostActivity">
 
     <EditText
         android:id="@+id/etEventDescription"
@@ -27,7 +27,7 @@
         android:layout_marginTop="340dp"
         android:background="#CF9797"
         android:backgroundTint="#E4DEDE"
-        android:hint="Add Event Date & Time Here!"
+        android:hint="Add Event Date &amp; Time Here!"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"

@@ -14,19 +14,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SchoolHub">
         <activity
-            android:name=".activity_create_event"
+            android:name=".admin.CreateEventActivity"
             android:exported="false" />
         <activity
-            android:name=".activity_create_post"
+            android:name=".admin.CreatePostActivity"
             android:exported="false" />
         <activity
-            android:name=".activity_club_settings"
+            android:name=".admin.ClubSettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".activity_event_archive"
+            android:name=".EventArchiveActivity"
             android:exported="false" />
         <activity
-            android:name=".subscriber_profile_activity"
+            android:name=".admin.SubscriberProfileActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"

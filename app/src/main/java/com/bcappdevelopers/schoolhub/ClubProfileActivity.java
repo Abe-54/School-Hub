@@ -16,12 +16,7 @@ import com.bcappdevelopers.schoolhub.models.Announcement;
 import com.bcappdevelopers.schoolhub.models.Club;
 import com.bcappdevelopers.schoolhub.student.adapters.AnnouncementAdapter;
 import com.bumptech.glide.Glide;
-import com.parse.FindCallback;
-import com.parse.ParseException;
-import com.parse.ParseFile;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
-import com.parse.ParseUser;
+import com.parse.*;
 
 import org.parceler.Parcels;
 
@@ -48,7 +43,7 @@ public class ClubProfileActivity extends AppCompatActivity {
     Club club;
     ParseObject profile;
 
-    String subscribeBtnText = "";
+    String currentUserObjectID = "";
     Boolean alreadySubscribed = false;
 
     private List<ParseObject> allAnnouncements;
@@ -65,6 +60,7 @@ public class ClubProfileActivity extends AppCompatActivity {
 
         String clubDescription = "";
         ParseFile clubImage = null;
+        currentUserObjectID = ParseUser.getCurrentUser().getObjectId();
 
         if(announcement != null) {
             clubName = announcement.getEventClub().getString("clubName");
@@ -119,8 +115,6 @@ public class ClubProfileActivity extends AppCompatActivity {
             if(alreadySubscribed){
                 btnSubScribe.setText("Unsubscribe");
                 Log.i(TAG, "Button text should say unsubscribe " + alreadySubscribed);
-                //      remove a user from relation?          user.remove("inClub").whatQuery(); parseRelation.java for research
-                //      need to use pointers in Back4App, literally pointer instead of relations
                 alreadySubscribed = false;
             } else {
                 btnSubScribe.setText("Subscribe");
@@ -137,37 +131,33 @@ public class ClubProfileActivity extends AppCompatActivity {
 
         ParseQuery<ParseUser> userQuery = ParseQuery.getQuery("_User");
 
-        userQuery.findInBackground(new FindCallback<ParseUser>() {
+        userQuery.getInBackground(currentUserObjectID, new GetCallback<ParseUser>() {
             @SuppressLint("LongLogTag")
             @Override
-            public void done(List<ParseUser> outerQueryResults, ParseException e) {
+            public void done(ParseUser user, ParseException e) {
                 if (e != null) {
                     Log.e(TAG, "Issues getting profile data", e);
                     return;
                 }
-                for (ParseObject user : outerQueryResults) {
-                    if(user.hasSameId(ParseUser.getCurrentUser())) {
-                        ParseQuery<ParseObject> clubList = user.getRelation("inClub").getQuery();
 
+                ParseQuery<ParseObject> clubList = user.getRelation("inClub").getQuery();
 
-                        clubList.findInBackground(new FindCallback<ParseObject>() {
-                            @Override
-                            public void done(List<ParseObject> objects, ParseException e) {
-                                if (e != null) {
-                                    Log.e(TAG, "Issues getting profile data", e);
-                                    return;
-                                }
-                                for (ParseObject clubs : objects) {
-                                    if(clubs.getString("clubName").compareTo(clubName) == 0) {
-                                        Log.i(TAG, "Found Club " + clubs.getString("clubName") + " for user: " + user.getString("username"));
-                                        btnSubScribe.setText("Unsubscribe");
-                                        Log.i(TAG, "set is subscribed to true");
-                                    }
-                                }
+                clubList.findInBackground(new FindCallback<ParseObject>() {
+                    @Override
+                    public void done(List<ParseObject> objects, ParseException e) {
+                        if (e != null) {
+                            Log.e(TAG, "Issues getting profile data", e);
+                            return;
+                        }
+                        for (ParseObject clubs : objects) {
+                            if(clubs.getString("clubName").compareTo(clubName) == 0) {
+                                Log.i(TAG, "Found Club " + clubs.getString("clubName") + " for user: " + user.getString("username"));
+                                btnSubScribe.setText("Unsubscribe");
+                                Log.i(TAG, "set is subscribed to true");
                             }
-                        });
+                        }
                     }
-                }
+                });
             }
         });
     }

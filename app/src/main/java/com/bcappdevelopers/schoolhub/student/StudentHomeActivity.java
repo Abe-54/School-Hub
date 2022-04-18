@@ -35,15 +35,15 @@ public class StudentHomeActivity extends AppCompatActivity {
                         Fragment fragment;
                         switch (item.getItemId()) {
                             case R.id.homeButton:
-                                fragment = new StudentHomeFragment();;
+                                fragment = new StudentHomeFragment();
                                 break;
-                            case R.id.subscribersList:
-                                fragment = new ClubListFragment();;
+                            case R.id.clubList:
+                                fragment = new ClubListFragment();
                                 break;
-                            case R.id.createPostEvent:
+                            case R.id.ammenitiesMap:
                                 fragment = new AmenetiesFragment();
                                 break;
-                            case R.id.clubMailBox:
+                            case R.id.studentProfile:
                                 fragment = new StudentProfileFragment();
                                 break;
                             default:

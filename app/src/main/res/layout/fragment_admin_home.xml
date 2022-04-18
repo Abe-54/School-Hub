@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context="admin.fragments.AdminHomeFragment" >
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/campusAnnouncementsView"
+    <androidx.viewpager.widget.ViewPager android:id="@+id/vpAdminNewsPlaceholder" android:layout_width="match_parent"
+        android:layout_height="match_parent" android:layout_below="@+id/adminNewsTabBar" tools:ignore="SpeakableTextPresentCheck" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/adminNewsTabBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.tabs.TabItem android:id="@+id/tiAdminCampusNews" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:text="Campus News" />
+
+    </com.google.android.material.tabs.TabLayout>
 </RelativeLayout>

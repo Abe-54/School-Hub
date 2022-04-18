@@ -1,80 +1,67 @@
 package com.bcappdevelopers.schoolhub.admin.fragments;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.graphics.Point;
 import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.view.inputmethod.EditorInfo;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.view.*;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 import com.bcappdevelopers.schoolhub.R;
 
 public class ComposeAlertFragment extends DialogFragment {
 
+    public ComposeAlertFragment() {
+    }
 
-    public static class EditNameDialogFragment extends DialogFragment implements TextView.OnEditorActionListener {
+    public static ComposeAlertFragment newInstance(String title) {
+        ComposeAlertFragment frag = new ComposeAlertFragment();
+        Bundle args = new Bundle();
+        args.putString("title", title);
+        frag.setArguments(args);
+        return frag;
+    }
 
-        private EditText mEditText;
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return getActivity().getLayoutInflater().inflate(R.layout.fragment_post_pop_up, container);
+    }
 
-        public EditNameDialogFragment() {
-            // Empty constructor is required for DialogFragment
-            // Make sure not to add arguments to the constructor
-            // Use `newInstance` instead as shown below
-        }
-
-        public interface EditNameDialogListener {
-            void onFinishEditDialog(String inputText);
-        }
-
-        public static EditNameDialogFragment newInstance(String title) {
-            EditNameDialogFragment frag = new EditNameDialogFragment();
-            Bundle args = new Bundle();
-            args.putString("title", title);
-            frag.setArguments(args);
-            return frag;
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            //  return inflater.inflate(R.layout.fragment_edit_name, container);
-            return null;
-        }
-
-
-        @Override
-        public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-            super.onViewCreated(view, savedInstanceState);
-            // Get field from view
-           // mEditText = (EditText) view.findViewById(R.id.txt_your_name);
-            // Fetch arguments from bundle and set title
-            String title = getArguments().getString("title", "Enter Name");
-            getDialog().setTitle(title);
-            // Show soft keyboard automatically and request focus to field
-            mEditText.requestFocus();
-            getDialog().getWindow().setSoftInputMode(
-                    WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
-        }
-
-        // Fires whenever the textfield has an action performed
-        // In this case, when the "Done" button is pressed
-        // REQUIRES a 'soft keyboard' (virtual keyboard)
-        @Override
-        public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-            if (EditorInfo.IME_ACTION_DONE == actionId) {
-                // Return input text back to activity through the implemented listener
-                EditNameDialogListener listener = (EditNameDialogListener) getActivity();
-                listener.onFinishEditDialog(mEditText.getText().toString());
-                // Close the dialog and return back to the parent activity
-                dismiss();
-                return true;
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        String title = getArguments().getString("title");
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+        alertDialogBuilder.setTitle(title);
+        alertDialogBuilder.setPositiveButton("Create Post",  new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // on success
             }
-            return false;
-        }
+        });
+
+        alertDialogBuilder.setNeutralButton("Create An Event", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+
+        return alertDialogBuilder.create();
+    }
+
+    public void onResume() {
+        // Store access variables for window and blank point
+        Window window = getDialog().getWindow();
+        Point size = new Point();
+        // Store dimensions of the screen in `size`
+        Display display = window.getWindowManager().getDefaultDisplay();
+        display.getSize(size);
+        // Set the width of the dialog proportional to 75% of the screen width
+        window.setLayout((int) (size.x * 0.75), WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setGravity(Gravity.CENTER);
+        // Call super onResume after sizing
+        super.onResume();
     }
 }

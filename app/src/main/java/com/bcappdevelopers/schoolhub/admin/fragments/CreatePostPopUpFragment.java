@@ -1,4 +1,4 @@
-package com.bcappdevelopers.schoolhub;
+package com.bcappdevelopers.schoolhub.admin.fragments;
 
 import android.os.Bundle;
 
@@ -7,13 +7,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.bcappdevelopers.schoolhub.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link fragment_club_settings#newInstance} factory method to
+ * Use the {@link CreatePostPopUpFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class fragment_club_settings extends Fragment {
+public class CreatePostPopUpFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +25,7 @@ public class fragment_club_settings extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public fragment_club_settings() {
+    public CreatePostPopUpFragment() {
         // Required empty public constructor
     }
 
@@ -34,11 +35,11 @@ public class fragment_club_settings extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment fragment_club_settings.
+     * @return A new instance of fragment fragment_post_pop_up.
      */
     // TODO: Rename and change types and number of parameters
-    public static fragment_club_settings newInstance(String param1, String param2) {
-        fragment_club_settings fragment = new fragment_club_settings();
+    public static CreatePostPopUpFragment newInstance(String param1, String param2) {
+        CreatePostPopUpFragment fragment = new CreatePostPopUpFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,6 +60,6 @@ public class fragment_club_settings extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_club_settings, container, false);
+        return inflater.inflate(R.layout.fragment_post_pop_up, container, false);
     }
 }

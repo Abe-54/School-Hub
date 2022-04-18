@@ -1,4 +1,4 @@
-package com.bcappdevelopers.schoolhub.student.fragments;
+package com.bcappdevelopers.schoolhub;
 
 import android.os.Bundle;
 import android.util.Log;

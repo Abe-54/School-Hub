@@ -9,23 +9,20 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.bcappdevelopers.schoolhub.R;
-import com.bcappdevelopers.schoolhub.student.fragments.AmenetiesFragment;
-import com.bcappdevelopers.schoolhub.student.fragments.ClubListFragment;
-import com.bcappdevelopers.schoolhub.student.fragments.StudentHomeFragment;
-import com.bcappdevelopers.schoolhub.student.fragments.StudentProfileFragment;
+import com.bcappdevelopers.schoolhub.admin.fragments.*;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class AdminHomeActivity extends AppCompatActivity {
 
-
     private static final String TAG = "ADMIN HOME ACTIVITY";
     final FragmentManager fragmentManager = getSupportFragmentManager();
     private BottomNavigationView bottomNavigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_home);
-        bottomNavigationView = findViewById(R.id.studentBottomNav);
+        bottomNavigationView = findViewById(R.id.adminBottomNavView);
 
         // handle navigation selection
         // Please RENAME the fragment destinations
@@ -33,28 +30,47 @@ public class AdminHomeActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment fragment;
+                Fragment previousFrag = null;
                 switch (item.getItemId()) {
                     case R.id.homeButton:
-                        fragment = new StudentHomeFragment();;
+                        fragment = new AdminHomeFragment();
+                        previousFrag = fragment;
                         break;
-                    case R.id.clubsList:
-                        fragment = new ClubListFragment();;
+                    case R.id.subscribersList:
+                        fragment = new SubscriberListFragment();
+                        previousFrag = fragment;
                         break;
-                    case R.id.amenetiesMap:
-                        fragment = new AmenetiesFragment();
+                    case R.id.createPostEvent:
+                        showPostDialog();
+                        fragment = null;
                         break;
-                    case R.id.profilebutton:
-                        fragment = new StudentProfileFragment();
+                    case R.id.clubMailBox:
+                        fragment = new AdminMailFragment();
+                        previousFrag = fragment;
+                        break;
+                    case R.id.clubProfile:
+                        fragment = new AdminProfileFragment();
+                        previousFrag = fragment;
                         break;
                     default:
-                        fragment = new StudentProfileFragment();
+                        fragment = new AdminHomeFragment();
+                        previousFrag = fragment;
                         break;
                 }
-                fragmentManager.beginTransaction().replace(R.id.placeholder, fragment).commit();
+                if(fragment != null) {
+                    fragmentManager.beginTransaction().replace(R.id.adminPlaceholder, fragment).commit();
+                }
+
                 return true;
             }
         });
         // Set default selection
         bottomNavigationView.setSelectedItemId(R.id.homeButton);
+    }
+
+    private void showPostDialog() {
+        FragmentManager fm = getSupportFragmentManager();
+        ComposeAlertFragment createPostDialouge = ComposeAlertFragment.newInstance("Choose The Type of Post:");
+        createPostDialouge.show(fm, "fragment_choose_post_type");
     }
 }
