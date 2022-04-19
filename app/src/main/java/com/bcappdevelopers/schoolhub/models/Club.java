@@ -37,4 +37,6 @@ public class Club extends ParseObject {
     public ParseRelation getClubAnnouncementRelation() {
         return getRelation(KEY_CLUB_ANNOUNCEMENTS);
     }
+
+
 }
