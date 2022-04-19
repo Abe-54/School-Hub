@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -46,6 +47,8 @@ public class ClubProfileActivity extends AppCompatActivity {
     String currentUserObjectID = "";
     Boolean alreadySubscribed = false;
 
+    ParseObject currentClub = null;
+
     private List<ParseObject> allAnnouncements;
 
     @Override
@@ -66,14 +69,17 @@ public class ClubProfileActivity extends AppCompatActivity {
             clubName = announcement.getEventClub().getString("clubName");
             clubDescription = announcement.getEventClub().getString("clubDescription");
             clubImage = announcement.getEventClub().getParseFile("clubImage");
+            currentClub = announcement.getEventClub();
         } else if(club != null) {
            clubName = club.getClubName();
             clubDescription = club.getClubDescription();
             clubImage = club.getClubImage();
+            currentClub = club;
         } else if(profile != null) {
             clubName = profile.getString("clubName");
             clubDescription = profile.getString("clubDescription");
             clubImage = profile.getParseFile("clubImage");
+            currentClub = profile;
         }
 
         rvClubScreenAnnouncement = findViewById(R.id.rvClubScreenAnnouncements);
@@ -116,10 +122,12 @@ public class ClubProfileActivity extends AppCompatActivity {
                 btnSubScribe.setText("Unsubscribe");
                 Log.i(TAG, "Button text should say unsubscribe " + alreadySubscribed);
                 alreadySubscribed = false;
+                subscribe();
             } else {
                 btnSubScribe.setText("Subscribe");
                 Log.i(TAG, "Button text should say subscribe " + alreadySubscribed);
                 alreadySubscribed = true;
+                unsubscribe();
             }
 
 
@@ -181,5 +189,31 @@ public class ClubProfileActivity extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
             }
         });
+    }
+
+
+    private void subscribe(){
+        ParseRelation<ParseObject> inClub = ParseUser.getCurrentUser().getRelation("inClub");
+        inClub.add(currentClub);
+
+        ParseRelation<ParseObject> usersInClub = currentClub.getRelation("usersInClub");
+        usersInClub.add(ParseUser.getCurrentUser());
+
+        Toast.makeText(getApplicationContext(), "User Subscribed",Toast.LENGTH_SHORT).show();
+        ParseUser.getCurrentUser().saveInBackground();
+
+
+    }
+
+    private void unsubscribe(){
+
+        ParseRelation<ParseObject> inClub = ParseUser.getCurrentUser().getRelation("inClub");
+        inClub.remove(currentClub);
+
+        ParseRelation<ParseObject> usersInClub = currentClub.getRelation("usersInClub");
+        usersInClub.remove(ParseUser.getCurrentUser());
+
+        Toast.makeText(getApplicationContext(), "User Unsubscribed",Toast.LENGTH_SHORT).show();
+        ParseUser.getCurrentUser().saveInBackground();
     }
 }
