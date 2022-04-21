@@ -22,7 +22,7 @@ import java.util.List;
 
 public class SubscriberListFragment extends Fragment {
 
-    private static final String TAG = "CLUB LIST FRAGMENT";
+    private static final String TAG = "SUB LIST FRAGMENT";
 
     private RecyclerView rvSubList;
     private SubscriberListAdapter adapter;

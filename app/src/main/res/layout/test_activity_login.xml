@@ -1,91 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_centerInParent="false"
-    android:layout_margin="16dp"
-    android:background="@drawable/school_hub_app_bg"
+    xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout" android:layout_width="match_parent" android:layout_height="match_parent"
+    android:layout_centerInParent="false" android:background="@drawable/school_hub_app_bg"
     tools:context=".LoginActivity">
 
-    <ImageView
-        android:id="@+id/iv_logo"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+    <ImageView android:id="@+id/iv_logo" android:layout_width="369dp" android:layout_height="109dp"
+        android:layout_marginTop="16dp" app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/college_logo" />
-
-    <EditText
-        android:id="@+id/etUsername"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="40dp"
-        android:ems="10"
-        android:hint="Username"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
-
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="28dp"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etUsername" />
-
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="161dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:background="@color/burgendy"
-        android:backgroundTint="@color/burgendy"
-        android:hapticFeedbackEnabled="false"
-        android:hint="LOGIN"
-        android:textAlignment="center"
-        android:textColor="#DCE1DA"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="401dp"
+    <EditText android:id="@+id/etUsername" android:layout_width="276dp" android:layout_height="wrap_content"
+        android:layout_marginStart="64dp" android:layout_marginTop="28dp" android:background="@color/white" android:ems="10"
+        android:hint="Username" android:inputType="textPersonName" android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
+    <Button android:id="@+id/btnLogin" android:layout_width="163dp" android:layout_height="48dp"
+        android:layout_marginStart="120dp" android:layout_marginBottom="20dp" android:backgroundTint="@color/burgendy"
+        android:hapticFeedbackEnabled="false" android:hint="LOGIN" android:textAlignment="center"
+        android:textColorHint="@android:color/white" android:textSize="14dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnSignUp_loginActivity" app:layout_constraintStart_toStartOf="parent"
         tools:text="LOGIN" />
-
-    <Button
-        android:id="@+id/btnSignUp_loginActivity"
-        android:layout_width="126dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginBottom="264dp"
-        android:background="@color/burgendy"
-        android:backgroundTint="@color/burgendy"
-        android:text="Sign up"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <Button android:id="@+id/btnSignUp_loginActivity" android:layout_width="163dp" android:layout_height="48dp"
+        android:layout_marginStart="120dp" android:layout_marginBottom="276dp" android:backgroundTint="@color/burgendy"
+        android:text="Sign up" android:textSize="14dp" app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/forgotPwd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Forgot Password"
-        android:textColor="@color/burgendy"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="567dp" />
+    <EditText android:id="@+id/etPassword" android:layout_width="276dp" android:layout_height="48dp"
+        android:layout_marginStart="64dp" android:layout_marginTop="24dp" android:background="@color/white" android:ems="10"
+        android:hint="Password" android:inputType="textPassword" android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/etUsername" />
+    <TextView android:id="@+id/forgotPwd" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_marginStart="132dp" android:layout_marginTop="12dp" android:text="Forgot Password"
+        android:textColor="@color/burgendy" android:textSize="18sp" android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/btnSignUp_loginActivity" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

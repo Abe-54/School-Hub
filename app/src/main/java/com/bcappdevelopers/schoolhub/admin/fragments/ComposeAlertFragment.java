@@ -25,12 +25,6 @@ public class ComposeAlertFragment extends DialogFragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return getActivity().getLayoutInflater().inflate(R.layout.fragment_post_pop_up, container);
-    }
-
-    @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         String title = getArguments().getString("title");
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
@@ -59,7 +53,7 @@ public class ComposeAlertFragment extends DialogFragment {
         Display display = window.getWindowManager().getDefaultDisplay();
         display.getSize(size);
         // Set the width of the dialog proportional to 75% of the screen width
-        window.setLayout((int) (size.x * 0.75), WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setLayout((int) (size.x * 0.8), WindowManager.LayoutParams.WRAP_CONTENT);
         window.setGravity(Gravity.CENTER);
         // Call super onResume after sizing
         super.onResume();

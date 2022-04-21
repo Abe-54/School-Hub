@@ -30,15 +30,13 @@ public class AdminHomeActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment fragment;
-                Fragment previousFrag = null;
+
                 switch (item.getItemId()) {
                     case R.id.homeButton:
                         fragment = new AdminHomeFragment();
-                        previousFrag = fragment;
                         break;
                     case R.id.subscribersList:
                         fragment = new SubscriberListFragment();
-                        previousFrag = fragment;
                         break;
                     case R.id.createPostEvent:
                         showPostDialog();
@@ -46,17 +44,15 @@ public class AdminHomeActivity extends AppCompatActivity {
                         break;
                     case R.id.clubMailBox:
                         fragment = new AdminMailFragment();
-                        previousFrag = fragment;
                         break;
                     case R.id.clubProfile:
                         fragment = new AdminProfileFragment();
-                        previousFrag = fragment;
                         break;
                     default:
                         fragment = new AdminHomeFragment();
-                        previousFrag = fragment;
                         break;
                 }
+
                 if(fragment != null) {
                     fragmentManager.beginTransaction().replace(R.id.adminPlaceholder, fragment).commit();
                 }

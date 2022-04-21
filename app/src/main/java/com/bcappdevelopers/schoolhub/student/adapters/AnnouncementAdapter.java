@@ -87,14 +87,14 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
             tvUpVoteCount.setText("0");
             tvDownVoteCount.setText("0");
 
-            cvAnnouncementContainer.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent i = new Intent(context, ClubProfileActivity.class);
-                    i.putExtra("Announcement", Parcels.wrap(announcement));
-                    context.startActivity(i);
-                }
-            });
+//            cvAnnouncementContainer.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    Intent i = new Intent(context, ClubProfileActivity.class);
+//                    i.putExtra("Announcement", Parcels.wrap(announcement));
+//                    context.startActivity(i);
+//                }
+//            });
         }
     }
 }

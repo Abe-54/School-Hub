@@ -16,7 +16,7 @@
         <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/activity_club_page.xml" value="0.240625" />
         <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/activity_create_event.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/activity_event_archive.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/activity_login.xml" value="0.8800000000000001" />
+        <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/activity_student_home.xml" value="0.4244791666666667" />
         <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/activity_student_profile.xml" value="0.24427083333333333" />
         <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/activity_student_signup.xml" value="0.4244791666666667" />
@@ -26,6 +26,7 @@
         <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/fragment_admin_profile.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/fragment_club_list.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/fragment_club_profile.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/fragment_compose_alert.xml" value="0.35054347826086957" />
         <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/fragment_post_pop_up.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/fragment_student_home.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/fragment_student_profile.xml" value="0.38697916666666665" />
@@ -34,6 +35,7 @@
         <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/login.xml" value="0.240625" />
         <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/student_signup.xml" value="0.4244791666666667" />
         <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/subscriber_list_item.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/test_activity_login.xml" value="0.536" />
         <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/layout/user_login.xml" value="0.4244791666666667" />
         <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/menu/admin_menu_bottom_navigation.xml" value="0.4015625" />
         <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.4015625" />
