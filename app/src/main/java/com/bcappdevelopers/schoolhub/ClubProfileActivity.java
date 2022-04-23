@@ -1,6 +1,7 @@
 package com.bcappdevelopers.schoolhub;
 
 import android.annotation.SuppressLint;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bcappdevelopers.schoolhub.models.Announcement;
 import com.bcappdevelopers.schoolhub.models.Club;
 import com.bcappdevelopers.schoolhub.student.adapters.AnnouncementAdapter;
+import com.bcappdevelopers.schoolhub.student.fragments.StudentProfileFragment;
 import com.bumptech.glide.Glide;
 import com.parse.*;
 
@@ -110,7 +112,14 @@ public class ClubProfileActivity extends AppCompatActivity {
         queryUsers();
 
         if(btnSubScribe.getText().toString().compareTo( "Unsubscribe") == 0){
-            alreadySubscribed = !alreadySubscribed;
+           alreadySubscribed = !alreadySubscribed;
+            if(alreadySubscribed = true) {
+                btnSubScribe.setText("Unsubscribe");
+                Log.i(TAG, "Button text should  say unsubscribe AlreadySubscribed:" + alreadySubscribed);
+            } else {
+                btnSubScribe.setText("Subscribe");
+                Log.i(TAG, "Button text should  say subscribe AlreadySubscribed:" + alreadySubscribed);
+            }
         }
 
 
@@ -118,16 +127,19 @@ public class ClubProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-            if(alreadySubscribed){
-                btnSubScribe.setText("Unsubscribe");
-                Log.i(TAG, "Button text should say unsubscribe " + alreadySubscribed);
-                alreadySubscribed = false;
-                subscribe();
-            } else {
-                btnSubScribe.setText("Subscribe");
-                Log.i(TAG, "Button text should say subscribe " + alreadySubscribed);
-                alreadySubscribed = true;
+            if(alreadySubscribed == true){
+
+
                 unsubscribe();
+
+
+
+            } else {
+
+
+
+                subscribe();
+
             }
 
 
@@ -158,10 +170,20 @@ public class ClubProfileActivity extends AppCompatActivity {
                             return;
                         }
                         for (ParseObject clubs : objects) {
-                            if(clubs.getString("clubName").compareTo(clubName) == 0) {
+                            if(clubs.getString("clubName").equals(clubName) ) {
                                 Log.i(TAG, "Found Club " + clubs.getString("clubName") + " for user: " + user.getString("username"));
                                 btnSubScribe.setText("Unsubscribe");
-                                Log.i(TAG, "set is subscribed to true");
+                                Log.i(TAG, "Is alreadySubscribed set to true? Answer:" + alreadySubscribed);
+                            }
+                        }
+                        if(btnSubScribe.getText().toString().equals( "Unsubscribe")){
+                            alreadySubscribed = !alreadySubscribed;
+                            if(alreadySubscribed == true) {
+                                btnSubScribe.setText("Unsubscribe");
+                                Log.i(TAG, "Button text should  say unsubscribe AlreadySubscribed:" + alreadySubscribed);
+                            } else {
+                                btnSubScribe.setText("Subscribe");
+                                Log.i(TAG, "Button text should  say subscribe AlreadySubscribed:" + alreadySubscribed);
                             }
                         }
                     }
@@ -202,6 +224,8 @@ public class ClubProfileActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "User Subscribed",Toast.LENGTH_SHORT).show();
         ParseUser.getCurrentUser().saveInBackground();
 
+        alreadySubscribed = true;
+        btnSubScribe.setText("Unsubscribe");
 
     }
 
@@ -215,5 +239,13 @@ public class ClubProfileActivity extends AppCompatActivity {
 
         Toast.makeText(getApplicationContext(), "User Unsubscribed",Toast.LENGTH_SHORT).show();
         ParseUser.getCurrentUser().saveInBackground();
+
+        alreadySubscribed = false;
+        btnSubScribe.setText("Subscribe");
+
+
+
+
+
     }
 }
