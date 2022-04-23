@@ -59,7 +59,6 @@ public class SubscriberListAdapter extends RecyclerView.Adapter<SubscriberListAd
         private ImageView ivSubImage;
         private TextView tvSubName;
         private Button btnManageMember;
-        private RelativeLayout rlSubItemContainer;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -67,16 +66,12 @@ public class SubscriberListAdapter extends RecyclerView.Adapter<SubscriberListAd
             ivSubImage = itemView.findViewById(R.id.ivSubImage);
             tvSubName = itemView.findViewById(R.id.tvSubName);
             btnManageMember = itemView.findViewById(R.id.btnManageMember);
-            rlSubItemContainer = itemView.findViewById(R.id.rlSubItemContainer);
         }
 
-        public void bind(ParseObject subscriber) {
-            tvSubName.setText(subscriber.getString("username"));
+        public void bind(ParseObject subscriberObject) {
+            tvSubName.setText(subscriberObject.getString("username"));
 
-            int radius = 30;
-            int margin = 10;
-
-            ParseFile image = subscriber.getParseFile("profilePicture");
+            ParseFile image = subscriberObject.getParseFile("profilePicture");
             if(image != null) {
                 Glide.with(context)
                         .load(image.getUrl())
@@ -89,7 +84,7 @@ public class SubscriberListAdapter extends RecyclerView.Adapter<SubscriberListAd
                 @Override
                 public void onClick(View view) {
                     Intent i = new Intent(context, SubscriberProfileActivity.class);
-                    i.putExtra("Subscriber", Parcels.wrap(subscriber));
+                    i.putExtra("Subscriber", Parcels.wrap(subscriberObject));
                     context.startActivity(i);
                 }
             });

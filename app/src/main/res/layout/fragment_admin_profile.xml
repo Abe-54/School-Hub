@@ -38,6 +38,10 @@
         app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.142"
         app:layout_constraintStart_toEndOf="@+id/ivAdminClubProfile"
         app:layout_constraintTop_toBottomOf="@+id/tvAdminClubName" tools:ignore="SpeakableTextPresentCheck" />
+    <Button android:id="@+id/btnAdminSignOut" android:layout_width="111dp" android:layout_height="48dp"
+        android:layout_marginStart="28dp" android:layout_marginTop="28dp" android:text="Sign Out"
+        app:layout_constraintStart_toEndOf="@+id/btnSettings"
+        app:layout_constraintTop_toBottomOf="@+id/tvAdminClubName" />
     <androidx.cardview.widget.CardView
         android:layout_width="383dp"
         android:layout_height="459dp"

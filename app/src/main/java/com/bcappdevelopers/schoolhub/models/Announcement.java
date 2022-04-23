@@ -16,8 +16,16 @@ public class Announcement extends ParseObject {
 
     public static final String KEY_CREATED_AT = "createdAt";
 
+    public void setClub(ParseObject club) {
+        put(KEY_EVENT_MADE_BY, club);
+    }
+
     public void setDescription(String description){
         put(KEY_DESCRIPTION, description);
+    }
+
+    public void setEvenName(String postName) {
+        put(KEY_EVENT, postName);
     }
 
     public void setImage(ParseFile parseFile){

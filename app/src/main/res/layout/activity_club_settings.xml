@@ -1,68 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".admin.ClubSettingsFragment">
-
-    <ImageView
-        android:id="@+id/ivClubProfile3"
-        android:layout_width="142dp"
-        android:layout_height="112dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="28dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/outline_account_circle_black_48"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:padding="10dp"
+    tools:context=".admin.ClubSettingsActivity">
+    <ImageView android:id="@+id/ivClubImageEdit" android:layout_width="150dp" android:layout_height="126dp"
+        android:layout_marginStart="4dp" android:layout_marginTop="36dp" app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" app:srcCompat="@drawable/outline_account_circle_black_48"
         tools:src="@drawable/outline_account_circle_black_48" />
-
-    <Button
-        android:id="@+id/btnEditImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:text="Edit Profile Image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toEndOf="@+id/ivClubProfile3"
+    <Button android:id="@+id/btnEditImage" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_marginTop="64dp" android:text="Edit Profile Image" app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.514" app:layout_constraintStart_toEndOf="@+id/ivClubImageEdit"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/etDescription"
-        android:layout_width="355dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="84dp"
-        android:background="#CF9797"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=" Club Description: "
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.285"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivClubProfile3" />
-
-    <TextView
-        android:id="@+id/etEditDescirption"
-        android:layout_width="355dp"
-        android:layout_height="203dp"
-        android:background="#CF9797"
-        android:hint="Add new club description here!"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.285"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etDescription" />
-
-    <Button
-        android:id="@+id/btnSubmitChange"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Submit Changes"
-        android:textColor="#190606"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etEditDescirption"
-        app:layout_constraintVertical_bias="0.502" />
+    <TextView android:id="@+id/etDescription" android:layout_width="355dp" android:layout_height="48dp"
+        android:background="#CF9797" android:gravity="center_vertical" android:inputType="textPersonName"
+        android:text=" Club Description: " android:textSize="20sp" android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/etEditDescirption" app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.285" app:layout_constraintStart_toStartOf="parent" />
+    <Button android:id="@+id/btnSubmitChanges" android:layout_width="232dp" android:layout_height="48dp"
+        android:layout_marginEnd="88dp" android:text="Submit Changes" android:textColor="#190606"
+        app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etEditDescirption" app:layout_constraintVertical_bias="0.2" />
+    <Button android:id="@+id/btnCancelChanges" android:layout_width="232dp" android:layout_height="48dp"
+        android:layout_marginEnd="88dp" android:backgroundTint="@color/red_2" android:text="Cancel Changes"
+        android:textColor="@color/white" app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/btnSubmitChanges"
+        app:layout_constraintVertical_bias="0.065" />
+    <EditText android:id="@+id/etEditDescirption" android:layout_width="355dp" android:layout_height="203dp"
+        android:layout_marginBottom="288dp" android:background="#CF9797" android:gravity="top|left"
+        android:hint="Add new club description here!" android:inputType="textMultiLine" android:textAlignment="viewStart" app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.285"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

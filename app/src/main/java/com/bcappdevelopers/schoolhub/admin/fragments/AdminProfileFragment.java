@@ -1,5 +1,6 @@
 package com.bcappdevelopers.schoolhub.admin.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -15,7 +16,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.recyclerview.widget.RecyclerView;
+import com.bcappdevelopers.schoolhub.LoginActivity;
 import com.bcappdevelopers.schoolhub.R;
+import com.bcappdevelopers.schoolhub.admin.AdminHomeActivity;
+import com.bcappdevelopers.schoolhub.admin.ClubSettingsActivity;
+import com.bcappdevelopers.schoolhub.admin.CreatePostActivity;
 import com.bcappdevelopers.schoolhub.models.Club;
 import com.bumptech.glide.Glide;
 import com.parse.*;
@@ -33,8 +38,10 @@ public class AdminProfileFragment extends Fragment {
     TextView tvClubDescription;
     ImageView ivClubProfile;
     Button btnEventArchive;
+    Button btnSignOut;
     ImageButton btnClubSettings;
 
+    ParseObject clubObject;
     public AdminProfileFragment() {
         // Required empty public constructor
     }
@@ -60,6 +67,7 @@ public class AdminProfileFragment extends Fragment {
         ivClubProfile = view.findViewById(R.id.ivAdminClubProfile);
         btnEventArchive = view.findViewById(R.id.btnAdminEventsArchive);
         btnClubSettings = view.findViewById(R.id.btnSettings);
+        btnSignOut = view.findViewById(R.id.btnAdminSignOut);
 
         QueryClubData();
         
@@ -74,6 +82,20 @@ public class AdminProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Log.i(TAG, "onClick: going to settings");
+                Intent i = new Intent(getContext(), ClubSettingsActivity.class);
+                i.putExtra("Club", clubObject);
+                getContext().startActivity(i);
+            }
+        });
+
+        btnSignOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ParseUser.logOut();
+                Intent i = new Intent(getContext(), LoginActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                getContext().startActivity(i);
+                Log.i(TAG, "LOGGING OUT");
             }
         });
 
@@ -100,6 +122,9 @@ public class AdminProfileFragment extends Fragment {
                             Log.e(TAG, "Issues getting club data", e);
                             return;
                         }
+
+                        clubObject = club;
+
                         Log.i(TAG, "Found: " + club.getString("clubName"));
 
                         tvClubName.setText(club.getString("clubName"));

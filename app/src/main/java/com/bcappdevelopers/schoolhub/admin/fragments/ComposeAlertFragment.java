@@ -2,6 +2,7 @@ package com.bcappdevelopers.schoolhub.admin.fragments;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.view.*;
@@ -10,6 +11,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 import com.bcappdevelopers.schoolhub.R;
+import com.bcappdevelopers.schoolhub.admin.CreateEventActivity;
+import com.bcappdevelopers.schoolhub.admin.CreatePostActivity;
+import com.bcappdevelopers.schoolhub.admin.SubscriberProfileActivity;
+import org.parceler.Parcels;
 
 public class ComposeAlertFragment extends DialogFragment {
 
@@ -32,13 +37,16 @@ public class ComposeAlertFragment extends DialogFragment {
         alertDialogBuilder.setPositiveButton("Create Post",  new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // on success
+                Intent i = new Intent(getContext(), CreatePostActivity.class);
+                getContext().startActivity(i);
             }
         });
 
         alertDialogBuilder.setNeutralButton("Create An Event", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                Intent i = new Intent(getContext(), CreateEventActivity.class);
+                getContext().startActivity(i);
             }
         });
 
