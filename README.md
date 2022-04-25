@@ -30,17 +30,16 @@ The app also provides a guide to nearby resources and amenities that are made av
 
 **Required Must-have Stories**
 
-* Users logs in with username & password to see app home screen
-* On Login user is presented with a list of existing clubs and a map of on campus amneties
-* Student Profiles contain personal information & list of clubs they are subcribed to
-* Club Profiles contain information about the clubs and allows users to subcribe to them
-* Campus Map displays the map of the school
-* List of on campus amenities for students
+- [ ] Users logs in with username & password to see app home screen
+- [ ] On Login user is presented with a list of existing clubs
+- [ ] Student Profiles contain personal information & list of clubs they are subcribed to
+- [ ] Club Profiles contain information about the clubs and allows users to subcribe to them
+- [ ] Settings Screen to allow users to edit their profile screen
 
 **Optional Nice-to-have Stories**
-
-* Settings Screen to allow users to edit their profile screen
-* Student Profile's club list can contain a notification icon
+- [ ] List of on campus amenities for students
+- [ ] Campus Map displays the map of the school
+- [ ] Student Profile's club list can contain a notification icon
 
 ### 2. Screen Archetypes
 
