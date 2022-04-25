@@ -30,11 +30,12 @@ The app also provides a guide to nearby resources and amenities that are made av
 
 **Required Must-have Stories**
 
-- [ ] Users logs in with username & password to see app home screen
-- [ ] On Login user is presented with a list of existing clubs
-- [ ] Student Profiles contain personal information & list of clubs they are subcribed to
-- [ ] Club Profiles contain information about the clubs and allows users to subcribe to them
-- [ ] Settings Screen to allow users to edit their profile screen
+- [x] Users logs in with username & password to see app home screen
+- [x] Admins can login and create posts
+- [x] On Login user is presented with a list of existing clubs
+- [x] Student Profiles contain personal information & list of clubs they are subcribed to
+- [x] Club Profiles contain information about the clubs and allows users to subcribe to them
+- [x] Settings Screen to allow users to edit their profile screen
 
 **Optional Nice-to-have Stories**
 - [ ] List of on campus amenities for students
