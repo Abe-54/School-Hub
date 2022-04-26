@@ -20,30 +20,48 @@
             android:layout_marginStart="4dp" android:layout_marginTop="2dp" android:layout_marginEnd="7dp"
             android:layout_toEndOf="@+id/ivAnnouncement" android:hint="The Announcement Description will go here!" />
 
-        <ToggleButton android:id="@+id/btnUpVote" android:layout_width="48dp" android:layout_height="wrap_content"
+        <ToggleButton
+            android:id="@+id/btnUpVote"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/tvAnnouncementDescription"
-            android:layout_alignStart="@+id/tvAnnouncementDescription" android:layout_marginStart="2dp"
-            android:layout_marginTop="13dp" android:button="@android:drawable/ic_menu_upload" android:textSize="8sp"
+            android:layout_alignStart="@+id/tvAnnouncementDescription"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="13dp"
+            android:button="@android:drawable/ic_menu_upload"
+            android:textSize="8sp"
             tools:text="UP" />
 
         <TextView android:id="@+id/tvUpVoteCount" android:layout_width="20dp" android:layout_height="20dp"
             android:layout_below="@+id/tvAnnouncementDescription" android:layout_marginStart="10dp"
             android:layout_marginTop="26dp" android:layout_toEndOf="@+id/btnUpVote" tools:text="9" />
 
-        <ToggleButton android:id="@+id/btnDownVote" android:layout_width="48dp" android:layout_height="48dp"
-            android:layout_below="@+id/tvAnnouncementDescription" android:layout_marginStart="1dp"
-            android:layout_marginTop="14dp" android:layout_toEndOf="@+id/tvUpVoteCount"
-            android:button="@android:drawable/stat_sys_download" android:text="ToggleButton" />
+        <ToggleButton
+            android:id="@+id/btnDownVote"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_below="@+id/tvAnnouncementDescription"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="14dp"
+            android:layout_toEndOf="@+id/tvUpVoteCount"
+            android:button="@android:drawable/stat_sys_download"
+            android:text="ToggleButton" />
 
         <TextView android:id="@+id/tvDownVoteCount" android:layout_width="20dp" android:layout_height="20dp"
             android:layout_below="@+id/tvAnnouncementDescription" android:layout_marginStart="4dp"
             android:layout_marginTop="27dp" android:layout_toEndOf="@+id/btnDownVote" android:text="TextView"
             tools:text="3" />
 
-        <ToggleButton android:id="@+id/btnComment" android:layout_width="48dp" android:layout_height="48dp"
-            android:layout_below="@+id/tvAnnouncementDescription" android:layout_marginStart="0dp"
-            android:layout_marginTop="18dp" android:layout_toEndOf="@+id/tvDownVoteCount"
-            android:button="@android:drawable/stat_notify_chat" android:text="ToggleButton" />
+        <ToggleButton
+            android:id="@+id/btnComment"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_below="@+id/tvAnnouncementDescription"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="18dp"
+            android:layout_toEndOf="@+id/tvDownVoteCount"
+            android:button="@android:drawable/stat_notify_chat"
+            android:text="ToggleButton" />
 
         <ToggleButton android:id="@+id/btnShare" android:layout_width="48dp" android:layout_height="48dp"
             android:layout_below="@+id/tvAnnouncementDescription" android:layout_marginStart="12dp"

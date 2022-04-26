@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="student.fragments.ClubListFragment">
+    tools:context="student.fragments.ClubListFragment"
+    android:background="@drawable/school_hub_app_bg">
 
     <TextView android:id="@+id/tvClubListFragmentTitle" android:layout_width="wrap_content" android:layout_height="wrap_content"
         android:layout_marginTop="16dp" android:text="Club List" android:textAlignment="center" android:textSize="24sp"
@@ -15,7 +16,14 @@
     <androidx.recyclerview.widget.RecyclerView android:id="@+id/rvClubList" android:layout_width="match_parent"
         android:layout_height="0dp" android:padding="10dp" app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvClubListFragmentTitle" app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/tvClubListFragmentTitle" app:layout_constraintVertical_bias="0.0" >
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srcCompat="@color/translucent_black" />
+    </androidx.recyclerview.widget.RecyclerView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
