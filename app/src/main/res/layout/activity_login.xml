@@ -13,9 +13,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@color/translucent_black" />
     <ImageView android:id="@+id/iv_logo" android:layout_width="369dp" android:layout_height="109dp"
-        android:layout_marginTop="16dp" android:background="@color/white" app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/college_logo" />
+        android:layout_marginTop="16dp" android:background="#75FFFFFF" app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" app:srcCompat="@drawable/college_logo" />
     <EditText android:id="@+id/etUsername" android:layout_width="276dp" android:layout_height="wrap_content"
         android:layout_marginStart="64dp" android:layout_marginTop="28dp" android:background="@color/white" android:ems="10"
         android:hint="Username" android:inputType="textPersonName" android:minHeight="48dp"

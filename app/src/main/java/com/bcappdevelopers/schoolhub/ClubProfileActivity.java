@@ -128,21 +128,11 @@ public class ClubProfileActivity extends AppCompatActivity {
             public void onClick(View view) {
 
             if(alreadySubscribed == true){
-
-
                 unsubscribe();
 
-
-
-            } else {
-
-
-
+                } else {
                 subscribe();
-
-            }
-
-
+                }
             }
         });
     }

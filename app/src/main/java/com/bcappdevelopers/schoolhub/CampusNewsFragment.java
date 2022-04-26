@@ -17,11 +17,14 @@ import com.parse.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class CampusNewsFragment extends Fragment {
 
     private static final String TAG = "CAMPUS NEWS FRAGMENT";
+    private static final String COLLEGE = "Bloomfield College";
 
     private RecyclerView rvCampusAnnoucements;
     private AnnouncementAdapter adapter;
@@ -44,7 +47,7 @@ public class CampusNewsFragment extends Fragment {
 
         rvCampusAnnoucements = view.findViewById(R.id.rvCampusAnnouncements);
         allAnnouncements = new ArrayList<>();
-        adapter = new AnnouncementAdapter(getContext(), allAnnouncements);
+
 
         Log.i(TAG, "INSIDE OF CAMPUS FRAG");
 
@@ -53,11 +56,19 @@ public class CampusNewsFragment extends Fragment {
         //1. create the adapter
         //2. create the data source
         //3. set the adapter on rv
+        adapter = new AnnouncementAdapter(getContext(), allAnnouncements);
+
+        queryAnnoucnements();
+
         rvCampusAnnoucements.setAdapter(adapter);
+
+
         //4. set the layout manager on rv
         rvCampusAnnoucements.setLayoutManager(new LinearLayoutManager(getContext()));
-        queryAnnoucnements();
+
     }
+
+
 
     private void queryAnnoucnements() {
         ParseQuery<Announcement> query = ParseQuery.getQuery(Announcement.class);
@@ -69,6 +80,7 @@ public class CampusNewsFragment extends Fragment {
                     Log.e(TAG, "Issues getting campus announcements", e);
                     return;
                 }
+
                 for (Announcement announcement : announcements) {
 
                     if(announcement.getParseObject("madeBy") == null){
@@ -76,9 +88,10 @@ public class CampusNewsFragment extends Fragment {
                         return;
                     }
 
+
+
                     ParseQuery<ParseObject> usersInClub = announcement.getEventClub().getRelation("usersInClub").getQuery();
                     usersInClub.include("inClub");
-
                     usersInClub.findInBackground(new FindCallback<ParseObject>() {
                         @Override
                         public void done(List<ParseObject> users, ParseException e) {
@@ -89,11 +102,21 @@ public class CampusNewsFragment extends Fragment {
 
                             for(ParseObject user : users) {
                                 if(user.getObjectId().compareTo(ParseUser.getCurrentUser().getObjectId()) == 0 &&
-                                        announcement.getEventClub().getString("clubName").compareTo("Bloomfield College") == 0) {
+                                        announcement.getEventClub().getString("clubName").compareTo(COLLEGE) == 0) {
                                     Log.i(TAG, "User: " + user.getString("username") + " is in Club " + announcement.getEventClub().getString("clubName"));
                                     allAnnouncements.add(announcement);
                                 }
                             }
+
+                            Collections.sort(allAnnouncements, new Comparator<ParseObject>() {
+                                @Override
+                                public int compare(ParseObject date, ParseObject date1) {
+                                    return date.getCreatedAt().toString().compareTo(date1.getCreatedAt().toString());
+                                }
+                            });
+
+                            Collections.reverse(allAnnouncements);
+
                             adapter.notifyDataSetChanged();
                         }
                     });
