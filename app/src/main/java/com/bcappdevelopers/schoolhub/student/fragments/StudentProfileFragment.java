@@ -42,6 +42,8 @@ public class StudentProfileFragment extends Fragment {
     private List<ParseObject> allClubs;
     private Button signOutButton;
 
+    private boolean allowRefresh = true;
+
     public StudentProfileFragment() {
         // Required empty public constructor
     }
@@ -76,7 +78,7 @@ public class StudentProfileFragment extends Fragment {
         rvClubList.setAdapter(adapter);
         //4. set the layout manager on rv
         rvClubList.setLayoutManager(new LinearLayoutManager(getContext()));
-        queryData();
+//        queryData();
 
         signOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,6 +99,13 @@ public class StudentProfileFragment extends Fragment {
         if (isVisibleToUser) {
             // Refresh your fragment here
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        allClubs.clear();
+        queryData();
     }
 
     private void queryData() {

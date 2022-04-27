@@ -2,6 +2,7 @@ package com.bcappdevelopers.schoolhub;
 
 import android.annotation.SuppressLint;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bcappdevelopers.schoolhub.models.Announcement;
 import com.bcappdevelopers.schoolhub.models.Club;
+import com.bcappdevelopers.schoolhub.student.StudentHomeActivity;
 import com.bcappdevelopers.schoolhub.student.adapters.AnnouncementAdapter;
 import com.bcappdevelopers.schoolhub.student.fragments.StudentProfileFragment;
 import com.bumptech.glide.Glide;
@@ -202,7 +204,6 @@ public class ClubProfileActivity extends AppCompatActivity {
             }
         });
     }
-
 
     private void subscribe(){
         ParseRelation<ParseObject> inClub = ParseUser.getCurrentUser().getRelation("inClub");
