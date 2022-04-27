@@ -4,15 +4,42 @@
     android:id="@+id/rlSubItemContainer" android:layout_width="match_parent" android:layout_height="wrap_content"
     android:padding="5dp">
 
-    <ImageView android:id="@+id/ivSubImage" android:layout_width="100dp" android:layout_height="100dp"
-        android:layout_alignParentLeft="true" android:layout_alignParentTop="true" app:srcCompat="@mipmap/no_profile_image"
-        tools:src="@mipmap/no_profile_image"/>
+    <ImageView
+        android:id="@+id/ivSubImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/rounded_edge_et"
+        android:backgroundTint="#56DAD4D4"
+        app:srcCompat="@mipmap/no_profile_image"
+        tools:src="@mipmap/no_profile_image" />
 
-    <TextView android:id="@+id/tvSubName" android:layout_width="151dp" android:layout_height="46dp"
-        android:layout_alignParentTop="true" android:layout_marginStart="11dp" android:layout_marginTop="27dp"
-        android:layout_marginEnd="22dp" android:layout_toStartOf="@+id/btnManageMember" android:layout_toEndOf="@+id/ivSubImage"
-        android:fontFamily="sans-serif-medium" android:gravity="center_vertical" android:hint="SUB NAME" android:textSize="17dp" />
-    <Button android:id="@+id/btnManageMember" android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:layout_alignParentTop="true" android:layout_alignParentEnd="true" android:layout_marginTop="25dp"
-        android:layout_marginEnd="19dp" android:text="Manage" />
+    <TextView
+        android:id="@+id/tvSubName"
+        android:layout_width="151dp"
+        android:layout_height="46dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="22dp"
+        android:layout_toStartOf="@+id/btnManageMember"
+        android:layout_toEndOf="@+id/ivSubImage"
+        android:background="@drawable/rounded_edge_et"
+        android:backgroundTint="#56DAD4D4"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center_vertical"
+        android:hint="SUB NAME"
+        android:textSize="17dp" />
+
+    <Button
+        android:id="@+id/btnManageMember"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="19dp"
+        android:backgroundTint="@color/burgendy"
+        android:text="Manage" />
 </RelativeLayout>

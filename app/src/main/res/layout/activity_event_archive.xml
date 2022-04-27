@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/school_hub_app_bg"
     tools:context=".EventArchiveActivity">
 
     <TextView
@@ -12,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="All Event Archive"
-        android:textColor="#0B0606"
+        android:textColor="#FD4A4848"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -22,16 +23,19 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvEventArchive"
         android:layout_width="388dp"
-        android:layout_height="578dp"
+        android:layout_height="500dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:background="#CF9797"
+        android:background="@drawable/rounded_edge_et"
+        android:backgroundTint="#56DAD4D4"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvEventArchive"
-        app:layout_constraintVertical_bias="0.547">
+        app:layout_constraintVertical_bias="0.411"
+        android:alpha="0.4">
 
     </androidx.recyclerview.widget.RecyclerView>
 
