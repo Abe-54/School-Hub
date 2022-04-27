@@ -90,9 +90,9 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
             cvAnnouncementContainer.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent i = new Intent(context, ClubProfileActivity.class);
-                    i.putExtra("Announcement", Parcels.wrap(announcement));
-                    context.startActivity(i);
+//                    Intent i = new Intent(context, ClubProfileActivity.class);
+//                    i.putExtra("Announcement", Parcels.wrap(announcement));
+//                    context.startActivity(i);
                 }
             });
         }

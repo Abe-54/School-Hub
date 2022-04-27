@@ -2,6 +2,7 @@ package com.bcappdevelopers.schoolhub.student;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -33,6 +34,7 @@ public class StudentHomeActivity extends AppCompatActivity {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         Fragment fragment;
+
                         switch (item.getItemId()) {
                             case R.id.homeButton:
                                 fragment = new StudentHomeFragment();
