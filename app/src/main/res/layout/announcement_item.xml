@@ -5,98 +5,47 @@
     android:layout_margin="5dp" android:layout_marginStart="5dp" android:layout_marginTop="0dp"
     app:cardBackgroundColor="#D56E6E" app:cardCornerRadius="10dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#CF9797"
+    <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/relativeLayout"
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/grey"
         android:padding="10dp">
 
-        <ImageView
-            android:id="@+id/ivAnnouncement"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/outline_account_circle_black_48" />
+        <ImageView android:id="@+id/ivAnnouncement" android:layout_width="55dp" android:layout_height="55dp"
+            app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" tools:src="@drawable/outline_account_circle_black_48" />
 
-        <TextView
-            android:id="@+id/tvProfileName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="0dp"
-            android:hint="PROFILE NAME"
-            app:layout_constraintStart_toEndOf="@+id/ivAnnouncement"
+        <TextView android:id="@+id/tvProfileName" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_marginStart="4dp" android:layout_marginTop="0dp"
+            android:hint="PROFILE NAME" app:layout_constraintStart_toEndOf="@+id/ivAnnouncement"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tvAnnouncementDescription"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="7dp"
-            android:hint="The Announcement Description will go here!"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/ivAnnouncement"
+        <TextView android:id="@+id/tvAnnouncementDescription" android:layout_width="0dp"
+            android:layout_height="wrap_content" android:layout_marginStart="4dp" android:layout_marginTop="2dp"
+            android:layout_marginEnd="7dp" android:hint="The Announcement Description will go here!"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toEndOf="@+id/ivAnnouncement"
             app:layout_constraintTop_toBottomOf="@+id/tvProfileName" />
 
-        <ToggleButton
-            android:id="@+id/btnUpVote"
-            android:layout_width="48dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="13dp"
-            android:button="@android:drawable/ic_menu_upload"
-            android:textSize="8sp"
-            app:layout_constraintStart_toStartOf="@+id/tvAnnouncementDescription"
-            app:layout_constraintTop_toBottomOf="@+id/tvAnnouncementDescription"
+        <ToggleButton android:id="@+id/btnUpVote" android:layout_width="48dp" android:layout_height="wrap_content"
+            android:layout_marginStart="2dp" android:layout_marginTop="13dp" android:button="@android:drawable/ic_menu_upload" android:textSize="8sp"
+            app:layout_constraintStart_toStartOf="@+id/tvAnnouncementDescription" app:layout_constraintTop_toBottomOf="@+id/tvAnnouncementDescription"
             tools:text="UP" />
 
-        <TextView
-            android:id="@+id/tvUpVoteCount"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="26dp"
-            app:layout_constraintStart_toEndOf="@+id/btnUpVote"
-            app:layout_constraintTop_toBottomOf="@+id/tvAnnouncementDescription"
-            tools:text="9" />
+        <TextView android:id="@+id/tvUpVoteCount" android:layout_width="wrap_content" android:layout_height="0dp"
+            android:layout_marginStart="5dp" android:layout_marginTop="26dp" app:layout_constraintStart_toEndOf="@+id/btnUpVote"
+            app:layout_constraintTop_toBottomOf="@+id/tvAnnouncementDescription" tools:text="9" />
 
-        <ToggleButton
-            android:id="@+id/btnDownVote"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="14dp"
-            android:button="@android:drawable/stat_sys_download"
-            android:text="ToggleButton"
-            app:layout_constraintStart_toEndOf="@+id/tvUpVoteCount"
+        <ToggleButton android:id="@+id/btnDownVote" android:layout_width="48dp" android:layout_height="48dp"
+            android:layout_marginStart="10dp" android:layout_marginTop="14dp" android:button="@android:drawable/stat_sys_download"
+            android:text="ToggleButton" app:layout_constraintStart_toEndOf="@+id/tvUpVoteCount"
             app:layout_constraintTop_toBottomOf="@+id/tvAnnouncementDescription" />
 
-        <TextView
-            android:id="@+id/tvDownVoteCount"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="27dp"
-            android:text="TextView"
+        <TextView android:id="@+id/tvDownVoteCount" android:layout_width="20dp" android:layout_height="20dp"
+            android:layout_marginStart="4dp" android:layout_marginTop="27dp" android:text="TextView"
             app:layout_constraintStart_toEndOf="@+id/btnDownVote"
-            app:layout_constraintTop_toBottomOf="@+id/tvAnnouncementDescription"
-            tools:text="3" />
+            app:layout_constraintTop_toBottomOf="@+id/tvAnnouncementDescription" tools:text="3" />
 
-        <ToggleButton
-            android:id="@+id/btnShare"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="16dp"
-            android:button="@android:drawable/ic_menu_share"
-            android:text="ToggleButton"
-            android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@+id/tvAnnouncementDescription"
-            tools:ignore="TouchTargetSizeCheck"
+        <ToggleButton android:id="@+id/btnShare" android:layout_width="48dp" android:layout_height="48dp"
+            android:layout_marginTop="16dp" android:button="@android:drawable/ic_menu_share" android:text="ToggleButton"
+            android:visibility="gone" app:layout_constraintTop_toBottomOf="@+id/tvAnnouncementDescription" tools:ignore="TouchTargetSizeCheck"
             tools:layout_editor_absoluteX="10dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

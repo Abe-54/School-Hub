@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bcappdevelopers.schoolhub.ClubProfileActivity;
 import com.bcappdevelopers.schoolhub.R;
@@ -62,7 +63,7 @@ public class ClubListAdapter extends RecyclerView.Adapter<ClubListAdapter.ViewHo
         private ImageView ivClubImage;
         private TextView tvClubName;
         private TextView tvClubDescription;
-        private RelativeLayout rlClubItemContainer;
+        private ConstraintLayout rlClubItemContainer;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
