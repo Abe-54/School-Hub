@@ -2,6 +2,7 @@ package com.bcappdevelopers.schoolhub.student.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +18,10 @@ import com.bcappdevelopers.schoolhub.ClubProfileActivity;
 import com.bcappdevelopers.schoolhub.PostFeedActivity;
 import com.bcappdevelopers.schoolhub.R;
 import com.bcappdevelopers.schoolhub.models.Announcement;
-import com.parse.ParseObject;
+import com.bcappdevelopers.schoolhub.models.Club;
+import com.bumptech.glide.Glide;
+import com.parse.*;
+import jp.wasabeef.glide.transformations.CropCircleWithBorderTransformation;
 import org.parceler.Parcels;
 
 import java.util.List;
@@ -63,21 +67,19 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
         private TextView tvDownVoteCount;
         private Button btnUpVote;
         private Button btnDownVote;
-        private Button btnComment;
         private Button btnShare;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             cvAnnouncementContainer = itemView.findViewById(R.id.cvAnnouncementContainer);
-            ivUserImage = itemView.findViewById(R.id.ivClubImage);
+            ivUserImage = itemView.findViewById(R.id.ivAnnouncement);
             tvProfileName = itemView.findViewById(R.id.tvProfileName);
             tvAnnouncementDescription = itemView.findViewById(R.id.tvAnnouncementDescription);
             tvUpVoteCount = itemView.findViewById(R.id.tvUpVoteCount);
             tvDownVoteCount = itemView.findViewById(R.id.tvDownVoteCount);
             btnUpVote = itemView.findViewById(R.id.btnUpVote);
             btnDownVote = itemView.findViewById(R.id.btnDownVote);
-            btnComment = itemView.findViewById(R.id.btnComment);
             btnShare = itemView.findViewById(R.id.btnShare);
         }
 
@@ -87,6 +89,26 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
             tvAnnouncementDescription.setText(announcement.getString("eventDescription"));
             tvUpVoteCount.setText("0");
             tvDownVoteCount.setText("0");
+
+            ParseQuery<ParseObject> userQuery = ParseQuery.getQuery("Clubs");
+
+            userQuery.getInBackground(announcement.getParseObject("madeBy").getObjectId(), new GetCallback<ParseObject>() {
+                @Override
+                public void done(ParseObject club, ParseException e) {
+                    if (e != null) {
+                        Log.e(TAG, "Issues getting profile data", e);
+                        return;
+                    }
+                    ParseFile image = club.getParseFile("clubImage");
+                    if(image != null) {
+                        Glide.with(context)
+                                .load(image.getUrl())
+                                .centerCrop()
+                                .transform(new CropCircleWithBorderTransformation())
+                                .into(ivUserImage);
+                    }
+                }
+            });
 
             cvAnnouncementContainer.setOnClickListener(new View.OnClickListener() {
                 @Override
