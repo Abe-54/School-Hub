@@ -17,6 +17,8 @@ import com.parse.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class ClubNewsFragment extends Fragment {
@@ -94,6 +96,16 @@ public class ClubNewsFragment extends Fragment {
                                     allAnnouncements.add(announcement);
                                 }
                             }
+
+                            Collections.sort(allAnnouncements, new Comparator<ParseObject>() {
+                                @Override
+                                public int compare(ParseObject date, ParseObject date1) {
+                                    return date.getCreatedAt().toString().compareTo(date1.getCreatedAt().toString());
+                                }
+                            });
+
+                            Collections.reverse(allAnnouncements);
+
                             adapter.notifyDataSetChanged();
                         }
                     });

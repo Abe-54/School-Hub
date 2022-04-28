@@ -93,15 +93,6 @@ public class StudentProfileFragment extends Fragment {
     }
 
     @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-
-        if (isVisibleToUser) {
-            // Refresh your fragment here
-        }
-    }
-
-    @Override
     public void onResume() {
         super.onResume();
         allClubs.clear();
