@@ -5,8 +5,13 @@
     android:layout_height="match_parent"
     tools:context="student.fragments.StudentHomeFragment" >
 
-    <androidx.viewpager.widget.ViewPager android:id="@+id/vpNewsPlaceholder" android:layout_width="match_parent"
-        android:layout_height="match_parent" android:layout_below="@+id/newsTabBar" tools:ignore="SpeakableTextPresentCheck" />
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vpNewsPlaceholder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/newsTabBar"
+        android:background="@drawable/school_hub_app_bg"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/newsTabBar"
