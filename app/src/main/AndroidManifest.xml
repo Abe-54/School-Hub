@@ -15,12 +15,15 @@
         android:theme="@style/Theme.SchoolHub">
         <activity
             android:name=".admin.CreateEventActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name=".admin.CreatePostActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name=".admin.ClubSettingsActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name=".EventArchiveActivity"
@@ -29,7 +32,12 @@
             android:name=".admin.SubscriberProfileActivity"
             android:exported="false" />
         <activity
+            android:name=".PostFeedActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
+            android:windowSoftInputMode="stateVisible|adjustResize"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,7 +45,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignUpActivity" />
+        <activity android:name=".SignUpActivity"
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".admin.AdminHomeActivity" />
         <activity android:name=".student.StudentHomeActivity" />
         <activity android:name=".ClubProfileActivity" />
