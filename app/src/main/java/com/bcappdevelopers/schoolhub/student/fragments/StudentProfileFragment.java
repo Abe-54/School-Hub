@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,18 +17,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.bcappdevelopers.schoolhub.ClubProfileActivity;
 import com.bcappdevelopers.schoolhub.LoginActivity;
 import com.bcappdevelopers.schoolhub.R;
-import com.bcappdevelopers.schoolhub.models.Announcement;
-import com.bcappdevelopers.schoolhub.models.Club;
-import com.bcappdevelopers.schoolhub.models.Profile;
-import com.bcappdevelopers.schoolhub.student.adapters.AnnouncementAdapter;
-import com.bcappdevelopers.schoolhub.student.adapters.ClubListAdapter;
-import com.bcappdevelopers.schoolhub.student.adapters.ProfileAdapter;
+import com.bcappdevelopers.schoolhub.student.adapters.ClubProfileAdapter;
+import com.bumptech.glide.Glide;
 import com.parse.*;
+import jp.wasabeef.glide.transformations.CropCircleWithBorderTransformation;
 import org.jetbrains.annotations.NotNull;
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +34,8 @@ public class StudentProfileFragment extends Fragment {
 
     private RecyclerView rvClubList;
     private TextView tvName;
-    private ProfileAdapter adapter;
+    private ImageView ivProfileIcon;
+    private ClubProfileAdapter adapter;
     private List<ParseObject> allClubs;
     private Button signOutButton;
 
@@ -62,9 +59,10 @@ public class StudentProfileFragment extends Fragment {
 
         rvClubList = view.findViewById(R.id.rvClubListProfileScreen);
         tvName = view.findViewById(R.id.tvStudentName);
+        ivProfileIcon = view.findViewById(R.id.ivStudentIcon);
         signOutButton = view.findViewById(R.id.btnSignOut);
         allClubs = new ArrayList<>();
-        adapter = new ProfileAdapter(getContext(), allClubs);
+        adapter = new ClubProfileAdapter(getContext(), allClubs);
 
         Log.i(TAG, "INSIDE OF PROFILE FRAG");
 
@@ -78,7 +76,8 @@ public class StudentProfileFragment extends Fragment {
         rvClubList.setAdapter(adapter);
         //4. set the layout manager on rv
         rvClubList.setLayoutManager(new LinearLayoutManager(getContext()));
-//        queryData();
+
+
 
         signOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,6 +112,16 @@ public class StudentProfileFragment extends Fragment {
                 }
                 for (ParseObject user : outerQueryResults) {
                     if(user.hasSameId(ParseUser.getCurrentUser())) {
+
+                        ParseFile image = user.getParseFile("profilePicture");
+                        if(image != null) {
+                            Glide.with(getContext())
+                                    .load(image.getUrl())
+                                    .centerCrop()
+                                    .transform(new CropCircleWithBorderTransformation())
+                                    .into(ivProfileIcon);
+                        }
+
                         ParseQuery<ParseObject> clubList = user.getRelation("inClub").getQuery();
 
                         clubList.findInBackground(new FindCallback<ParseObject>() {

@@ -8,12 +8,14 @@
         android:padding="10dp">
 
 
-        <ImageView android:id="@+id/ivUserComment" android:layout_width="64dp" android:layout_height="71dp"
-            android:layout_marginStart="5dp" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" tools:srcCompat="@tools:sample/avatars" />
+        <ImageView android:id="@+id/ivUserComment" android:layout_width="64dp" android:layout_height="64dp"
+            android:layout_marginStart="5dp" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
 
         <TextView android:id="@+id/tvComment" android:layout_width="0dp" android:layout_height="70dp"
-            android:layout_marginStart="8dp" android:background="#56DAD4D4" android:ellipsize="none" android:maxLength="200" android:maxLines="2" android:text="TextView"
+            android:layout_marginStart="8dp" android:ellipsize="none" android:maxLength="200" android:maxLines="3"
+            android:minLines="1" android:text="TextView" android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toEndOf="@+id/ivUserComment"
             app:layout_constraintTop_toTopOf="parent" />
 

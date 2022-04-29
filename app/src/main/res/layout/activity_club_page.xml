@@ -1,117 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/school_hub_app_bg"
-    android:orientation="vertical"
-    android:padding="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@drawable/school_hub_app_bg" android:backgroundTint="#66000000"
+    android:backgroundTintMode="src_over" android:orientation="vertical" android:padding="10dp"
     tools:context=".ClubProfileActivity">
 
-    <TextView
-        android:id="@+id/tvClubScreenName"
-        android:layout_width="133dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="#56DAD4D4"
-        android:fontFamily="sans-serif-medium"
-        android:text="CLUB NAME"
-        android:textSize="23sp"
-        app:layout_constraintBottom_toTopOf="@+id/tvIsMember"
-        app:layout_constraintStart_toEndOf="@+id/ivClubProfile"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.86" />
-
-    <ImageView
-        android:id="@+id/ivClubProfile"
-        android:layout_width="142dp"
-        android:layout_height="112dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="28dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/outline_account_circle_black_48"
+    <TextView android:id="@+id/tvClubScreenName" android:layout_width="133dp" android:layout_height="36dp"
+        android:layout_marginStart="12dp" android:layout_marginTop="36dp" android:backgroundTint="#56DAD4D4"
+        android:fontFamily="sans-serif-medium" android:text="CLUB NAME" android:textColor="@color/white"
+        android:textSize="23sp" app:autoSizeMaxTextSize="23sp" app:autoSizeMinTextSize="13sp"
+        app:autoSizeStepGranularity="1sp" app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/btnSubscribe" app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0" app:layout_constraintStart_toEndOf="@+id/ivClubProfile"
+        app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.038" />
+    <ImageView android:id="@+id/ivClubProfile" android:layout_width="112dp" android:layout_height="112dp"
+        android:layout_marginStart="4dp" android:layout_marginTop="28dp" app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" app:srcCompat="@drawable/outline_account_circle_black_48"
         tools:src="@drawable/outline_account_circle_black_48" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvClubScreenAnnouncements"
-        android:layout_width="match_parent"
-        android:layout_height="391dp"
-        android:layout_marginBottom="100dp"
-        android:alpha="0.7"
-        android:background="#56DAD4D4"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/tvClubScreenDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="116dp"
-        android:layout_marginBottom="7dp"
-        android:text="Club Description"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnSubscribe"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivClubProfile"
-        app:layout_constraintVertical_bias="0.076" />
-
-    <TextView
-        android:id="@+id/tvIsMember"
-        android:layout_width="122dp"
-        android:layout_height="24dp"
-        android:layout_marginBottom="20dp"
-        android:text="Member"
-        app:layout_constraintBottom_toTopOf="@+id/tvClubScreenDescription"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.06"
-        app:layout_constraintStart_toEndOf="@+id/ivClubProfile" />
-
-    <Button
-        android:id="@+id/btn_current_event"
-        android:layout_width="100dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="16dp"
-        android:enabled="false"
-        android:text="Current Event"
-        android:textSize="10sp"
-        android:visibility="gone"
+    <androidx.recyclerview.widget.RecyclerView android:id="@+id/rvClubScreenAnnouncements"
+        android:layout_width="match_parent" android:layout_height="391dp" android:layout_marginBottom="100dp"
+        android:alpha="0.7" android:textAlignment="center" app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/ivClubProfile"
+        app:layout_constraintVertical_bias="0.904" />
+    <TextView android:id="@+id/tvClubScreenDescription" android:layout_width="0dp" android:layout_height="0dp"
+        android:layout_marginStart="12dp" android:layout_marginTop="12dp" android:hint="Club Description"
+        android:maxLines="3" android:minLines="1" android:textColor="@color/white" android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnSubscribe" app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0" app:layout_constraintStart_toEndOf="@+id/ivClubProfile"
+        app:layout_constraintTop_toBottomOf="@+id/tvClubScreenName" />
+    <TextView android:id="@+id/tvIsMember" android:layout_width="122dp" android:layout_height="24dp" android:text="Member"
+        android:textColor="@color/white" android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.417"
+        app:layout_constraintStart_toEndOf="@+id/ivClubProfile" tools:layout_editor_absoluteY="164dp" />
+    <Button android:id="@+id/btn_current_event" android:layout_width="100dp" android:layout_height="48dp"
+        android:layout_marginStart="60dp" android:layout_marginTop="16dp" android:enabled="false"
+        android:text="Current Event" android:textSize="10sp" android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rvClubScreenAnnouncements" />
 
-    <Button
-        android:id="@+id/btnEventArchive"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="144dp"
-        android:backgroundTint="@color/burgendy"
-        android:text="Event Archive"
-        android:textColor="#F3EEEE"
-        android:textSize="10sp"
-        app:cornerRadius="20dp"
+    <Button android:id="@+id/btnEventArchive" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_marginTop="12dp" android:layout_marginEnd="144dp" android:backgroundTint="@color/burgendy"
+        android:text="Event Archive" android:textColor="#F3EEEE" android:textSize="10sp" app:cornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rvClubScreenAnnouncements" />
 
-    <Button
-        android:id="@+id/btnSubscribe"
-        android:layout_width="81dp"
-        android:layout_height="36dp"
-        android:layout_marginBottom="80dp"
-        android:backgroundTint="@color/burgendy"
-        android:text="Subscribe"
-        android:textColor="#F6F4F4"
-        android:textSize="8sp"
-        app:cornerRadius="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/rvClubScreenAnnouncements"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.652"
-        app:layout_constraintStart_toEndOf="@+id/tvIsMember" />
+    <Button android:id="@+id/btnSubscribe" android:layout_width="0dp" android:layout_height="48dp"
+        android:layout_marginStart="12dp" android:layout_marginBottom="4dp" android:backgroundTint="@color/burgendy"
+        android:text="Subscribe" android:textColor="#F6F4F4" android:textSize="10dp" app:cornerRadius="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/rvClubScreenAnnouncements" app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0" app:layout_constraintStart_toEndOf="@+id/ivClubProfile" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

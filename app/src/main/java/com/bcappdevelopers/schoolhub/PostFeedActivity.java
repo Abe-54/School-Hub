@@ -53,6 +53,7 @@ public class PostFeedActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.include2);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(announcementPost.getString("eventName"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
@@ -69,17 +70,19 @@ public class PostFeedActivity extends AppCompatActivity {
 
         tvPost.setText(announcementPost.getString("eventDescription"));
 
-        if(etComment.getText().toString().length() != 0) {
-            btnPostComment.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+        btnPostComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!etComment.getText().toString().isEmpty()) {
                     postComment(etComment.getText().toString());
                     etComment.getText().clear();
                     allComments.clear();
                     queryComments();
                 }
-            });
-        }
+            }
+        });
+
+
     }
 
     private void postComment(String commentContent) {

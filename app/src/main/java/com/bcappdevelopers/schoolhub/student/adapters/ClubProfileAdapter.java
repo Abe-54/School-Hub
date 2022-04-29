@@ -6,13 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bcappdevelopers.schoolhub.ClubProfileActivity;
 import com.bcappdevelopers.schoolhub.R;
-import com.bcappdevelopers.schoolhub.models.Club;
 import com.bumptech.glide.Glide;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
@@ -22,13 +21,13 @@ import org.parceler.Parcels;
 
 import java.util.List;
 
-public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHolder>{
+public class ClubProfileAdapter extends RecyclerView.Adapter<ClubProfileAdapter.ViewHolder>{
 
     private static final String TAG = "Profile Adapter";
     private final List<ParseObject> clubs;
     private Context context;
 
-    public ProfileAdapter(Context context, List<ParseObject> clubs) {
+    public ClubProfileAdapter(Context context, List<ParseObject> clubs) {
         this.clubs = clubs;
         this.context = context;
     }
@@ -37,7 +36,7 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
     @Override
     public ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.club_list_item,parent,false);
-        return new ProfileAdapter.ViewHolder(view);
+        return new ClubProfileAdapter.ViewHolder(view);
     }
 
     @Override
@@ -56,7 +55,7 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
         private ImageView ivClubImage;
         private TextView tvClubName;
         private TextView tvClubDescription;
-        private RelativeLayout rlClubItemContainer;
+        private ConstraintLayout rlClubItemContainer;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

@@ -1,35 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="student.fragments.StudentHomeFragment" >
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout2" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="@drawable/school_hub_app_bg"
+    tools:context="student.fragments.StudentHomeFragment">
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/vpNewsPlaceholder"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/newsTabBar"
-        android:background="@drawable/school_hub_app_bg"
-        tools:ignore="SpeakableTextPresentCheck" />
+    <ImageView android:id="@+id/imageView4" android:layout_width="match_parent" android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@color/translucent_black" />
+    <com.google.android.material.tabs.TabLayout android:id="@+id/newsTabBar" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:background="@color/gold_2"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/newsTabBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <com.google.android.material.tabs.TabItem android:id="@+id/tiCampusNews" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:text="Campus News" />
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tiCampusNews"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Campus News" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tiClubsNews"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Clubs News" />
+        <com.google.android.material.tabs.TabItem android:id="@+id/tiClubsNews" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:text="Clubs News" />
 
     </com.google.android.material.tabs.TabLayout>
+    <androidx.viewpager.widget.ViewPager android:id="@+id/vpNewsPlaceholder" android:layout_width="match_parent"
+        android:layout_height="0dp" app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/newsTabBar"
+        tools:ignore="SpeakableTextPresentCheck"></androidx.viewpager.widget.ViewPager>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

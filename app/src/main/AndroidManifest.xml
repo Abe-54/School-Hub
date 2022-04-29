@@ -37,7 +37,7 @@
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:windowSoftInputMode="stateVisible|adjustResize"
+            android:windowSoftInputMode="adjustPan"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
