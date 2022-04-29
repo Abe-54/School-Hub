@@ -8,30 +8,45 @@
         android:padding="10dp">
 
 
+        <TextView android:id="@+id/tvCommentProfileName" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_marginTop="4dp" android:gravity="center"
+            android:hint="NAME" android:maxLength="40" android:maxLines="2" android:textColor="@color/black"
+            android:textSize="10dp" android:textStyle="bold" app:layout_constraintEnd_toEndOf="@+id/ivUserComment"
+            app:layout_constraintStart_toStartOf="@+id/ivUserComment" app:layout_constraintTop_toBottomOf="@+id/ivUserComment" />
         <ImageView android:id="@+id/ivUserComment" android:layout_width="64dp" android:layout_height="64dp"
-            android:layout_marginStart="5dp" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="4dp" app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
-
-        <TextView android:id="@+id/tvComment" android:layout_width="0dp" android:layout_height="70dp"
-            android:layout_marginStart="8dp" android:ellipsize="none" android:maxLength="200" android:maxLines="3"
-            android:minLines="1" android:text="TextView" android:textColor="@color/black"
+            app:layout_constraintVertical_bias="0.0" tools:srcCompat="@tools:sample/avatars" />
+        <TextView android:id="@+id/tvComment" android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_marginStart="8dp" android:maxLength="200" android:maxLines="3" android:minLines="1"
+            android:paddingStart="10dp" android:text="TextView" android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toEndOf="@+id/ivUserComment"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton android:id="@+id/btnReply" android:layout_width="49dp" android:layout_height="54dp"
-            android:layout_marginTop="4dp" android:layout_marginEnd="100dp" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvComment" app:srcCompat="@android:drawable/stat_notify_chat"
-            tools:ignore="SpeakableTextPresentCheck" />
-        <ImageButton android:id="@+id/btnUpvote" android:layout_width="56dp" android:layout_height="56dp"
-            android:layout_marginStart="80dp" android:layout_marginTop="5dp" app:layout_constraintEnd_toStartOf="@+id/btnDownvote" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvComment" app:srcCompat="@android:drawable/ic_menu_upload"
-            tools:ignore="SpeakableTextPresentCheck" />
-        <ImageButton android:id="@+id/btnDownvote" android:layout_width="49dp" android:layout_height="54dp"
-            android:layout_marginStart="5dp" android:layout_marginTop="5dp" android:layout_marginEnd="10dp"
-            app:layout_constraintEnd_toStartOf="@+id/btnReply" app:layout_constraintStart_toEndOf="@+id/btnUpvote"
-            app:layout_constraintTop_toBottomOf="@+id/tvComment" app:srcCompat="@android:drawable/stat_sys_download"
-            tools:ignore="SpeakableTextPresentCheck" />
+        <ImageButton android:id="@+id/btnReply" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:layout_marginEnd="32dp" android:background="@android:color/transparent"
+            android:minWidth="48dp" android:minHeight="48dp" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvComment" app:srcCompat="@drawable/outline_add_comment_24" tools:ignore="SpeakableTextPresentCheck" />
+        <ImageButton android:id="@+id/btnDislikeComment" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_marginTop="8dp" android:background="@android:color/transparent"
+            android:minWidth="48dp" android:minHeight="48dp"
+            app:layout_constraintEnd_toStartOf="@+id/btnReply" app:layout_constraintHorizontal_bias="0.283"
+            app:layout_constraintStart_toEndOf="@+id/btnLikeComment" app:layout_constraintTop_toBottomOf="@+id/tvComment"
+            app:srcCompat="@drawable/outline_thumb_down_24" tools:ignore="SpeakableTextPresentCheck" />
+        <ImageButton android:id="@+id/btnLikeComment" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_marginStart="8dp" android:layout_marginTop="8dp"
+            android:background="@android:color/transparent" android:minWidth="48dp" android:minHeight="48dp"
+            app:layout_constraintStart_toEndOf="@+id/ivUserComment" app:layout_constraintTop_toBottomOf="@+id/tvComment"
+            app:srcCompat="@drawable/outline_thumb_up_24" tools:ignore="SpeakableTextPresentCheck" />
+        <TextView android:id="@+id/tvCommentLikeCounter" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginStart="-20dp" android:layout_marginTop="8dp" android:gravity="center_horizontal|center_vertical" android:inputType="number"
+            android:minWidth="48dp" android:minHeight="48dp" android:text="0" android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/btnLikeComment" app:layout_constraintTop_toBottomOf="@+id/tvComment" />
+        <TextView android:id="@+id/tvCommentDislikeCounter" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_marginStart="-20dp" android:layout_marginTop="8dp"
+            android:gravity="center_horizontal|center_vertical" android:inputType="number" android:minWidth="48dp"
+            android:minHeight="48dp" android:text="0" android:textSize="20sp" app:layout_constraintStart_toEndOf="@+id/btnDislikeComment"
+            app:layout_constraintTop_toBottomOf="@+id/tvComment" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

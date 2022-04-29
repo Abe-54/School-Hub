@@ -9,6 +9,21 @@
         android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/grey"
         android:padding="10dp">
 
+        <TextView android:id="@+id/tvDownVoteCount" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_marginStart="-20dp" android:layout_marginTop="8dp"
+            android:gravity="center_horizontal|center_vertical" android:inputType="number" android:minWidth="48dp"
+            android:minHeight="48dp" android:text="0" android:textSize="20sp" app:layout_constraintStart_toEndOf="@+id/btnAnnouncementDislike"
+            app:layout_constraintTop_toBottomOf="@+id/tvAnnouncementDescription" />
+        <TextView android:id="@+id/tvUpVoteCount" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_marginStart="-20dp" android:layout_marginTop="8dp" android:gravity="center_horizontal|center_vertical"
+            android:inputType="number" android:minWidth="48dp" android:minHeight="48dp" android:text="0"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/btnAnnouncementLike" app:layout_constraintTop_toBottomOf="@+id/tvAnnouncementDescription" />
+        <ImageButton android:id="@+id/btnAnnouncementDislike" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_marginStart="40dp" android:layout_marginTop="8dp"
+            android:background="@android:color/transparent" android:minWidth="48dp" android:minHeight="48dp"
+            app:layout_constraintStart_toEndOf="@+id/btnAnnouncementLike" app:layout_constraintTop_toBottomOf="@+id/tvAnnouncementDescription"
+            app:srcCompat="@drawable/outline_thumb_down_24" tools:ignore="SpeakableTextPresentCheck" />
         <ImageView android:id="@+id/ivAnnouncement" android:layout_width="60dp" android:layout_height="60dp"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
@@ -16,8 +31,8 @@
 
         <TextView android:id="@+id/tvProfileName" android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_marginStart="4dp" android:hint="PROFILE NAME"
-            android:textColor="@color/black" app:layout_constraintStart_toEndOf="@+id/ivAnnouncement"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textColor="@color/black" android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/ivAnnouncement" app:layout_constraintTop_toTopOf="parent" />
 
         <TextView android:id="@+id/tvAnnouncementDescription" android:layout_width="0dp"
             android:layout_height="wrap_content" android:layout_marginStart="4dp" android:layout_marginTop="2dp"
@@ -26,26 +41,11 @@
             android:textColor="@color/black" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/ivAnnouncement" app:layout_constraintTop_toBottomOf="@+id/tvProfileName" />
 
-        <ToggleButton android:id="@+id/btnUpVote" android:layout_width="48dp" android:layout_height="wrap_content"
-            android:layout_marginStart="2dp" android:layout_marginTop="10dp" android:button="@android:drawable/ic_menu_upload" android:textSize="8sp"
-            app:layout_constraintStart_toStartOf="@+id/tvAnnouncementDescription" app:layout_constraintTop_toBottomOf="@+id/tvAnnouncementDescription"
-            tools:text="UP" />
-
-        <TextView android:id="@+id/tvUpVoteCount" android:layout_width="wrap_content" android:layout_height="0dp"
-            android:layout_marginStart="5dp" android:layout_marginTop="26dp" android:textColor="@color/black"
-            app:layout_constraintStart_toEndOf="@+id/btnUpVote" app:layout_constraintTop_toBottomOf="@+id/tvAnnouncementDescription"
-            tools:text="9" />
-
-        <ToggleButton android:id="@+id/btnDownVote" android:layout_width="48dp" android:layout_height="48dp"
-            android:layout_marginStart="10dp" android:layout_marginTop="10dp" android:button="@android:drawable/stat_sys_download"
-            android:text="ToggleButton" app:layout_constraintStart_toEndOf="@+id/tvUpVoteCount"
-            app:layout_constraintTop_toBottomOf="@+id/tvAnnouncementDescription" />
-
-        <TextView android:id="@+id/tvDownVoteCount" android:layout_width="20dp" android:layout_height="20dp"
-            android:layout_marginStart="4dp" android:layout_marginTop="27dp" android:text="TextView"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toEndOf="@+id/btnDownVote" app:layout_constraintTop_toBottomOf="@+id/tvAnnouncementDescription"
-            tools:text="3" />
+        <ImageButton android:id="@+id/btnAnnouncementLike" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_marginStart="8dp" android:layout_marginTop="8dp"
+            android:background="@android:color/transparent" android:minWidth="48dp" android:minHeight="48dp"
+            app:layout_constraintStart_toEndOf="@+id/ivAnnouncement"
+            app:layout_constraintTop_toBottomOf="@+id/tvAnnouncementDescription" app:srcCompat="@drawable/outline_thumb_up_24" tools:ignore="SpeakableTextPresentCheck" />
 
         <ToggleButton android:id="@+id/btnShare" android:layout_width="48dp" android:layout_height="48dp"
             android:layout_marginTop="16dp" android:button="@android:drawable/ic_menu_share" android:text="ToggleButton"

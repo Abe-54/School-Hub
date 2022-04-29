@@ -1,66 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/school_hub_app_bg"
-    tools:context=".admin.CreatePostActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@drawable/school_hub_app_bg" android:backgroundTint="#73000000"
+    android:backgroundTintMode="src_over" tools:context=".admin.CreatePostActivity">
 
-    <EditText
-        android:id="@+id/etPostDescription"
-        android:layout_width="312dp"
-        android:layout_height="191dp"
-        android:layout_marginTop="33dp"
-        android:alpha="0.7"
-        android:background="@drawable/rounded_edge_et"
-        android:backgroundTint="#56DAD4D4"
-        android:gravity="top|left"
-        android:hint="Post Description"
-        android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPostTitle" />
+    <include android:id="@+id/include3" layout="@layout/toolbar_main" android:layout_width="match_parent"
+        android:layout_height="wrap_content" app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" ></include>
 
-    <EditText
-        android:id="@+id/etPostTitle"
-        android:layout_width="311dp"
-        android:layout_height="71dp"
-        android:layout_marginTop="116dp"
-        android:alpha="0.7"
-        android:background="@drawable/rounded_edge_et"
-        android:backgroundTint="#56DAD4D4"
-        android:gravity="top|left"
-        android:hint="Post Title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <EditText android:id="@+id/etPostDescription" android:layout_width="312dp" android:layout_height="191dp"
+        android:layout_marginTop="33dp" android:background="@drawable/rounded_edge_et"
+        android:backgroundTint="@color/grey" android:gravity="top|left" android:hint="Post Description"
+        android:inputType="textMultiLine" android:padding="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnPost" app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506" app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etPostTitle" app:layout_constraintVertical_bias="0.283" />
 
-    <ImageButton
-        android:id="@+id/btnUploadMedia"
-        android:layout_width="161dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="28dp"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.552"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPostDescription"
-        app:srcCompat="@android:drawable/ic_menu_upload"
+    <EditText android:id="@+id/etPostTitle" android:layout_width="311dp" android:layout_height="71dp"
+        android:layout_marginTop="136dp" android:background="@drawable/rounded_edge_et"
+        android:backgroundTint="@color/grey" android:gravity="top|left" android:hint="Post Title"
+        android:padding="10dp" app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+    <ImageButton android:id="@+id/btnUploadMedia" android:layout_width="161dp" android:layout_height="46dp"
+        android:layout_marginTop="28dp" android:visibility="gone" app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.552" app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etPostDescription" app:srcCompat="@android:drawable/ic_menu_upload"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <Button
-        android:id="@+id/btnPost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="144dp"
-        android:backgroundTint="@color/burgendy"
-        android:text="Post"
-        android:textColor="#F4EFEF"
-        app:cornerRadius="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+    <Button android:id="@+id/btnPost" android:layout_width="139dp" android:layout_height="76dp"
+        android:layout_marginBottom="180dp" android:backgroundTint="@color/burgendy" android:text="Post"
+        android:textColor="#F4EFEF" android:textSize="24sp" app:cornerRadius="18dp"
+        app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@drawable/school_hub_app_bg" android:backgroundTint="#66000000"
+    android:backgroundTintMode="src_over">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/adminBottomNavView"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="#656565"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+    <com.google.android.material.bottomnavigation.BottomNavigationView android:id="@+id/adminBottomNavView"
+        android:layout_width="match_parent" android:layout_height="60dp" android:background="#656565"
+        app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/admin_menu_bottom_navigation" />
 
     <FrameLayout android:id="@+id/adminPlaceholder" android:layout_width="match_parent" android:layout_height="0dp"

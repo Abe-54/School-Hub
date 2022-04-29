@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,11 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bcappdevelopers.schoolhub.ClubProfileActivity;
 import com.bcappdevelopers.schoolhub.PostFeedActivity;
 import com.bcappdevelopers.schoolhub.R;
-import com.bcappdevelopers.schoolhub.models.Announcement;
-import com.bcappdevelopers.schoolhub.models.Club;
 import com.bumptech.glide.Glide;
 import com.parse.*;
 import jp.wasabeef.glide.transformations.CropCircleWithBorderTransformation;
@@ -65,9 +63,8 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
         private TextView tvAnnouncementDescription;
         private TextView tvUpVoteCount;
         private TextView tvDownVoteCount;
-        private Button btnUpVote;
-        private Button btnDownVote;
-        private Button btnShare;
+        private ImageButton btnUpVote;
+        private ImageButton btnDownVote;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -78,9 +75,8 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
             tvAnnouncementDescription = itemView.findViewById(R.id.tvAnnouncementDescription);
             tvUpVoteCount = itemView.findViewById(R.id.tvUpVoteCount);
             tvDownVoteCount = itemView.findViewById(R.id.tvDownVoteCount);
-            btnUpVote = itemView.findViewById(R.id.btnUpVote);
-            btnDownVote = itemView.findViewById(R.id.btnDownVote);
-            btnShare = itemView.findViewById(R.id.btnShare);
+            btnUpVote = itemView.findViewById(R.id.btnAnnouncementLike);
+            btnDownVote = itemView.findViewById(R.id.btnAnnouncementDislike);
         }
 
         public void bind(ParseObject announcement) {

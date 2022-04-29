@@ -1,45 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rlSubItemContainer" android:layout_width="match_parent" android:layout_height="wrap_content"
     android:padding="5dp">
 
-    <ImageView
-        android:id="@+id/ivSubImage"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:background="@drawable/rounded_edge_et"
-        android:backgroundTint="#56DAD4D4"
-        app:srcCompat="@mipmap/no_profile_image"
-        tools:src="@mipmap/no_profile_image" />
+    <androidx.cardview.widget.CardView android:id="@+id/cardView" android:layout_width="wrap_content"
+        android:layout_height="80dp" android:layout_marginStart="4dp" android:layout_marginTop="4dp"
+        app:cardBackgroundColor="@color/grey" app:cardCornerRadius="13dp" app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="223dp"
+            android:layout_height="match_parent" android:padding="5dp" android:paddingEnd="10dp">
 
-    <TextView
-        android:id="@+id/tvSubName"
-        android:layout_width="151dp"
-        android:layout_height="46dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="27dp"
-        android:layout_marginEnd="22dp"
-        android:layout_toStartOf="@+id/btnManageMember"
-        android:layout_toEndOf="@+id/ivSubImage"
-        android:background="@drawable/rounded_edge_et"
-        android:backgroundTint="#56DAD4D4"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="center_vertical"
-        android:hint="SUB NAME"
-        android:textSize="17dp" />
-
-    <Button
-        android:id="@+id/btnManageMember"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="19dp"
-        android:backgroundTint="@color/burgendy"
-        android:text="Manage" />
-</RelativeLayout>
+            <ImageView android:id="@+id/ivSubImage" android:layout_width="50dp" android:layout_height="50dp"
+                android:layout_marginStart="16dp" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" app:srcCompat="@mipmap/no_profile_image"
+                tools:src="@mipmap/no_profile_image" />
+            <TextView android:id="@+id/tvSubName" android:layout_width="125dp" android:layout_height="60dp"
+                android:layout_marginStart="7dp" android:layout_marginEnd="10dp" android:ellipsize="end"
+                android:fontFamily="sans-serif-medium" android:gravity="center_vertical" android:hint="SUB NAME" android:maxLines="1"
+                android:minLines="1" android:textSize="14sp" app:autoSizeMaxTextSize="18dp"
+                app:autoSizeTextType="uniform" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toEndOf="@+id/ivSubImage"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+    <Button android:id="@+id/btnManageMember" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp" android:backgroundTint="@color/burgendy" android:text="Manage"
+        app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.466" />
+</androidx.constraintlayout.widget.ConstraintLayout>

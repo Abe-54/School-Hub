@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import androidx.appcompat.widget.Toolbar;
 import com.bcappdevelopers.schoolhub.R;
 import com.bcappdevelopers.schoolhub.models.Announcement;
 import com.parse.*;
@@ -33,13 +34,29 @@ public class CreatePostActivity extends AppCompatActivity {
         btnPost = findViewById(R.id.btnPost);
         etTitle = findViewById(R.id.etPostTitle);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.include3);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Create Post");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+
         btnPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                saveAnnouncement(etDescription.getText().toString(), etTitle.getText().toString(), ParseUser.getCurrentUser(), null);
-                Intent i = new Intent(CreatePostActivity.this, AdminHomeActivity.class);
-                CreatePostActivity.this.startActivity(i);
+                if(!etDescription.getText().toString().isEmpty() && !etTitle.toString().isEmpty()) {
+                    saveAnnouncement(etDescription.getText().toString(), etTitle.getText().toString(), ParseUser.getCurrentUser(), null);
+                    Intent i = new Intent(CreatePostActivity.this, AdminHomeActivity.class);
+                    CreatePostActivity.this.startActivity(i);
+                }
             }
         });
     }
