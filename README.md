@@ -38,6 +38,8 @@ The app also provides a guide to nearby resources and amenities that are made av
 - [x] Settings Screen to allow users to edit their profile screen
 
 **Optional Nice-to-have Stories**
+- [x] Users can comment on announcements made by clubs
+- [ ] Users can recieve notifications when announcements are made
 - [ ] List of on campus amenities for students
 - [ ] Campus Map displays the map of the school
 - [ ] Student Profile's club list can contain a notification icon
@@ -89,8 +91,8 @@ The app also provides a guide to nearby resources and amenities that are made av
    | image         | File     | image that user posts |
    | caption       | String   | image caption by author |
    | commentsCount | Number   | number of comments that has been posted to an image |
-   | upvoteCount    | Number   | number of upvotes for the post |
-   | downvoteCount    | Number   | number of downvotes for the post |
+   | likeCount    | Number   | number of likes for the post |
+   | dislikeCount    | Number   | number of dislikes for the post |
 
 #### Events
 
