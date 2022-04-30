@@ -39,6 +39,7 @@ The app also provides a guide to nearby resources and amenities that are made av
 
 **Optional Nice-to-have Stories**
 - [x] Users can comment on announcements made by clubs
+- [ ] Users can recieve notifications when announcements are made
 - [ ] List of on campus amenities for students
 - [ ] Campus Map displays the map of the school
 - [ ] Student Profile's club list can contain a notification icon
