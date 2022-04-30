@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,6 +55,10 @@ public class SubscriberListFragment extends Fragment {
         adapter = new SubscriberListAdapter(getContext(), allSubs);
 
         Log.i(TAG, "INSIDE OF CLUB FRAG");
+//
+//        Toolbar toolbar = (Toolbar) view.findViewById(R.id.include4);
+//        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+//        ((AppCompatActivity)getActivity()).setTitle("Subscribers");
 
         //STEPS
         //0. create layout for 1 row in the list

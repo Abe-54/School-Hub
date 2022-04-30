@@ -3,42 +3,43 @@
     xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:background="@drawable/school_hub_app_bg" android:backgroundTint="#66000000" android:backgroundTintMode="src_over"
-    android:padding="10dp" tools:context=".admin.ClubSettingsActivity">
+    tools:context=".admin.ClubSettingsActivity">
 
     <ImageView android:id="@+id/ivClubImageEdit" android:layout_width="120dp" android:layout_height="120dp"
-        android:layout_marginStart="4dp" android:layout_marginTop="36dp" app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="36dp" app:layout_constraintStart_toStartOf="@+id/etDescription"
         app:layout_constraintTop_toTopOf="parent" app:srcCompat="@drawable/outline_account_circle_black_48"
         tools:src="@drawable/outline_account_circle_black_48" />
-
     <Button android:id="@+id/btnEditImage" android:layout_width="wrap_content" android:layout_height="wrap_content"
         android:layout_marginTop="88dp" android:backgroundTint="@color/burgendy" android:text="Edit Profile Image"
-        app:cornerRadius="20dp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.421"
-        app:layout_constraintStart_toEndOf="@+id/ivClubImageEdit" app:layout_constraintTop_toTopOf="parent" />
+        android:textColor="@color/white" app:cornerRadius="20dp" app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.421" app:layout_constraintStart_toEndOf="@+id/ivClubImageEdit"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView android:id="@+id/etDescription" android:layout_width="wrap_content" android:layout_height="48dp"
-        android:layout_marginTop="20dp" android:alpha="1" android:background="@drawable/rounded_edge_et"
-        android:backgroundTint="@color/grey" android:gravity="center_vertical" android:inputType="textPersonName"
-        android:paddingLeft="10dp" android:paddingRight="10dp" android:text=" Club Description: "
-        android:textColor="#070000" android:textSize="20sp" android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.077"
-        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/ivClubImageEdit" />
+    <TextView android:id="@+id/etDescription" android:layout_width="0dp" android:layout_height="78dp"
+        android:layout_marginTop="20dp" android:layout_marginEnd="16dp" android:alpha="1"
+        android:background="@drawable/rounded_edge_et" android:backgroundTint="@color/grey" android:gravity="center_vertical" android:inputType="textMultiLine"
+        android:paddingLeft="10dp" android:paddingRight="10dp" android:text="Club Description: Edit below to change your club description"
+        android:textAlignment="viewStart" android:textAllCaps="false" android:textColor="@color/black" android:textSize="20dp" android:textStyle="italic"
+        app:autoSizeMaxTextSize="20dp" app:autoSizeMinTextSize="15dp" app:autoSizeStepGranularity="1dp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintEnd_toEndOf="@+id/etEditDescirption" app:layout_constraintStart_toStartOf="@+id/etEditDescirption"
+        app:layout_constraintTop_toBottomOf="@+id/ivClubImageEdit" />
     <Button android:id="@+id/btnSubmitChanges" android:layout_width="232dp" android:layout_height="48dp"
-        android:layout_marginEnd="80dp" android:backgroundTint="@color/burgendy" android:text="Submit Changes"
-        android:textColor="#F6F5F5" app:cornerRadius="20dp" app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/etEditDescirption"
-        app:layout_constraintVertical_bias="0.163" />
-
+        android:layout_marginTop="28dp" android:backgroundTint="@color/burgendy" android:text="Submit Changes"
+        android:textColor="#F6F5F5" app:cornerRadius="20dp" app:layout_constraintEnd_toEndOf="@+id/btnCancelChanges"
+        app:layout_constraintStart_toStartOf="@+id/btnCancelChanges" app:layout_constraintTop_toBottomOf="@+id/etEditDescirption" />
     <Button android:id="@+id/btnCancelChanges" android:layout_width="232dp" android:layout_height="48dp"
-        android:layout_marginEnd="80dp" android:backgroundTint="@color/red_2" android:text="Cancel Changes"
-        android:textColor="@color/white" app:cornerRadius="20dp" app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/btnSubmitChanges"
-        app:layout_constraintVertical_bias="0.093" />
-    <EditText android:id="@+id/etEditDescirption" android:layout_width="355dp" android:layout_height="203dp"
-        android:layout_marginBottom="172dp" android:alpha="1" android:background="@drawable/rounded_edge_et"
-        android:backgroundTint="@color/grey" android:gravity="top|left" android:hint="Add new club description here!"
-        android:inputType="textMultiLine" android:paddingLeft="10dp" android:paddingRight="10dp"
-        android:textAlignment="viewStart" app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.421"
-        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/etDescription"
-        app:layout_constraintVertical_bias="0.18" />
+        android:backgroundTint="@color/red_2" android:text="Cancel Changes" android:textColor="@color/white"
+        app:cornerRadius="20dp" app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSubmitChanges" app:layout_constraintVertical_bias="0.093" />
+    <EditText android:id="@+id/etEditDescirption" android:layout_width="0dp" android:layout_height="201dp"
+        android:layout_marginStart="24dp" android:layout_marginEnd="24dp" android:layout_marginBottom="172dp"
+        android:alpha="1" android:background="@drawable/rounded_edge_et" android:backgroundTint="@color/grey"
+        android:gravity="top|left" android:hint="Add new club description here!" android:inputType="textMultiLine"
+        android:padding="15dp" android:paddingRight="10dp" android:textAlignment="viewStart"
+        android:textColor="@color/black" android:textColorHint="@color/grey_hint"
+        app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515" app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etDescription" app:layout_constraintVertical_bias="0.148" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,13 +9,22 @@
 
     <TextView android:id="@+id/tvSubscriberListTitle" android:layout_width="wrap_content" android:layout_height="wrap_content"
         android:layout_marginTop="16dp" android:text="Subscribers" android:textAlignment="center" android:textColor="@color/white"
-        android:textSize="24sp" android:textStyle="bold" android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="24sp" android:textStyle="bold" android:visibility="gone" app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498" app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.tabs.TabLayout android:id="@+id/adminSubTabBar" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:background="@color/gold" app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
+        app:tabTextColor="@color/black">>
+        <com.google.android.material.tabs.TabItem android:id="@+id/tiSubscribers" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:text="Subscribers" />
+    </com.google.android.material.tabs.TabLayout>
 
     <androidx.recyclerview.widget.RecyclerView android:id="@+id/rvSubList" android:layout_width="match_parent"
-        android:layout_height="0dp" android:padding="10dp" app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSubscriberListTitle" app:layout_constraintVertical_bias="0.0" />
+        android:layout_height="0dp" android:paddingLeft="10dp" android:paddingRight="10dp"
+        app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/adminSubTabBar"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -68,8 +68,7 @@ public class ClubSettingsActivity extends AppCompatActivity {
         btnCancelChanges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(ClubSettingsActivity.this, AdminHomeActivity.class);
-                ClubSettingsActivity.this.startActivity(i);
+                finish();
             }
         });
     }

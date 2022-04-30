@@ -11,8 +11,9 @@
         <TextView android:id="@+id/tvCommentProfileName" android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_marginTop="4dp" android:gravity="center"
             android:hint="NAME" android:maxLength="40" android:maxLines="2" android:textColor="@color/black"
-            android:textSize="10dp" android:textStyle="bold" app:layout_constraintEnd_toEndOf="@+id/ivUserComment"
-            app:layout_constraintStart_toStartOf="@+id/ivUserComment" app:layout_constraintTop_toBottomOf="@+id/ivUserComment" />
+            android:textColorHint="@color/black" android:textSize="10dp" android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/ivUserComment" app:layout_constraintStart_toStartOf="@+id/ivUserComment"
+            app:layout_constraintTop_toBottomOf="@+id/ivUserComment" />
         <ImageView android:id="@+id/ivUserComment" android:layout_width="64dp" android:layout_height="64dp"
             android:layout_marginStart="4dp" app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
@@ -25,28 +26,32 @@
 
         <ImageButton android:id="@+id/btnReply" android:layout_width="wrap_content" android:layout_height="wrap_content"
             android:layout_marginTop="8dp" android:layout_marginEnd="32dp" android:background="@android:color/transparent"
-            android:minWidth="48dp" android:minHeight="48dp" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvComment" app:srcCompat="@drawable/outline_add_comment_24" tools:ignore="SpeakableTextPresentCheck" />
+            android:minWidth="48dp" android:minHeight="48dp" android:tint="@color/burgendy"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/tvComment" app:srcCompat="@drawable/outline_add_comment_24"
+            tools:ignore="SpeakableTextPresentCheck" />
         <ImageButton android:id="@+id/btnDislikeComment" android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_marginTop="8dp" android:background="@android:color/transparent"
             android:minWidth="48dp" android:minHeight="48dp"
-            app:layout_constraintEnd_toStartOf="@+id/btnReply" app:layout_constraintHorizontal_bias="0.283"
-            app:layout_constraintStart_toEndOf="@+id/btnLikeComment" app:layout_constraintTop_toBottomOf="@+id/tvComment"
-            app:srcCompat="@drawable/outline_thumb_down_24" tools:ignore="SpeakableTextPresentCheck" />
+            android:tint="@color/burgendy" app:layout_constraintEnd_toStartOf="@+id/btnReply"
+            app:layout_constraintHorizontal_bias="0.283" app:layout_constraintStart_toEndOf="@+id/btnLikeComment"
+            app:layout_constraintTop_toBottomOf="@+id/tvComment" app:srcCompat="@drawable/outline_thumb_down_24"
+            tools:ignore="SpeakableTextPresentCheck" />
         <ImageButton android:id="@+id/btnLikeComment" android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_marginStart="8dp" android:layout_marginTop="8dp"
             android:background="@android:color/transparent" android:minWidth="48dp" android:minHeight="48dp"
-            app:layout_constraintStart_toEndOf="@+id/ivUserComment" app:layout_constraintTop_toBottomOf="@+id/tvComment"
-            app:srcCompat="@drawable/outline_thumb_up_24" tools:ignore="SpeakableTextPresentCheck" />
+            android:tint="@color/burgendy" app:layout_constraintStart_toEndOf="@+id/ivUserComment"
+            app:layout_constraintTop_toBottomOf="@+id/tvComment" app:srcCompat="@drawable/outline_thumb_up_24"
+            tools:ignore="SpeakableTextPresentCheck" />
         <TextView android:id="@+id/tvCommentLikeCounter" android:layout_width="wrap_content" android:layout_height="wrap_content"
             android:layout_marginStart="-20dp" android:layout_marginTop="8dp" android:gravity="center_horizontal|center_vertical" android:inputType="number"
-            android:minWidth="48dp" android:minHeight="48dp" android:text="0" android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/btnLikeComment" app:layout_constraintTop_toBottomOf="@+id/tvComment" />
+            android:minWidth="48dp" android:minHeight="48dp" android:text="0" android:textColor="@color/burgendy"
+            android:textSize="20sp" app:layout_constraintStart_toEndOf="@+id/btnLikeComment"
+            app:layout_constraintTop_toBottomOf="@+id/tvComment" />
         <TextView android:id="@+id/tvCommentDislikeCounter" android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_marginStart="-20dp" android:layout_marginTop="8dp"
             android:gravity="center_horizontal|center_vertical" android:inputType="number" android:minWidth="48dp"
-            android:minHeight="48dp" android:text="0" android:textSize="20sp" app:layout_constraintStart_toEndOf="@+id/btnDislikeComment"
-            app:layout_constraintTop_toBottomOf="@+id/tvComment" />
+            android:minHeight="48dp" android:text="0" android:textColor="@color/burgendy" android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/btnDislikeComment" app:layout_constraintTop_toBottomOf="@+id/tvComment" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

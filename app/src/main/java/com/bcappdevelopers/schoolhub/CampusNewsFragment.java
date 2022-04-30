@@ -48,7 +48,6 @@ public class CampusNewsFragment extends Fragment {
         rvCampusAnnoucements = view.findViewById(R.id.rvCampusAnnouncements);
         allAnnouncements = new ArrayList<>();
 
-
         Log.i(TAG, "INSIDE OF CAMPUS FRAG");
 
         //STEPS
@@ -104,6 +103,7 @@ public class CampusNewsFragment extends Fragment {
                                 if(user.getObjectId().compareTo(ParseUser.getCurrentUser().getObjectId()) == 0 &&
                                         announcement.getEventClub().getString("clubName").compareTo(COLLEGE) == 0) {
                                     Log.i(TAG, "User: " + user.getString("username") + " is in Club " + announcement.getEventClub().getString("clubName"));
+                                    Log.i(TAG, "Created At: " + announcement.getCreatedAt()) ;
                                     allAnnouncements.add(announcement);
                                 }
                             }

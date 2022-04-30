@@ -15,19 +15,24 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bcappdevelopers.schoolhub.LoginActivity;
 import com.bcappdevelopers.schoolhub.R;
 import com.bcappdevelopers.schoolhub.admin.AdminHomeActivity;
 import com.bcappdevelopers.schoolhub.admin.ClubSettingsActivity;
 import com.bcappdevelopers.schoolhub.admin.CreatePostActivity;
+import com.bcappdevelopers.schoolhub.models.Announcement;
 import com.bcappdevelopers.schoolhub.models.Club;
+import com.bcappdevelopers.schoolhub.student.adapters.AnnouncementAdapter;
 import com.bumptech.glide.Glide;
 import com.parse.*;
 import jp.wasabeef.glide.transformations.CropCircleWithBorderTransformation;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.*;
 
 
 public class AdminProfileFragment extends Fragment {
@@ -40,6 +45,10 @@ public class AdminProfileFragment extends Fragment {
     Button btnEventArchive;
     Button btnSignOut;
     ImageButton btnClubSettings;
+    RecyclerView rvAdminProfileAnnouncements;
+
+    private AnnouncementAdapter adapter;
+    private List<ParseObject> allAnnouncements;
 
     ParseObject clubObject;
     public AdminProfileFragment() {
@@ -68,8 +77,16 @@ public class AdminProfileFragment extends Fragment {
         btnEventArchive = view.findViewById(R.id.btnAdminEventsArchive);
         btnClubSettings = view.findViewById(R.id.btnSettings);
         btnSignOut = view.findViewById(R.id.btnAdminSignOut);
+        rvAdminProfileAnnouncements = view.findViewById(R.id.rvAdminProfileAnnouncements);
+
+        allAnnouncements = new ArrayList<>();
+        adapter = new AnnouncementAdapter(getContext(), allAnnouncements);
 
         QueryClubData();
+
+        rvAdminProfileAnnouncements.setAdapter(adapter);
+        //4. set the layout manager on rv
+        rvAdminProfileAnnouncements.setLayoutManager(new LinearLayoutManager(getContext()));
         
         btnEventArchive.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,7 +139,6 @@ public class AdminProfileFragment extends Fragment {
                             Log.e(TAG, "Issues getting club data", e);
                             return;
                         }
-
                         clubObject = club;
 
                         Log.i(TAG, "Found: " + club.getString("clubName"));
@@ -139,6 +155,53 @@ public class AdminProfileFragment extends Fragment {
                                     .transform(new CropCircleWithBorderTransformation())
                                     .into(ivClubProfile);
                         }
+
+                        QueryClubAnnouncements(clubObject);
+                    }
+                });
+            }
+        });
+    }
+
+    private void QueryClubAnnouncements(ParseObject clubObject) {
+
+        Calendar cal = new GregorianCalendar();
+        cal.add(Calendar.DAY_OF_MONTH, -7);
+        Date sevenDaysAgo = cal.getTime();
+
+        ParseQuery<Club> query = ParseQuery.getQuery(Club.class);
+
+        query.getInBackground(clubObject.getObjectId(), new GetCallback<Club>() {
+            @Override
+            public void done(Club club, ParseException e) {
+
+                ParseQuery<ParseObject> announcementQuery = club.getRelation("clubAnnouncements").getQuery();
+                announcementQuery.include("madeBy");
+                announcementQuery.findInBackground(new FindCallback<ParseObject>() {
+                    @Override
+                    public void done(List<ParseObject> announcements, ParseException e) {
+                        if (e != null) {
+                            Log.e(TAG, "Issues getting club announcements", e);
+                            return;
+                        }
+
+                        for (ParseObject announcement : announcements) {
+                            if(announcement.getCreatedAt().after(sevenDaysAgo)) {
+                                Log.i(TAG, "found announcement: " + announcement.getString("eventName"));
+                                allAnnouncements.add(announcement);
+                            }
+                        }
+
+                        Collections.sort(allAnnouncements, new Comparator<ParseObject>() {
+                            @Override
+                            public int compare(ParseObject date, ParseObject date1) {
+                                return date.getCreatedAt().toString().compareTo(date1.getCreatedAt().toString());
+                            }
+                        });
+
+                        Collections.reverse(allAnnouncements);
+
+                        adapter.notifyDataSetChanged();
                     }
                 });
             }

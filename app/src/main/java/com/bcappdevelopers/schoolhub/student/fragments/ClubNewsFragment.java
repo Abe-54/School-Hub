@@ -24,6 +24,7 @@ import java.util.List;
 public class ClubNewsFragment extends Fragment {
 
     private static final String TAG = "CLUB NEWS FRAGMENT";
+    private static final String COLLEGE = "Bloomfield College";
 
     private RecyclerView rvClubAnnoucements;
     private AnnouncementAdapter adapter;
@@ -91,7 +92,7 @@ public class ClubNewsFragment extends Fragment {
 
                             for(ParseObject user : users) {
                                 if(user.getObjectId().compareTo(ParseUser.getCurrentUser().getObjectId()) == 0 &&
-                                        announcement.getEventClub().getString("clubName").compareTo("Bloomfield College") != 0) {
+                                        announcement.getEventClub().getString("clubName").compareTo(COLLEGE) != 0) {
                                     Log.i(TAG, "User: " + user.getString("username") + " is in Club " + announcement.getEventClub().getString("clubName"));
                                     allAnnouncements.add(announcement);
                                 }

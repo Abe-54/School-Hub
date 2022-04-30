@@ -4,28 +4,32 @@
     android:id="@+id/rlSubItemContainer" android:layout_width="match_parent" android:layout_height="wrap_content"
     android:padding="5dp">
 
-    <androidx.cardview.widget.CardView android:id="@+id/cardView" android:layout_width="wrap_content"
-        android:layout_height="80dp" android:layout_marginStart="4dp" android:layout_marginTop="4dp"
-        app:cardBackgroundColor="@color/grey" app:cardCornerRadius="13dp" app:layout_constraintStart_toStartOf="parent"
+    <androidx.cardview.widget.CardView android:id="@+id/cardView" android:layout_width="match_parent"
+        android:layout_height="80dp" android:layout_marginTop="4dp" app:cardBackgroundColor="@color/grey"
+        app:cardCornerRadius="13dp" app:layout_constraintEnd_toStartOf="@+id/btnManageMember"
+        app:layout_constraintHorizontal_bias="0.0" app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-        <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="223dp"
-            android:layout_height="match_parent" android:padding="5dp" android:paddingEnd="10dp">
+        <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+            android:layout_height="match_parent" android:padding="5dp">
 
+            <Button android:id="@+id/btnManageMember" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_marginStart="4dp" android:layout_marginTop="16dp" android:layout_marginBottom="16dp"
+                android:backgroundTint="@color/burgendy" android:text="Manage"
+                android:textColor="@color/white" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.75"
+                app:layout_constraintStart_toEndOf="@+id/tvSubName" app:layout_constraintTop_toTopOf="parent" />
             <ImageView android:id="@+id/ivSubImage" android:layout_width="50dp" android:layout_height="50dp"
                 android:layout_marginStart="16dp" app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" app:srcCompat="@mipmap/no_profile_image"
                 tools:src="@mipmap/no_profile_image" />
             <TextView android:id="@+id/tvSubName" android:layout_width="125dp" android:layout_height="60dp"
                 android:layout_marginStart="7dp" android:layout_marginEnd="10dp" android:ellipsize="end"
-                android:fontFamily="sans-serif-medium" android:gravity="center_vertical" android:hint="SUB NAME" android:maxLines="1"
-                android:minLines="1" android:textSize="14sp" app:autoSizeMaxTextSize="18dp"
+                android:fontFamily="sans-serif-medium" android:gravity="center_vertical" android:hint="SUB NAME"
+                android:maxLines="1" android:minLines="1" android:textColor="@color/black" android:textColorHint="@color/black"
+                android:textSize="14sp" app:autoSizeMaxTextSize="18dp"
                 app:autoSizeTextType="uniform" app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toEndOf="@+id/ivSubImage"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/ivSubImage" app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
-    <Button android:id="@+id/btnManageMember" android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp" android:backgroundTint="@color/burgendy" android:text="Manage"
-        app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.466" />
 </androidx.constraintlayout.widget.ConstraintLayout>

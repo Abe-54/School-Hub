@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -72,7 +71,7 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
             cvAnnouncementContainer = itemView.findViewById(R.id.cvAnnouncementContainer);
             ivUserImage = itemView.findViewById(R.id.ivAnnouncement);
             tvProfileName = itemView.findViewById(R.id.tvProfileName);
-            tvAnnouncementDescription = itemView.findViewById(R.id.tvAnnouncementDescription);
+            tvAnnouncementDescription = itemView.findViewById(R.id.tvAnnouncementTitle);
             tvUpVoteCount = itemView.findViewById(R.id.tvUpVoteCount);
             tvDownVoteCount = itemView.findViewById(R.id.tvDownVoteCount);
             btnUpVote = itemView.findViewById(R.id.btnAnnouncementLike);
@@ -82,7 +81,7 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
         public void bind(ParseObject announcement) {
 
             tvProfileName.setText(announcement.getParseObject("madeBy").getString("clubName"));
-            tvAnnouncementDescription.setText(announcement.getString("eventDescription"));
+            tvAnnouncementDescription.setText(announcement.getString("eventName"));
             tvUpVoteCount.setText("0");
             tvDownVoteCount.setText("0");
 
