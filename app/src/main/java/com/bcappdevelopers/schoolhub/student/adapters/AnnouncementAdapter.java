@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bcappdevelopers.schoolhub.PostFeedActivity;
@@ -22,6 +23,8 @@ import jp.wasabeef.glide.transformations.CropCircleWithBorderTransformation;
 import org.parceler.Parcels;
 
 import java.util.List;
+
+import static com.parse.Parse.getApplicationContext;
 
 public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapter.ViewHolder> {
 
@@ -60,10 +63,16 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
         private ImageView ivUserImage;
         private TextView tvProfileName;
         private TextView tvAnnouncementDescription;
-        private TextView tvUpVoteCount;
-        private TextView tvDownVoteCount;
-        private ImageButton btnUpVote;
-        private ImageButton btnDownVote;
+        private TextView tvLikeCounter;
+        private TextView tvDislikeCounter;
+        private ImageButton btnLike;
+        private ImageButton btnDislike;
+
+        boolean isLiked = false;
+        int likedIcon;
+
+        boolean isDisliked = false;
+        int dislikedICon;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -72,18 +81,24 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
             ivUserImage = itemView.findViewById(R.id.ivAnnouncement);
             tvProfileName = itemView.findViewById(R.id.tvProfileName);
             tvAnnouncementDescription = itemView.findViewById(R.id.tvAnnouncementTitle);
-            tvUpVoteCount = itemView.findViewById(R.id.tvUpVoteCount);
-            tvDownVoteCount = itemView.findViewById(R.id.tvDownVoteCount);
-            btnUpVote = itemView.findViewById(R.id.btnAnnouncementLike);
-            btnDownVote = itemView.findViewById(R.id.btnAnnouncementDislike);
+            tvLikeCounter = itemView.findViewById(R.id.tvLikeCount);
+            tvDislikeCounter = itemView.findViewById(R.id.tvDislikeCount);
+            btnLike = itemView.findViewById(R.id.btnAnnouncementLike);
+            btnDislike = itemView.findViewById(R.id.btnAnnouncementDislike);
+
+            likedIcon = R.drawable.outline_thumb_up_24;
+            dislikedICon = R.drawable.outline_thumb_down_24;
         }
 
         public void bind(ParseObject announcement) {
 
+            int totalLiked = (int) announcement.getNumber("likeCounter");
+            int totalDisliked = (int) announcement.getNumber("dislikeCounter");
+
             tvProfileName.setText(announcement.getParseObject("madeBy").getString("clubName"));
             tvAnnouncementDescription.setText(announcement.getString("eventName"));
-            tvUpVoteCount.setText("0");
-            tvDownVoteCount.setText("0");
+            tvLikeCounter.setText(totalLiked + "");
+            tvDislikeCounter.setText(totalDisliked + "");
 
             ParseQuery<ParseObject> userQuery = ParseQuery.getQuery("Clubs");
 
@@ -113,6 +128,64 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
                     context.startActivity(i);
                 }
             });
+
+            btnLike.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(isLiked){
+                        isLiked = false;
+                        likedIcon = R.drawable.outline_thumb_up_24;
+                        if(totalLiked > 0) {
+                            announcement.put("likeCounter", totalLiked - 1);
+                        }
+                        announcement.saveInBackground();
+                        notifyDataSetChanged();
+                    } else {
+                        isLiked = true;
+                        isDisliked = false;
+                        likedIcon = R.drawable.filled_thumb_up_24;
+                        dislikedICon = R.drawable.outline_thumb_down_24;
+                        announcement.put("likeCounter", totalLiked + 1);
+                        if(totalDisliked > 0 && !isDisliked ) {
+                            announcement.put("dislikeCounter", totalDisliked - 1);
+                        }
+                        announcement.saveInBackground();
+                        notifyDataSetChanged();
+                    }
+
+                }
+            });
+
+            btnDislike.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(isDisliked ){
+                        isDisliked = false;
+                        dislikedICon = R.drawable.outline_thumb_down_24;
+                        if(totalDisliked > 0) {
+                            announcement.put("dislikeCounter", totalDisliked - 1);
+                        }
+                        announcement.saveInBackground();
+                        notifyDataSetChanged();
+                    } else {
+                            isDisliked = true;
+                            isLiked = false;
+                            dislikedICon = R.drawable.filled_thumb_down_24;
+                            likedIcon = R.drawable.outline_thumb_up_24;
+                            announcement.put("dislikeCounter", totalDisliked + 1);
+                            if(totalLiked > 0 && !isLiked) {
+                                announcement.put("likeCounter", totalLiked - 1);
+                            }
+                            announcement.saveInBackground();
+                            notifyDataSetChanged();
+                    }
+                }
+            });
+
+            btnLike.setImageDrawable(
+                    ContextCompat.getDrawable(getApplicationContext(), likedIcon));
+            btnDislike.setImageDrawable(
+                    ContextCompat.getDrawable(getApplicationContext(), dislikedICon));
         }
     }
 }

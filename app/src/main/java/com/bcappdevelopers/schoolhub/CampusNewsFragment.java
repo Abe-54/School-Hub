@@ -5,15 +5,18 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bcappdevelopers.schoolhub.R;
+import com.bcappdevelopers.schoolhub.databinding.ProgressOverlayBinding;
 import com.bcappdevelopers.schoolhub.models.Announcement;
 import com.bcappdevelopers.schoolhub.student.adapters.AnnouncementAdapter;
 import com.parse.*;
+import com.pnikosis.materialishprogress.ProgressWheel;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -29,6 +32,7 @@ public class CampusNewsFragment extends Fragment {
     private RecyclerView rvCampusAnnoucements;
     private AnnouncementAdapter adapter;
     private List<ParseObject> allAnnouncements;
+    private FrameLayout progressOverlay;
 
     public CampusNewsFragment() {
         // Required empty public constructor
@@ -46,6 +50,8 @@ public class CampusNewsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         rvCampusAnnoucements = view.findViewById(R.id.rvCampusAnnouncements);
+        progressOverlay = view.findViewById(R.id.progress_overlay_campus_news);
+        setVisible();
         allAnnouncements = new ArrayList<>();
 
         Log.i(TAG, "INSIDE OF CAMPUS FRAG");
@@ -117,11 +123,20 @@ public class CampusNewsFragment extends Fragment {
 
                             Collections.reverse(allAnnouncements);
 
+                            setInvisible();
+
                             adapter.notifyDataSetChanged();
                         }
                     });
                 }
             }
         });
+    }
+
+    public void setInvisible() {
+        progressOverlay.setVisibility(View.INVISIBLE);
+    }
+    public void setVisible() {
+        progressOverlay.setVisibility(View.VISIBLE);
     }
 }

@@ -2,6 +2,7 @@ package com.bcappdevelopers.schoolhub.admin.fragments;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +30,7 @@ public class SubscriberListFragment extends Fragment {
     private RecyclerView rvSubList;
     private SubscriberListAdapter adapter;
     private List<ParseObject> allSubs;
+    private FrameLayout progressOverlay;
 
     public SubscriberListFragment() {
         // Required empty public constructor
@@ -51,8 +53,11 @@ public class SubscriberListFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         rvSubList = view.findViewById(R.id.rvSubList);
+        progressOverlay = view.findViewById(R.id.progress_overlay_sub_list);
         allSubs = new ArrayList<>();
         adapter = new SubscriberListAdapter(getContext(), allSubs);
+
+        setVisible();
 
         Log.i(TAG, "INSIDE OF CLUB FRAG");
 //
@@ -90,10 +95,18 @@ public class SubscriberListFragment extends Fragment {
                             Log.i(TAG, "Found: " + subscriber.getString("username"));
                         }
                         allSubs.addAll(subscribers);
+                        setInvisible();
                         adapter.notifyDataSetChanged();
                     }
                 });
             }
         });
+    }
+
+    public void setInvisible() {
+        progressOverlay.setVisibility(View.INVISIBLE);
+    }
+    public void setVisible() {
+        progressOverlay.setVisibility(View.VISIBLE);
     }
 }

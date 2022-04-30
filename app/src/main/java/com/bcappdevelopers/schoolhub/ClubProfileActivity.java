@@ -235,8 +235,5 @@ public class ClubProfileActivity extends AppCompatActivity {
         btnSubScribe.setText("Subscribe");
 
 
-
-
-
     }
 }

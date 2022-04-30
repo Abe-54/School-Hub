@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -29,6 +30,7 @@ public class ClubNewsFragment extends Fragment {
     private RecyclerView rvClubAnnoucements;
     private AnnouncementAdapter adapter;
     private List<ParseObject> allAnnouncements;
+    private FrameLayout progressOverlay;
 
     public ClubNewsFragment() {
         // Required empty public constructor
@@ -46,8 +48,11 @@ public class ClubNewsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         rvClubAnnoucements = view.findViewById(R.id.rvClubAnnouncements);
+        progressOverlay = view.findViewById(R.id.progress_overlay_club_news);
         allAnnouncements = new ArrayList<>();
         adapter = new AnnouncementAdapter(getContext(), allAnnouncements);
+
+        setVisible();
 
         Log.i(TAG, "INSIDE OF CLUB FRAG");
 
@@ -107,11 +112,20 @@ public class ClubNewsFragment extends Fragment {
 
                             Collections.reverse(allAnnouncements);
 
+                            setInvisible();
+
                             adapter.notifyDataSetChanged();
                         }
                     });
                 }
             }
         });
+    }
+
+    public void setInvisible() {
+        progressOverlay.setVisibility(View.INVISIBLE);
+    }
+    public void setVisible() {
+        progressOverlay.setVisibility(View.VISIBLE);
     }
 }

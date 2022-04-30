@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import android.util.Log;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -38,6 +39,7 @@ public class StudentProfileFragment extends Fragment {
     private ClubProfileAdapter adapter;
     private List<ParseObject> allClubs;
     private Button signOutButton;
+    private FrameLayout progressOverlay;
 
     private boolean allowRefresh = true;
 
@@ -61,8 +63,11 @@ public class StudentProfileFragment extends Fragment {
         tvName = view.findViewById(R.id.tvStudentName);
         ivProfileIcon = view.findViewById(R.id.ivStudentIcon);
         signOutButton = view.findViewById(R.id.btnSignOut);
+        progressOverlay = view.findViewById(R.id.progress_overlay_student_profile);
         allClubs = new ArrayList<>();
         adapter = new ClubProfileAdapter(getContext(), allClubs);
+
+        setVisible();
 
         Log.i(TAG, "INSIDE OF PROFILE FRAG");
 
@@ -136,6 +141,7 @@ public class StudentProfileFragment extends Fragment {
                                 }
 
                                 allClubs.addAll(objects);
+                                setInvisible();
                                 adapter.notifyDataSetChanged();
                             }
                         });
@@ -143,5 +149,14 @@ public class StudentProfileFragment extends Fragment {
                 }
             }
         });
+    }
+
+    public void setInvisible() {
+        progressOverlay.setVisibility(View.INVISIBLE);
+        signOutButton.setClickable(true);
+    }
+    public void setVisible() {
+        progressOverlay.setVisibility(View.VISIBLE);
+        signOutButton.setClickable(false);
     }
 }

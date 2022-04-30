@@ -4,5 +4,7 @@
     android:layout_width="match_parent" android:layout_height="match_parent" android:layout_margin="10dp"
     android:layout_marginBottom="0dp" tools:context=".CampusNewsFragment">
 
+        <include android:id="@+id/progress_overlay_campus_news" layout="@layout/progress_overlay"/>
+
         <androidx.recyclerview.widget.RecyclerView android:id="@+id/rvCampusAnnouncements" android:layout_width="match_parent" android:layout_height="match_parent" />
 </FrameLayout>

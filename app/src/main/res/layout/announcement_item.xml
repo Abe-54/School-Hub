@@ -9,12 +9,12 @@
         android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/grey"
         android:padding="10dp">
 
-        <TextView android:id="@+id/tvDownVoteCount" android:layout_width="wrap_content"
+        <TextView android:id="@+id/tvDislikeCount" android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_marginStart="-20dp" android:layout_marginTop="8dp"
             android:gravity="center_horizontal|center_vertical" android:inputType="number" android:minWidth="48dp"
             android:minHeight="48dp" android:text="0" android:textColor="@color/burgendy" android:textSize="20sp"
             app:layout_constraintStart_toEndOf="@+id/btnAnnouncementDislike" app:layout_constraintTop_toBottomOf="@+id/tvAnnouncementTitle" />
-        <TextView android:id="@+id/tvUpVoteCount" android:layout_width="wrap_content"
+        <TextView android:id="@+id/tvLikeCount" android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_marginStart="-20dp" android:layout_marginTop="8dp"
             android:gravity="center_horizontal|center_vertical" android:inputType="number" android:minWidth="48dp"
             android:minHeight="48dp" android:text="0" android:textColor="@color/burgendy" android:textSize="20sp"

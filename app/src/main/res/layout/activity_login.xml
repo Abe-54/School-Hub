@@ -3,20 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout" android:layout_width="match_parent" android:layout_height="match_parent"
     android:layout_centerInParent="false" android:background="@drawable/school_hub_app_bg"
-    tools:context=".LoginActivity">
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@color/translucent_black" />
+    android:backgroundTint="#73000000" android:backgroundTintMode="src_over" tools:context=".LoginActivity">
 
     <ImageView android:id="@+id/iv_logo" android:layout_width="369dp" android:layout_height="109dp"
         android:layout_marginTop="16dp" android:background="#75FFFFFF" android:padding="10dp"
-        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/college_logo" />
+        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" app:srcCompat="@drawable/college_logo" />
     <EditText android:id="@+id/etUsername" android:layout_width="276dp" android:layout_height="wrap_content"
         android:layout_marginTop="28dp" android:background="@color/white" android:ems="10" android:hint="Username"
         android:inputType="textPersonName" android:minHeight="48dp" android:paddingStart="10dp"
@@ -24,19 +16,19 @@
         app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/iv_logo"
         tools:ignore="TextContrastCheck" />
     <Button android:id="@+id/btnLogin" android:layout_width="163dp" android:layout_height="48dp"
-        android:layout_marginTop="12dp" android:backgroundTint="@color/burgendy" android:hapticFeedbackEnabled="false"
-        android:hint="LOGIN" android:textAlignment="center" android:textColor="@android:color/white" android:textSize="14dp" app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/etPassword"
-        tools:text="LOGIN" />
+        android:layout_marginTop="12dp" android:backgroundTint="@color/burgendy" android:hint="LOGIN"
+        android:text="LOGIN" android:textAlignment="center"
+        android:textColor="@android:color/white" android:textColorHighlight="@color/white" android:textColorLink="@android:color/white"
+        android:textSize="14dp" app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/etPassword" />
     <Button android:id="@+id/btnSignUp_loginActivity" android:layout_width="163dp" android:layout_height="48dp"
         android:layout_marginBottom="340dp" android:backgroundTint="@color/burgendy" android:text="Sign up"
-        android:textColor="@android:color/white" android:textSize="14dp"
-        app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+        android:textColor="@android:color/white" android:textSize="14dp" app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
     <EditText android:id="@+id/etPassword" android:layout_width="276dp" android:layout_height="48dp"
         android:layout_marginTop="24dp" android:background="@color/white" android:ems="10" android:hint="Password"
-        android:inputType="textPassword" android:minHeight="48dp"
-        android:paddingStart="10dp" android:textColor="@color/black" android:textColorHint="@color/grey"
+        android:inputType="textPassword" android:minHeight="48dp" android:paddingStart="10dp" android:textColor="@color/black" android:textColorHint="@color/grey"
         app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etUsername" tools:ignore="TextContrastCheck" />
 
