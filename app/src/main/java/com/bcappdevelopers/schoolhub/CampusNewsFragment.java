@@ -110,6 +110,7 @@ public class CampusNewsFragment extends Fragment {
                                         announcement.getEventClub().getString("clubName").compareTo(COLLEGE) == 0) {
                                     Log.i(TAG, "User: " + user.getString("username") + " is in Club " + announcement.getEventClub().getString("clubName"));
                                     Log.i(TAG, "Created At: " + announcement.getCreatedAt()) ;
+
                                     allAnnouncements.add(announcement);
                                 }
                             }

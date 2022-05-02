@@ -22,6 +22,8 @@ import com.parse.*;
 import jp.wasabeef.glide.transformations.CropCircleWithBorderTransformation;
 import org.parceler.Parcels;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import static com.parse.Parse.getApplicationContext;
@@ -92,17 +94,20 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
 
         public void bind(ParseObject announcement) {
 
+            //setting total likes & dislikes
             int totalLiked = (int) announcement.getNumber("likeCounter");
             int totalDisliked = (int) announcement.getNumber("dislikeCounter");
 
+            //setting component text values
             tvProfileName.setText(announcement.getParseObject("madeBy").getString("clubName"));
             tvAnnouncementDescription.setText(announcement.getString("eventName"));
             tvLikeCounter.setText(totalLiked + "");
             tvDislikeCounter.setText(totalDisliked + "");
 
-            ParseQuery<ParseObject> userQuery = ParseQuery.getQuery("Clubs");
+            ParseQuery<ParseObject> clubAdminQuery = ParseQuery.getQuery("Clubs");
 
-            userQuery.getInBackground(announcement.getParseObject("madeBy").getObjectId(), new GetCallback<ParseObject>() {
+            //Querying club announcements
+            clubAdminQuery.getInBackground(announcement.getParseObject("madeBy").getObjectId(), new GetCallback<ParseObject>() {
                 @Override
                 public void done(ParseObject club, ParseException e) {
                     if (e != null) {
@@ -120,6 +125,9 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
                 }
             });
 
+            SetupAnnouncementButtons(announcement);
+
+            //Enabling click announcement to go to post feed screen
             cvAnnouncementContainer.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -129,63 +137,152 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
                 }
             });
 
+            //setting up like button
             btnLike.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
                     if(isLiked){
                         isLiked = false;
                         likedIcon = R.drawable.outline_thumb_up_24;
                         if(totalLiked > 0) {
                             announcement.put("likeCounter", totalLiked - 1);
                         }
-                        announcement.saveInBackground();
-                        notifyDataSetChanged();
+
+                        ParseUser.getCurrentUser().getRelation("likedAnnouncements").remove(announcement);
+
                     } else {
                         isLiked = true;
-                        isDisliked = false;
                         likedIcon = R.drawable.filled_thumb_up_24;
-                        dislikedICon = R.drawable.outline_thumb_down_24;
+
                         announcement.put("likeCounter", totalLiked + 1);
-                        if(totalDisliked > 0 && !isDisliked ) {
+
+                        if(totalDisliked > 0 &&  isDisliked == true) {
                             announcement.put("dislikeCounter", totalDisliked - 1);
+                            dislikedICon = R.drawable.outline_thumb_down_24;
+                            isDisliked = false;
+                            ParseUser.getCurrentUser().getRelation("likedAnnouncements").remove(announcement);
+                            ParseUser.getCurrentUser().getRelation("dislikedAnnouncements").remove(announcement);
                         }
-                        announcement.saveInBackground();
-                        notifyDataSetChanged();
+
+                        ParseUser.getCurrentUser().getRelation("likedAnnouncements").add(announcement);
+
                     }
 
+                    ParseUser.getCurrentUser().saveInBackground();
+                    announcement.saveInBackground();
+                    notifyDataSetChanged();
                 }
             });
 
+            //setting up dislike button
             btnDislike.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(isDisliked ){
+
+                    if(isDisliked){
                         isDisliked = false;
                         dislikedICon = R.drawable.outline_thumb_down_24;
                         if(totalDisliked > 0) {
                             announcement.put("dislikeCounter", totalDisliked - 1);
                         }
-                        announcement.saveInBackground();
-                        notifyDataSetChanged();
+                        ParseUser.getCurrentUser().getRelation("dislikedAnnouncements").remove(announcement);
                     } else {
-                            isDisliked = true;
-                            isLiked = false;
-                            dislikedICon = R.drawable.filled_thumb_down_24;
+                        isDisliked = true;
+                        dislikedICon = R.drawable.filled_thumb_down_24;
+
+                        announcement.put("dislikeCounter", totalDisliked + 1);
+
+                        if(totalLiked > 0 &&  isLiked == true) {
+                            announcement.put("likeCounter", totalLiked - 1);
                             likedIcon = R.drawable.outline_thumb_up_24;
-                            announcement.put("dislikeCounter", totalDisliked + 1);
-                            if(totalLiked > 0 && !isLiked) {
-                                announcement.put("likeCounter", totalLiked - 1);
-                            }
-                            announcement.saveInBackground();
-                            notifyDataSetChanged();
+                            isLiked = false;
+                            ParseUser.getCurrentUser().getRelation("likedAnnouncements").remove(announcement);
+                            ParseUser.getCurrentUser().getRelation("dislikedAnnouncements").remove(announcement);
+                        }
+
+                        ParseUser.getCurrentUser().getRelation("dislikedAnnouncements").add(announcement);
                     }
+
+                    ParseUser.getCurrentUser().saveInBackground();
+                    announcement.saveInBackground();
+                    notifyDataSetChanged();
                 }
             });
 
+            //Setting like/dislike button image
             btnLike.setImageDrawable(
                     ContextCompat.getDrawable(getApplicationContext(), likedIcon));
             btnDislike.setImageDrawable(
                     ContextCompat.getDrawable(getApplicationContext(), dislikedICon));
+        }
+
+        private void SetupAnnouncementButtons(ParseObject announcement) {
+
+            ParseQuery<ParseObject> likedAnnouncementQuery = ParseUser.getCurrentUser().getRelation("likedAnnouncements").getQuery();
+
+            //Querying to get Current Users likes & dislikes
+            likedAnnouncementQuery.findInBackground(new FindCallback<ParseObject>() {
+                @Override
+                public void done(List<ParseObject> announcements, ParseException e) {
+                    if (e != null) {
+                        Log.e(TAG, "Issues getting user data", e);
+                        return;
+                    }
+
+                    Collections.sort(announcements, new Comparator<ParseObject>() {
+                        @Override
+                        public int compare(ParseObject date, ParseObject date1) {
+                            return date.getCreatedAt().toString().compareTo(date1.getCreatedAt().toString());
+                        }
+                    });
+
+                    Collections.reverse(announcements);
+
+                    for (int i = 0; i < announcements.size(); i++) {
+                        if(announcements.get(i).getObjectId().compareTo(announcement.getObjectId()) == 0) {
+                            Log.i(TAG, "found liked announcement: " + announcements.get(i).getString("eventName"));
+                            likedIcon = R.drawable.filled_thumb_up_24;
+                            isLiked = true;
+                        }
+                    }
+
+                    btnLike.setImageDrawable(
+                            ContextCompat.getDrawable(getApplicationContext(), likedIcon));
+                }
+            });
+
+            ParseQuery<ParseObject> dislikedAnnouncementQuery = ParseUser.getCurrentUser().getRelation("dislikedAnnouncements").getQuery();
+
+            dislikedAnnouncementQuery.findInBackground(new FindCallback<ParseObject>() {
+                @Override
+                public void done(List<ParseObject> announcements, ParseException e) {
+                    if (e != null) {
+                        Log.e(TAG, "Issues getting announcements", e);
+                        return;
+                    }
+
+                    Collections.sort(announcements, new Comparator<ParseObject>() {
+                        @Override
+                        public int compare(ParseObject date, ParseObject date1) {
+                            return date.getCreatedAt().toString().compareTo(date1.getCreatedAt().toString());
+                        }
+                    });
+
+                    Collections.reverse(announcements);
+
+                    for (int i = 0; i < announcements.size(); i++) {
+                        if(announcements.get(i).getObjectId().compareTo(announcement.getObjectId()) == 0) {
+                            Log.i(TAG, "found disliked announcement: " + announcements.get(i).getString("eventName"));
+                            dislikedICon = R.drawable.filled_thumb_down_24;
+                            isDisliked = true;
+                        }
+                    }
+
+                    btnDislike.setImageDrawable(
+                            ContextCompat.getDrawable(getApplicationContext(), dislikedICon));
+                }
+            });
         }
     }
 }
