@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.bcappdevelopers.schoolhub.R;
 import com.bcappdevelopers.schoolhub.models.Announcement;
 import com.bcappdevelopers.schoolhub.models.Club;
@@ -34,6 +35,7 @@ public class ClubListFragment extends Fragment {
     private ClubListAdapter adapter;
     private List<Club> allClubs;
     private FrameLayout progressOverlay;
+    private SwipeRefreshLayout swipeContainer;
 
     public ClubListFragment() {
         // Required empty public constructor
@@ -68,6 +70,22 @@ public class ClubListFragment extends Fragment {
         //4. set the layout manager on rv
         rvClubList.setLayoutManager(new LinearLayoutManager(getContext()));
         queryClubs();
+
+        swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainerClubList);
+        // Setup refresh listener which triggers new data loading
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code to refresh the list here.
+                // Make sure you call swipeContainer.setRefreshing(false)
+                // once the network request has completed successfully.
+                adapter.clear();
+                setVisible();
+                queryClubs();
+            }
+        });
+        // Configure the refreshing colors
+        swipeContainer.setColorSchemeResources(R.color.burgendy);
     }
 
     private void queryClubs() {
@@ -84,6 +102,7 @@ public class ClubListFragment extends Fragment {
                 }
                 allClubs.addAll(clubs);
                 setInvisible();
+                swipeContainer.setRefreshing(false);
                 adapter.notifyDataSetChanged();
             }
         });

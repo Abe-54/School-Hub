@@ -11,12 +11,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.bcappdevelopers.schoolhub.R;
-import com.bcappdevelopers.schoolhub.databinding.ProgressOverlayBinding;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.bcappdevelopers.schoolhub.models.Announcement;
 import com.bcappdevelopers.schoolhub.student.adapters.AnnouncementAdapter;
 import com.parse.*;
-import com.pnikosis.materialishprogress.ProgressWheel;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -33,6 +31,7 @@ public class CampusNewsFragment extends Fragment {
     private AnnouncementAdapter adapter;
     private List<ParseObject> allAnnouncements;
     private FrameLayout progressOverlay;
+    private SwipeRefreshLayout swipeContainer;
 
     public CampusNewsFragment() {
         // Required empty public constructor
@@ -71,11 +70,28 @@ public class CampusNewsFragment extends Fragment {
         //4. set the layout manager on rv
         rvCampusAnnoucements.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainerCampusNews);
+        // Setup refresh listener which triggers new data loading
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code to refresh the list here.
+                // Make sure you call swipeContainer.setRefreshing(false)
+                // once the network request has completed successfully.
+                adapter.clear();
+                setVisible();
+                queryAnnoucnements();
+            }
+        });
+        // Configure the refreshing colors
+        swipeContainer.setColorSchemeResources(R.color.burgendy);
+
     }
 
 
 
     private void queryAnnoucnements() {
+
         ParseQuery<Announcement> query = ParseQuery.getQuery(Announcement.class);
         query.include("madeBy");
         query.findInBackground(new FindCallback<Announcement>() {
@@ -93,8 +109,6 @@ public class CampusNewsFragment extends Fragment {
                         return;
                     }
 
-
-
                     ParseQuery<ParseObject> usersInClub = announcement.getEventClub().getRelation("usersInClub").getQuery();
                     usersInClub.include("inClub");
                     usersInClub.findInBackground(new FindCallback<ParseObject>() {
@@ -105,12 +119,13 @@ public class CampusNewsFragment extends Fragment {
                                 return;
                             }
 
+                            //adapter.clear();
+
                             for(ParseObject user : users) {
                                 if(user.getObjectId().compareTo(ParseUser.getCurrentUser().getObjectId()) == 0 &&
                                         announcement.getEventClub().getString("clubName").compareTo(COLLEGE) == 0) {
                                     Log.i(TAG, "User: " + user.getString("username") + " is in Club " + announcement.getEventClub().getString("clubName"));
-                                    Log.i(TAG, "Created At: " + announcement.getCreatedAt()) ;
-
+                                    Log.i(TAG, "Created At: " + announcement.getCreatedAt());
                                     allAnnouncements.add(announcement);
                                 }
                             }
@@ -125,6 +140,8 @@ public class CampusNewsFragment extends Fragment {
                             Collections.reverse(allAnnouncements);
 
                             setInvisible();
+
+                            swipeContainer.setRefreshing(false);
 
                             adapter.notifyDataSetChanged();
                         }

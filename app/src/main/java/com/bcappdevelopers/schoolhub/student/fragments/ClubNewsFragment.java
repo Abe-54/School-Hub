@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.bcappdevelopers.schoolhub.R;
 import com.bcappdevelopers.schoolhub.models.Announcement;
 import com.bcappdevelopers.schoolhub.student.adapters.AnnouncementAdapter;
@@ -31,6 +32,7 @@ public class ClubNewsFragment extends Fragment {
     private AnnouncementAdapter adapter;
     private List<ParseObject> allAnnouncements;
     private FrameLayout progressOverlay;
+    private SwipeRefreshLayout swipeContainer;
 
     public ClubNewsFragment() {
         // Required empty public constructor
@@ -65,6 +67,22 @@ public class ClubNewsFragment extends Fragment {
         //4. set the layout manager on rv
         rvClubAnnoucements.setLayoutManager(new LinearLayoutManager(getContext()));
         queryAnnoucnements();
+
+        swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainerClubNews);
+        // Setup refresh listener which triggers new data loading
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code to refresh the list here.
+                // Make sure you call swipeContainer.setRefreshing(false)
+                // once the network request has completed successfully.
+                adapter.clear();
+                setVisible();
+                queryAnnoucnements();
+            }
+        });
+        // Configure the refreshing colors
+        swipeContainer.setColorSchemeResources(R.color.burgendy);
     }
 
     private void queryAnnoucnements() {
@@ -113,6 +131,8 @@ public class ClubNewsFragment extends Fragment {
                             Collections.reverse(allAnnouncements);
 
                             setInvisible();
+
+                            swipeContainer.setRefreshing(false);
 
                             adapter.notifyDataSetChanged();
                         }
