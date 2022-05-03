@@ -14,11 +14,8 @@
         app:showAsAction="always" />
 
 
-    <item
-        android:id="@+id/clubMailBox"
-        android:icon="@android:drawable/sym_action_email"
-        android:title="Club Mail Box"
-        app:showAsAction="always" />
+    <item android:id="@+id/clubMailBox" android:icon="@android:drawable/sym_action_email" android:title="Club Mail Box"
+        android:visible="false" app:showAsAction="always" />
     <item android:id="@+id/clubProfile" android:icon="@drawable/outline_account_circle_black_36"
         android:title="Club Profile" app:showAsAction="always" />
 </menu>

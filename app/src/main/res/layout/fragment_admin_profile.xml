@@ -36,10 +36,19 @@
         <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
             android:layout_height="match_parent" android:padding="10dp" android:visibility="visible">
 
-            <androidx.recyclerview.widget.RecyclerView android:id="@+id/rvAdminProfileAnnouncements"
-                android:layout_width="0dp" android:layout_height="0dp" android:padding="5dp"
+            <TextView android:id="@+id/tvAnouncementSectionTitle" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:layout_marginStart="117dp" android:layout_marginTop="16dp"
+                android:layout_marginEnd="120dp" android:text="Recent Events" android:textColor="@color/black"
+                android:textSize="22dp" android:textStyle="bold" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout android:id="@+id/swipeContainerSubList"
+                android:layout_width="match_parent" android:layout_height="0dp" android:padding="5dp"
                 app:layout_constraintBottom_toTopOf="@+id/btnAdminEventsArchive" app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/tvAnouncementSectionTitle" />
+                app:layout_constraintHorizontal_bias="0.0" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvAnouncementSectionTitle">
+                <androidx.recyclerview.widget.RecyclerView android:id="@+id/rvAdminProfileAnnouncements"
+                    android:layout_width="0dp" android:layout_height="0dp" />
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
             <TextView android:id="@+id/tvAdminClubDescriptionTitle" android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:layout_marginStart="16dp" android:layout_marginTop="48dp"
                 android:background="#E1D8D8" android:text="Club Description:" android:textSize="25sp" android:visibility="gone" app:layout_constraintStart_toStartOf="parent"
@@ -49,13 +58,6 @@
                 android:layout_marginStart="100dp" android:layout_marginBottom="16dp" android:backgroundTint="@color/burgendy" android:text="All Events"
                 android:textColor="@color/white" app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
-            <TextView android:id="@+id/tvAnouncementSectionTitle" android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:layout_marginStart="117dp" android:layout_marginTop="14dp"
-                android:layout_marginEnd="120dp" android:layout_marginBottom="14dp" android:text="Recent Events"
-                android:textColor="@color/black" android:textSize="20dp" android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/rvAdminProfileAnnouncements"
-                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
     <TextView android:id="@+id/tvAdminClubDescription" android:layout_width="0dp" android:layout_height="0dp"

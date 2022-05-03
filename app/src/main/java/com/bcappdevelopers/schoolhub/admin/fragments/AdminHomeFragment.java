@@ -44,4 +44,10 @@ public class AdminHomeFragment extends Fragment {
         // set adapter on viewpager
         viewPager.setAdapter(adapter);
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+    }
 }

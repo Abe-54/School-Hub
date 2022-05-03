@@ -43,9 +43,9 @@ public class AdminHomeActivity extends AppCompatActivity {
                         showPostDialog();
                         fragment = null;
                         break;
-                    case R.id.clubMailBox:
+                    /*case R.id.clubMailBox:
                         fragment = new AdminMailFragment();
-                        break;
+                        break;*/
                     case R.id.clubProfile:
                         fragment = new AdminProfileFragment();
                         break;

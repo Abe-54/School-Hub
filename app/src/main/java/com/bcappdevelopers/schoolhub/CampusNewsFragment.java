@@ -78,6 +78,7 @@ public class CampusNewsFragment extends Fragment {
                 // Your code to refresh the list here.
                 // Make sure you call swipeContainer.setRefreshing(false)
                 // once the network request has completed successfully.
+                swipeContainer.setRefreshing(false);
                 adapter.clear();
                 setVisible();
                 queryAnnoucnements();
@@ -140,8 +141,6 @@ public class CampusNewsFragment extends Fragment {
                             Collections.reverse(allAnnouncements);
 
                             setInvisible();
-
-                            swipeContainer.setRefreshing(false);
 
                             adapter.notifyDataSetChanged();
                         }

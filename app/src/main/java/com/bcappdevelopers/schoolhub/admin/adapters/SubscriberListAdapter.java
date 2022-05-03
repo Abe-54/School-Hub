@@ -54,6 +54,18 @@ public class SubscriberListAdapter extends RecyclerView.Adapter<SubscriberListAd
         return subs.size();
     }
 
+    // Clean all elements of the recycler
+    public void clear() {
+        subs.clear();
+        notifyDataSetChanged();
+    }
+
+    // Add a list of items -- change to type used
+    public void addAll(List<ParseObject> list) {
+        subs.addAll(list);
+        notifyDataSetChanged();
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView ivSubImage;

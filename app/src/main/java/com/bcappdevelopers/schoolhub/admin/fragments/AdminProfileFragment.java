@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.bcappdevelopers.schoolhub.LoginActivity;
 import com.bcappdevelopers.schoolhub.R;
 import com.bcappdevelopers.schoolhub.admin.AdminHomeActivity;
@@ -44,6 +45,7 @@ public class AdminProfileFragment extends Fragment {
     ImageButton btnClubSettings;
     RecyclerView rvAdminProfileAnnouncements;
     FrameLayout progressOverlay;
+    SwipeRefreshLayout swipeContainer;
 
     private AnnouncementAdapter adapter;
     private List<ParseObject> allAnnouncements;
@@ -115,6 +117,29 @@ public class AdminProfileFragment extends Fragment {
             }
         });
 
+        swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainerSubList);
+        // Setup refresh listener which triggers new data loading
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code to refresh the list here.
+                // Make sure you call swipeContainer.setRefreshing(false)
+                // once the network request has completed successfully.
+                swipeContainer.setRefreshing(false);
+                adapter.clear();
+                QueryClubData();
+            }
+        });
+        // Configure the refreshing colors
+        swipeContainer.setColorSchemeResources(R.color.burgendy);
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        adapter.clear();
+        QueryClubData();
     }
 
     private void QueryClubData() {

@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.bcappdevelopers.schoolhub.R;
 import com.bcappdevelopers.schoolhub.admin.adapters.SubscriberListAdapter;
 import com.bcappdevelopers.schoolhub.models.Club;
@@ -31,6 +32,7 @@ public class SubscriberListFragment extends Fragment {
     private SubscriberListAdapter adapter;
     private List<ParseObject> allSubs;
     private FrameLayout progressOverlay;
+    private SwipeRefreshLayout swipeContainer;
 
     public SubscriberListFragment() {
         // Required empty public constructor
@@ -74,6 +76,23 @@ public class SubscriberListFragment extends Fragment {
         //4. set the layout manager on rv
         rvSubList.setLayoutManager(new LinearLayoutManager(getContext()));
         querySubscribers();
+
+        swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainerSubList);
+        // Setup refresh listener which triggers new data loading
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code to refresh the list here.
+                // Make sure you call swipeContainer.setRefreshing(false)
+                // once the network request has completed successfully.
+                swipeContainer.setRefreshing(false);
+                adapter.clear();
+                setVisible();
+                querySubscribers();
+            }
+        });
+        // Configure the refreshing colors
+        swipeContainer.setColorSchemeResources(R.color.burgendy);
     }
 
     private void querySubscribers() {

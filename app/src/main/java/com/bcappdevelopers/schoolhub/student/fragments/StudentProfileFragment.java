@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.bcappdevelopers.schoolhub.LoginActivity;
 import com.bcappdevelopers.schoolhub.R;
 import com.bcappdevelopers.schoolhub.student.adapters.ClubProfileAdapter;
@@ -40,6 +41,7 @@ public class StudentProfileFragment extends Fragment {
     private List<ParseObject> allClubs;
     private Button signOutButton;
     private FrameLayout progressOverlay;
+    private SwipeRefreshLayout swipeContainer;
 
     private boolean allowRefresh = true;
 
@@ -82,8 +84,6 @@ public class StudentProfileFragment extends Fragment {
         //4. set the layout manager on rv
         rvClubList.setLayoutManager(new LinearLayoutManager(getContext()));
 
-
-
         signOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,12 +94,29 @@ public class StudentProfileFragment extends Fragment {
                 Log.i(TAG, "LOGGING OUT");
             }
         });
+
+        swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainerStudentProfile);
+        // Setup refresh listener which triggers new data loading
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code to refresh the list here.
+                // Make sure you call swipeContainer.setRefreshing(false)
+                // once the network request has completed successfully.
+                swipeContainer.setRefreshing(false);
+                adapter.clear();
+                setVisible();
+                queryData();
+            }
+        });
+        // Configure the refreshing colors
+        swipeContainer.setColorSchemeResources(R.color.burgendy);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        allClubs.clear();
+        adapter.clear();
         queryData();
     }
 
@@ -142,6 +159,7 @@ public class StudentProfileFragment extends Fragment {
 
                                 allClubs.addAll(objects);
                                 setInvisible();
+
                                 adapter.notifyDataSetChanged();
                             }
                         });

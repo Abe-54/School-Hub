@@ -26,12 +26,14 @@ public class ClubSettingsActivity extends AppCompatActivity {
     private Button btnSubmitChanges;
     private Button btnCancelChanges;
 
+    ParseObject club;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_club_settings);
 
-        ParseObject club = getIntent().getParcelableExtra("Club");
+        club = getIntent().getParcelableExtra("Club");
 
         profileImage = findViewById(R.id.ivClubImageEdit);
         btnChangeProfileImage = findViewById(R.id.btnEditImage);
@@ -61,7 +63,9 @@ public class ClubSettingsActivity extends AppCompatActivity {
         btnSubmitChanges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if(!etChangeDescription.getText().toString().isEmpty()) {
+                    SubmitChanges(etChangeDescription.getText().toString());
+                }
             }
         });
 
@@ -71,5 +75,11 @@ public class ClubSettingsActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private void SubmitChanges(String newDescription) {
+        club.put("clubDescription", newDescription);
+        club.saveInBackground();
+        finish();
     }
 }

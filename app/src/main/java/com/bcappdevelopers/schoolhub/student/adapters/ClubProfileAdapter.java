@@ -50,6 +50,18 @@ public class ClubProfileAdapter extends RecyclerView.Adapter<ClubProfileAdapter.
         return clubs.size();
     }
 
+    // Clean all elements of the recycler
+    public void clear() {
+        clubs.clear();
+        notifyDataSetChanged();
+    }
+
+    // Add a list of items -- change to type used
+    public void addAll(List<ParseObject> list) {
+        clubs.addAll(list);
+        notifyDataSetChanged();
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView ivClubImage;
