@@ -50,8 +50,9 @@ public class CampusNewsFragment extends Fragment {
 
         rvCampusAnnoucements = view.findViewById(R.id.rvCampusAnnouncements);
         progressOverlay = view.findViewById(R.id.progress_overlay_campus_news);
-        setVisible();
         allAnnouncements = new ArrayList<>();
+        setVisible();
+
 
         Log.i(TAG, "INSIDE OF CAMPUS FRAG");
 

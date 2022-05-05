@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.bcappdevelopers.schoolhub.models.Announcement;
 import com.bcappdevelopers.schoolhub.models.Club;
@@ -26,6 +28,8 @@ import com.parse.*;
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import jp.wasabeef.glide.transformations.CropCircleWithBorderTransformation;
@@ -41,6 +45,8 @@ public class ClubProfileActivity extends AppCompatActivity {
     RecyclerView rvClubScreenAnnouncement;
     Button btnSubScribe;
     Button btnEventArchive;
+    FrameLayout progressOverlay;
+    SwipeRefreshLayout swipeContainer;
 
     String clubName;
     AnnouncementAdapter adapter;
@@ -93,6 +99,9 @@ public class ClubProfileActivity extends AppCompatActivity {
         ivClubProfile = findViewById(R.id.ivClubProfile);
         btnSubScribe = findViewById(R.id.btnSubscribe);
         btnEventArchive = findViewById(R.id.btnEventArchive);
+        progressOverlay = findViewById(R.id.progress_overlay_club_news);
+
+        setVisible();
 
         allAnnouncements = new ArrayList<>();
         adapter = new AnnouncementAdapter(this, allAnnouncements);
@@ -137,6 +146,23 @@ public class ClubProfileActivity extends AppCompatActivity {
                 }
             }
         });
+
+        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainerClubScreen);
+        // Setup refresh listener which triggers new data loading
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code to refresh the list here.
+                // Make sure you call swipeContainer.setRefreshing(false)
+                // once the network request has completed successfully.
+                swipeContainer.setRefreshing(false);
+                adapter.clear();
+                setVisible();
+                queryData();
+            }
+        });
+        // Configure the refreshing colors
+        swipeContainer.setColorSchemeResources(R.color.burgendy);
     }
 
     private void queryUsers() {
@@ -165,6 +191,8 @@ public class ClubProfileActivity extends AppCompatActivity {
                             if(clubs.getString("clubName").equals(clubName) ) {
                                 Log.i(TAG, "Found Club " + clubs.getString("clubName") + " for user: " + user.getString("username"));
                                 btnSubScribe.setText("Unsubscribe");
+                                btnSubScribe.setBackgroundTintList(ClubProfileActivity.this.getResources().getColorStateList(R.color.gold));
+                                btnSubScribe.setTextColor(ClubProfileActivity.this.getResources().getColor(R.color.black));
                                 Log.i(TAG, "Is alreadySubscribed set to true? Answer:" + alreadySubscribed);
                             }
                         }
@@ -200,6 +228,18 @@ public class ClubProfileActivity extends AppCompatActivity {
                         allAnnouncements.add(singleAnnouncement);
                     }
                 }
+
+                Collections.sort(allAnnouncements, new Comparator<ParseObject>() {
+                    @Override
+                    public int compare(ParseObject date, ParseObject date1) {
+                        return date.getCreatedAt().toString().compareTo(date1.getCreatedAt().toString());
+                    }
+                });
+
+                Collections.reverse(allAnnouncements);
+
+                setInvisible();
+
                 adapter.notifyDataSetChanged();
             }
         });
@@ -213,11 +253,13 @@ public class ClubProfileActivity extends AppCompatActivity {
         usersInClub.add(ParseUser.getCurrentUser());
 
         Toast.makeText(getApplicationContext(), "User Subscribed",Toast.LENGTH_SHORT).show();
+        currentClub.saveInBackground();
         ParseUser.getCurrentUser().saveInBackground();
 
         alreadySubscribed = true;
         btnSubScribe.setText("Unsubscribe");
-
+        btnSubScribe.setBackgroundTintList(ClubProfileActivity.this.getResources().getColorStateList(R.color.gold));
+        btnSubScribe.setTextColor(ClubProfileActivity.this.getResources().getColor(R.color.black));
     }
 
     private void unsubscribe(){
@@ -229,11 +271,19 @@ public class ClubProfileActivity extends AppCompatActivity {
         usersInClub.remove(ParseUser.getCurrentUser());
 
         Toast.makeText(getApplicationContext(), "User Unsubscribed",Toast.LENGTH_SHORT).show();
+        currentClub.saveInBackground();
         ParseUser.getCurrentUser().saveInBackground();
 
         alreadySubscribed = false;
         btnSubScribe.setText("Subscribe");
+        btnSubScribe.setBackgroundTintList(ClubProfileActivity.this.getResources().getColorStateList(R.color.burgendy));
+        btnSubScribe.setTextColor(ClubProfileActivity.this.getResources().getColor(R.color.white));
+    }
 
-
+    public void setInvisible() {
+        progressOverlay.setVisibility(View.INVISIBLE);
+    }
+    public void setVisible() {
+        progressOverlay.setVisibility(View.VISIBLE);
     }
 }

@@ -52,8 +52,6 @@ public class ClubNewsFragment extends Fragment {
         rvClubAnnoucements = view.findViewById(R.id.rvClubAnnouncements);
         progressOverlay = view.findViewById(R.id.progress_overlay_club_news);
         allAnnouncements = new ArrayList<>();
-        adapter = new AnnouncementAdapter(getContext(), allAnnouncements);
-
         setVisible();
 
         Log.i(TAG, "INSIDE OF CLUB FRAG");
@@ -63,10 +61,14 @@ public class ClubNewsFragment extends Fragment {
         //1. create the adapter
         //2. create the data source
         //3. set the adapter on rv
+        adapter = new AnnouncementAdapter(getContext(), allAnnouncements);
+        queryAnnoucnements();
+
         rvClubAnnoucements.setAdapter(adapter);
+
         //4. set the layout manager on rv
         rvClubAnnoucements.setLayoutManager(new LinearLayoutManager(getContext()));
-        queryAnnoucnements();
+
 
         swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainerClubNews);
         // Setup refresh listener which triggers new data loading

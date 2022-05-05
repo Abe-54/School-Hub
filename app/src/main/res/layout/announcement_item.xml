@@ -23,9 +23,10 @@
         <ImageButton android:id="@+id/btnAnnouncementDislike" android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_marginStart="40dp" android:layout_marginTop="8dp"
             android:background="@android:color/transparent" android:minWidth="48dp" android:minHeight="48dp"
-            android:tint="@color/burgendy" app:layout_constraintStart_toEndOf="@+id/btnAnnouncementLike"
+            app:layout_constraintStart_toEndOf="@+id/btnAnnouncementLike"
             app:layout_constraintTop_toBottomOf="@+id/tvAnnouncementTitle" app:srcCompat="@drawable/outline_thumb_down_24"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="SpeakableTextPresentCheck"
+            app:tint="@color/burgendy" />
         <ImageView android:id="@+id/ivAnnouncement" android:layout_width="60dp" android:layout_height="60dp"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
@@ -36,18 +37,30 @@
             android:textColor="@color/black" android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/ivAnnouncement" app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView android:id="@+id/tvAnnouncementTitle" android:layout_width="0dp" android:layout_height="wrap_content"
-            android:layout_marginStart="4dp" android:layout_marginTop="2dp" android:layout_marginEnd="7dp"
-            android:ellipsize="end" android:hint="The Announcement Title will go here!" android:maxLines="2"
-            android:minLines="1" android:textColor="@color/black" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/ivAnnouncement" app:layout_constraintTop_toBottomOf="@+id/tvProfileName" />
+        <TextView
+            android:id="@+id/tvAnnouncementTitle"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="7dp"
+            android:ellipsize="end"
+            android:hint="The Announcement Title will go here!"
+            android:maxLines="2"
+            android:minLines="1"
+            android:padding="5dp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivAnnouncement"
+            app:layout_constraintTop_toBottomOf="@+id/tvProfileName" />
 
         <ImageButton android:id="@+id/btnAnnouncementLike" android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_marginStart="8dp" android:layout_marginTop="8dp"
             android:background="@android:color/transparent" android:minWidth="48dp" android:minHeight="48dp"
-            android:tint="@color/burgendy" app:layout_constraintStart_toEndOf="@+id/ivAnnouncement"
+            app:layout_constraintStart_toEndOf="@+id/ivAnnouncement"
             app:layout_constraintTop_toBottomOf="@+id/tvAnnouncementTitle" app:srcCompat="@drawable/outline_thumb_up_24"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="SpeakableTextPresentCheck"
+            app:tint="@color/burgendy" />
 
         <ToggleButton android:id="@+id/btnShare" android:layout_width="48dp" android:layout_height="48dp"
             android:layout_marginTop="16dp" android:button="@android:drawable/ic_menu_share" android:text="ToggleButton"
