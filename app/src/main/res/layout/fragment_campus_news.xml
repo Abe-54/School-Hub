@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent" android:layout_height="match_parent" android:layout_margin="10dp"
-    android:layout_marginBottom="0dp" tools:context=".CampusNewsFragment">
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:layout_margin="10dp"
+             android:layout_marginBottom="0dp"
+             tools:context=".CampusNewsFragment_1">
 
-        <include android:id="@+id/progress_overlay_campus_news" layout="@layout/progress_overlay"/>
+        <include
+                android:id="@+id/progress_overlay_campus_news"
+                layout="@layout/progress_overlay"
+                android:visibility="gone"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCampusAnnouncements"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"/>
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/swipeContainerCampusNews"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                android:id="@+id/swipeContainerCampusNews"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:visibility="gone"
+                android:visibility="gone">
 
-        <androidx.recyclerview.widget.RecyclerView android:id="@+id/rvCampusAnnouncements" android:layout_width="match_parent" android:layout_height="match_parent"
-            android:padding="8dp"/>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </FrameLayout>

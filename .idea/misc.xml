@@ -72,6 +72,9 @@
         <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/mipmap-anydpi-v26/school_hub_icon.xml" value="0.18828828828828828" />
         <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/mipmap-anydpi-v26/school_hub_icon_round.xml" value="0.18828828828828828" />
         <entry key="..\:/Users/super/Documents/Mobile Applications Assignments/SchoolHub/app/src/main/res/xml/fileprovider.xml" value="0.24427083333333333" />
+        <entry key="..\:/Users/super/Documents/School-Hub/app/src/main/res/layout/announcement_item.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/super/Documents/School-Hub/app/src/main/res/layout/campus_feed_screen.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/super/Documents/School-Hub/app/src/main/res/layout/fragment_campus_news.xml" value="0.3729166666666667" />
         <entry key="..\:/bcAppDevelopers-SchoolHub/School-Hub/app/src/main/res/layout/fragment_compose_alert.xml" value="0.36666666666666664" />
         <entry key="app/src/main/res/layout/activity_admin_home.xml" value="0.16894630192502533" />
         <entry key="app/src/main/res/layout/activity_admin_page.xml" value="0.16894630192502533" />
@@ -91,7 +94,7 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="corretto-11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

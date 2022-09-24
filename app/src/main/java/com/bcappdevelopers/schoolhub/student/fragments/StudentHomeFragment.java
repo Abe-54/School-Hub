@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.viewpager.widget.ViewPager;
 import com.bcappdevelopers.schoolhub.CampusNewsFragment;
+import com.bcappdevelopers.schoolhub.CampusNewsFragment_1;
 import com.bcappdevelopers.schoolhub.R;
 import com.bcappdevelopers.schoolhub.student.adapters.NewsPageAdapter;
 import com.google.android.material.tabs.TabLayout;
@@ -41,7 +42,7 @@ public class StudentHomeFragment extends Fragment {
         NewsPageAdapter adapter = new NewsPageAdapter(getChildFragmentManager());
 
         // add your fragments
-        adapter.addFrag(new CampusNewsFragment(), "Campus News");
+        adapter.addFrag(new CampusNewsFragment_1(), "Campus News");
         adapter.addFrag(new ClubNewsFragment(), "Clubs News");
 
         // set adapter on viewpager

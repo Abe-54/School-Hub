@@ -7,6 +7,7 @@ import android.util.Log;
 import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -16,7 +17,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.bcappdevelopers.schoolhub.LoginActivity;
+import com.bcappdevelopers.schoolhub.PostFeedActivity;
 import com.bcappdevelopers.schoolhub.R;
+import com.bcappdevelopers.schoolhub.RecyclerViewActionListener;
 import com.bcappdevelopers.schoolhub.admin.AdminHomeActivity;
 import com.bcappdevelopers.schoolhub.admin.ClubSettingsActivity;
 import com.bcappdevelopers.schoolhub.admin.CreatePostActivity;
@@ -27,13 +30,16 @@ import com.bumptech.glide.Glide;
 import com.parse.*;
 import jp.wasabeef.glide.transformations.CropCircleWithBorderTransformation;
 import org.jetbrains.annotations.NotNull;
+import org.parceler.Parcels;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.*;
 
+import static com.parse.Parse.getApplicationContext;
 
-public class AdminProfileFragment extends Fragment {
+
+public class AdminProfileFragment extends Fragment implements RecyclerViewActionListener {
 
     private static final String TAG = "CLUB PROFILE ACTIVITY";
 
@@ -49,6 +55,12 @@ public class AdminProfileFragment extends Fragment {
 
     private AnnouncementAdapter adapter;
     private List<ParseObject> allAnnouncements;
+
+    boolean isLiked = false;
+    int likedIcon;
+
+    boolean isDisliked = false;
+    int dislikedICon;
 
     ParseObject clubObject;
     public AdminProfileFragment() {
@@ -71,6 +83,9 @@ public class AdminProfileFragment extends Fragment {
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        likedIcon = R.drawable.outline_thumb_up_24;
+        dislikedICon = R.drawable.outline_thumb_down_24;
+
         tvClubName = view.findViewById(R.id.tvAdminClubName);
         tvClubDescription = view.findViewById(R.id.tvAdminClubDescription);
         ivClubProfile = view.findViewById(R.id.ivAdminClubProfile);
@@ -81,7 +96,7 @@ public class AdminProfileFragment extends Fragment {
         progressOverlay = view.findViewById(R.id.progress_overlay_admin_profile);
 
         allAnnouncements = new ArrayList<>();
-        adapter = new AnnouncementAdapter(getContext(), allAnnouncements);
+        adapter = new AnnouncementAdapter(getContext(), allAnnouncements, this);
 
         QueryClubData();
 
@@ -237,5 +252,30 @@ public class AdminProfileFragment extends Fragment {
     }
     public void setVisible() {
         progressOverlay.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void setupAnnouncements(ParseObject announcement, ImageButton btnLike, ImageButton btnDislike) {
+
+    }
+
+    @Override
+    public void onViewClicked(int clickedViewId, int clickedItemPosition, ParseObject announcement, ImageButton btnLike, ImageButton btnDislike) {
+
+        //setting total likes & dislikes
+        int totalLiked = (int) announcement.getNumber("likeCounter");
+        int totalDisliked = (int) announcement.getNumber("dislikeCounter");
+
+        switch (clickedViewId) {
+            case R.id.btnAnnouncementLike:
+                break;
+            case R.id.btnAnnouncementDislike:
+                break;
+            case R.id.cvAnnouncementContainer:
+                Intent i = new Intent(getContext(), PostFeedActivity.class);
+                i.putExtra("Announcement", Parcels.wrap(announcement));
+                getContext().startActivity(i);
+                break;
+        }
     }
 }

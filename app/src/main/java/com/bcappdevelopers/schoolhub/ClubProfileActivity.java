@@ -6,13 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -34,7 +31,9 @@ import java.util.List;
 
 import jp.wasabeef.glide.transformations.CropCircleWithBorderTransformation;
 
-public class ClubProfileActivity extends AppCompatActivity {
+import static com.parse.Parse.getApplicationContext;
+
+public class ClubProfileActivity extends AppCompatActivity implements RecyclerViewActionListener{
 
     private static final String TAG = "CLUB PROFILE ACTIVITY";
 
@@ -61,15 +60,23 @@ public class ClubProfileActivity extends AppCompatActivity {
 
     private List<ParseObject> allAnnouncements;
 
+    boolean isLiked = false;
+    int likedIcon;
+
+    boolean isDisliked = false;
+    int dislikedICon;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_club_page);
 
+        likedIcon = R.drawable.outline_thumb_up_24;
+        dislikedICon = R.drawable.outline_thumb_down_24;
+
         announcement = Parcels.unwrap(getIntent().getParcelableExtra("Announcement"));
         club = Parcels.unwrap(getIntent().getParcelableExtra("Club"));
         profile = Parcels.unwrap(getIntent().getParcelableExtra("ClubObject"));
-       // member = Parcels.unwrap(getIntent().getParcelableExtra());
 
         String clubDescription = "";
         ParseFile clubImage = null;
@@ -104,7 +111,7 @@ public class ClubProfileActivity extends AppCompatActivity {
         setVisible();
 
         allAnnouncements = new ArrayList<>();
-        adapter = new AnnouncementAdapter(this, allAnnouncements);
+        adapter = new AnnouncementAdapter(this, allAnnouncements, this);
         rvClubScreenAnnouncement.setAdapter(adapter);
         rvClubScreenAnnouncement.setLayoutManager(new LinearLayoutManager(this));
 
@@ -285,5 +292,36 @@ public class ClubProfileActivity extends AppCompatActivity {
     }
     public void setVisible() {
         progressOverlay.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onViewClicked(int clickedViewId, int clickedItemPosition, ParseObject announcement, ImageButton btnLike, ImageButton btnDislike) {
+
+        //setting total likes & dislikes
+        int totalLiked = (int) announcement.getNumber("likeCounter");
+        int totalDisliked = (int) announcement.getNumber("dislikeCounter");
+
+        switch (clickedViewId) {
+            case R.id.btnAnnouncementLike:
+                break;
+            case R.id.btnAnnouncementDislike:
+                break;
+            case R.id.cvAnnouncementContainer:
+                Intent i = new Intent(this, PostFeedActivity.class);
+                i.putExtra("Announcement", Parcels.wrap(announcement));
+                this.startActivity(i);
+                break;
+        }
+
+        //Setting like/dislike button image
+        btnLike.setImageDrawable(
+                ContextCompat.getDrawable(getApplicationContext(), likedIcon));
+        btnDislike.setImageDrawable(
+                ContextCompat.getDrawable(getApplicationContext(), dislikedICon));
+    }
+
+    @Override
+    public void setupAnnouncements(ParseObject announcement, ImageButton likeBtn, ImageButton dislikeBtn) {
+
     }
 }

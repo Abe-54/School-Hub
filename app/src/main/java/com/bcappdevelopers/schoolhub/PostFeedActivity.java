@@ -91,7 +91,8 @@ public class PostFeedActivity extends AppCompatActivity {
         comment.setCommentCreator(ParseUser.getCurrentUser());
         comment.setCommentContents(commentContent);
         comment.setPost(announcementPost);
-
+        comment.put("likeCounter", 0);
+        comment.put("dislikeCounter", 0);
         comment.saveInBackground();
     }
 
