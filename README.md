@@ -76,10 +76,6 @@ The app also provides a guide to nearby resources and amenities that are made av
 <img src="School Hub (Student) Porfile App Wireframe.jpg" width=600>
 <img src="Student Sign Up Process Wireframe.jpg" width=600>
 
-### [BONUS] Digital Wireframes & Mockups
-
-### [BONUS] Interactive Prototype
-
 ## Schema 
 #### Post
 
